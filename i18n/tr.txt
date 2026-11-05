@@ -189,3 +189,6 @@ Doğrudan dokun
 Parmağınız imleci tıklamadan hareket ettirir. Dokunma: tıklama. Dokunup basılı tutarak veya basılı tutup hareket ettirerek: sürükleme. Basılı tutma: sağ tık.
 İmleç dokunduğunuz yere gider, dokunma orada tıklar. Basılı tutma: sağ tık. Basılı tutup hareket: sürükleme.
 Bekleniyor…
+TEMA
+Koyu
+Açık

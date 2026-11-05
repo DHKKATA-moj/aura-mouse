@@ -49,7 +49,7 @@ internal static class DragUi
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.Manual;
             TopMost = true;
-            BackColor = Theme.Surface;
+            BackColor = Theme.SolidSurface;
             Controls.Add(_label);
             _hide.Tick += (_, _) => { _hide.Stop(); Hide(); };
         }

@@ -189,3 +189,6 @@ Tocar diretamente
 Seu dedo move o cursor sem clicar. Toque: clique. Toque, depois segure e mova, ou segure e mova: arrastar. Segurar: clique direito.
 O cursor vai aonde você toca, e um toque clica ali. Segurar: clique direito. Segurar e mover: arrastar.
 Aguardando…
+TEMA
+Escuro
+Claro

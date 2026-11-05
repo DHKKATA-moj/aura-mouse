@@ -189,3 +189,6 @@ Toucher directement
 Votre doigt déplace le curseur sans cliquer. Toucher : clic. Toucher puis maintenir et bouger, ou maintenir et bouger : glisser. Maintenir : clic droit.
 Le curseur va où vous touchez, et un appui clique à cet endroit. Maintenir : clic droit. Maintenir et bouger : glisser.
 En attente…
+THÈME
+Sombre
+Clair

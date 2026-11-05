@@ -94,6 +94,9 @@ internal static class L
         ["wake_no_network"] = "This computer isn't on a network",
         ["wake_needs"] = "To turn on a computer, it needs a cable and power, Wake on LAN enabled in its BIOS and network card settings, and Fast Startup off",
 
+        ["theme_title"] = "THEME",
+        ["theme_dark"] = "Dark",
+        ["theme_light"] = "Light",
         ["auto_start"] = "Start with Windows",
         ["auto_start_tip"] = "Starts hidden and repeats the last connection. Needed on every computer",
         ["on"] = "On",

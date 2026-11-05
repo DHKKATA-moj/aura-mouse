@@ -23,7 +23,7 @@ internal sealed class RemoteApprovalForm : Form
         FormBorderStyle = FormBorderStyle.None;
         ShowInTaskbar = false;
         StartPosition = FormStartPosition.Manual;
-        BackColor = Theme.Surface;
+        BackColor = Theme.SolidSurface;
         var area = Screen.PrimaryScreen!.WorkingArea;
         int w = S(DesignW), h = S(DesignH);
         Bounds = new Rectangle(area.Left + (area.Width - w) / 2, area.Top + (area.Height - h) / 2, w, h);
@@ -33,7 +33,7 @@ internal sealed class RemoteApprovalForm : Form
         Add(new TextBlock { Text = L.T("remote_code_label"), FontSize = 9.5f, Color = Theme.Muted }, Pad, 122, DesignW - 2 * Pad, 22);
         Add(new TextBlock { Text = request.Code, FontSize = 17, Bold = true, Color = Theme.Accent }, Pad, 144, DesignW - 2 * Pad, 34);
 
-        _trust = new CheckBox { Text = L.T("remote_trust_box"), ForeColor = Theme.Text, BackColor = Theme.Surface, Font = Theme.RealFont(10), RightToLeft = L.Rtl ? RightToLeft.Yes : RightToLeft.No };
+        _trust = new CheckBox { Text = L.T("remote_trust_box"), ForeColor = Theme.Text, BackColor = Theme.SolidSurface, Font = Theme.RealFont(10), RightToLeft = L.Rtl ? RightToLeft.Yes : RightToLeft.No };
         Add(_trust, Pad, 184, DesignW - 2 * Pad, 34);
 
         var decline = Add(new PillButton { Text = L.T("remote_decline"), Glyph = Glyphs.Stop, Kind = ButtonKind.Danger }, Pad, 234, 186, 46);
@@ -113,6 +113,7 @@ internal sealed class RemoteBanner : Form
             Text = string.Format(L.T("remote_banner"), viewer),
             FontSize = 10.5f,
             Bold = true,
+            Color = Color.White, // the banner stays red whatever the theme
             Glyph = Glyphs.Monitor,
             Bounds = L.Rtl ? new Rectangle(buttonW + 2 * pad, 0, w - buttonW - 3 * pad, h) : new Rectangle(pad, 0, w - buttonW - 3 * pad, h),
         });
@@ -304,7 +305,7 @@ internal sealed class RemoteViewerForm : Form
     readonly RemoteComputer? _saved;
     readonly RemoteView _view = new() { Dock = DockStyle.Fill };
     readonly Panel _bar = new() { Dock = DockStyle.Top };
-    readonly TextBlock _status = new() { Dock = DockStyle.Fill, FontSize = 13, Bold = true, BackColor = Color.Black };
+    readonly TextBlock _status = new() { Dock = DockStyle.Fill, FontSize = 13, Bold = true, BackColor = Color.Black, Color = Color.White };
     readonly TextBlock _title = new() { FontSize = 10.5f, Bold = true };
     readonly PillButton _monitor = new() { Text = L.T("remote_monitor"), Glyph = Glyphs.Monitor };
     RemoteLink? _link;
@@ -328,7 +329,7 @@ internal sealed class RemoteViewerForm : Form
         KeyPreview = false;
 
         _bar.Height = S(BarHeight);
-        _bar.BackColor = Theme.Surface;
+        _bar.BackColor = Theme.SolidSurface;
         var end = AddToBar(new PillButton { Text = L.T("remote_end"), Glyph = Glyphs.Stop, Kind = ButtonKind.Danger }, 8, 118);
         end.Click += (_, _) => Close();
         var full = AddToBar(new PillButton { Text = L.T("remote_full_screen"), Glyph = Glyphs.Monitor }, 134, 128);

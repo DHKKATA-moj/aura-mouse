@@ -5,23 +5,109 @@ namespace AuraMouse.Ui;
 
 internal enum Tone { Neutral, Busy, Good, Bad }
 
+internal enum ThemeId { Dark, Light, Glass, GlassDark }
+
 /// Colours, fonts and drawing helpers. Controls draw in "design pixels" (96 DPI) and
 /// CanvasControl scales the Graphics by Theme.Scale, so everything stays sharp on high-DPI screens.
 internal static class Theme
 {
     public static float Scale { get; set; } = 1;
 
-    public static readonly Color Background = Color.FromArgb(10, 14, 24);
-    public static readonly Color Surface = Color.FromArgb(20, 26, 41);
-    public static readonly Color SurfaceHover = Color.FromArgb(28, 36, 56);
-    public static readonly Color Border = Color.FromArgb(40, 50, 74);
-    public static readonly Color Text = Color.FromArgb(235, 240, 250);
-    public static readonly Color Muted = Color.FromArgb(132, 145, 174);
-    public static readonly Color Accent = Color.FromArgb(34, 211, 238);
-    public static readonly Color Accent2 = Color.FromArgb(37, 99, 235);
-    public static readonly Color Good = Color.FromArgb(52, 211, 153);
-    public static readonly Color Warn = Color.FromArgb(251, 191, 36);
-    public static readonly Color Bad = Color.FromArgb(248, 113, 113);
+    /// A soft patch of colour on the window's background. Position and size are fractions of the window.
+    internal readonly record struct Glow(Color Color, int Alpha, float X, float Y, float W, float H);
+
+    internal sealed record Palette(
+        ThemeId Id, Color Background, Color Surface, Color SurfaceHover, Color Border, Color Text, Color Muted,
+        Color Accent, Color Accent2, Color Good, Color Warn, Color Bad, Color Sidebar, bool DarkTitleBar, bool IsGlass, Glow[] Glows);
+
+    static Color C(int r, int g, int b, int a = 255) => Color.FromArgb(a, r, g, b);
+
+    static readonly Palette[] Palettes =
+    [
+        new(ThemeId.Dark, C(10, 14, 24), C(20, 26, 41), C(28, 36, 56), C(40, 50, 74), C(235, 240, 250), C(132, 145, 174),
+            C(34, 211, 238), C(37, 99, 235), C(52, 211, 153), C(251, 191, 36), C(248, 113, 113), C(20, 26, 41, 170), true, false,
+            [new(C(34, 211, 238), 48, -0.45f, -0.35f, 1.1f, 0.8f), new(C(37, 99, 235), 42, 0.35f, 0.55f, 1.0f, 0.8f)]),
+        new(ThemeId.Light, C(241, 245, 250), C(255, 255, 255), C(232, 240, 250), C(203, 213, 225), C(15, 23, 42), C(82, 96, 120),
+            C(8, 145, 178), C(37, 99, 235), C(5, 150, 105), C(180, 83, 9), C(220, 38, 38), C(255, 255, 255, 190), false, false,
+            [new(C(34, 211, 238), 40, -0.45f, -0.35f, 1.1f, 0.8f), new(C(37, 99, 235), 26, 0.35f, 0.55f, 1.0f, 0.8f)]),
+        new(ThemeId.Glass, C(205, 222, 245), C(255, 255, 255, 105), C(255, 255, 255, 150), C(255, 255, 255, 170), C(12, 20, 40), C(50, 62, 88),
+            C(8, 120, 170), C(58, 80, 225), C(4, 120, 87), C(170, 75, 5), C(200, 30, 45), C(255, 255, 255, 70), false, true,
+            [new(C(56, 189, 248), 245, -0.35f, -0.35f, 1.15f, 1.0f), new(C(192, 132, 252), 235, 0.35f, -0.3f, 1.0f, 0.95f),
+             new(C(251, 146, 180), 225, 0.45f, 0.4f, 0.95f, 0.95f), new(C(45, 212, 191), 225, -0.3f, 0.45f, 1.05f, 0.95f), new(C(253, 224, 171), 170, 0.1f, 0.15f, 0.7f, 0.6f)]),
+        new(ThemeId.GlassDark, C(14, 16, 40), C(255, 255, 255, 30), C(255, 255, 255, 52), C(255, 255, 255, 62), C(245, 248, 255), C(190, 200, 225),
+            C(103, 232, 249), C(99, 102, 241), C(74, 222, 128), C(253, 186, 116), C(252, 129, 129), C(255, 255, 255, 18), true, true,
+            [new(C(37, 99, 235), 235, -0.4f, -0.4f, 1.2f, 1.05f), new(C(147, 51, 234), 225, 0.35f, -0.3f, 1.05f, 0.95f),
+             new(C(219, 39, 119), 170, 0.5f, 0.45f, 0.95f, 0.9f), new(C(13, 148, 136), 205, -0.35f, 0.45f, 1.05f, 0.95f)]),
+    ];
+
+    static string SettingsFile => Path.Combine(App.DataFolder, "theme.txt");
+
+    public static Palette Current { get; private set; } = Palettes[0];
+
+    public static Color Background => Current.Background;
+    public static Color Surface => Current.Surface;
+    public static Color SurfaceHover => Current.SurfaceHover;
+    public static Color Border => Current.Border;
+    public static Color Text => Current.Text;
+    public static Color Muted => Current.Muted;
+    public static Color Accent => Current.Accent;
+    public static Color Accent2 => Current.Accent2;
+    public static Color Good => Current.Good;
+    public static Color Warn => Current.Warn;
+    public static Color Bad => Current.Bad;
+
+    /// Surface without see-through, for real windows and boxes, which can't be translucent.
+    public static Color SolidSurface
+    {
+        get
+        {
+            var s = Surface;
+            int Mix(int top, int under) => (top * s.A + under * (255 - s.A)) / 255;
+            return Color.FromArgb(Mix(s.R, Background.R), Mix(s.G, Background.G), Mix(s.B, Background.B));
+        }
+    }
+
+    public static Palette PaletteOf(ThemeId id) => Palettes.First(p => p.Id == id);
+
+    public static void Set(ThemeId id) => Current = PaletteOf(id);
+
+    public static void Load()
+    {
+        try
+        {
+            if (File.Exists(SettingsFile) && Enum.TryParse<ThemeId>(File.ReadAllText(SettingsFile).Trim(), out var id) && Enum.IsDefined(id)) Set(id);
+        }
+        catch (IOException) { }
+        catch (UnauthorizedAccessException) { }
+    }
+
+    public static void Save()
+    {
+        try
+        {
+            Directory.CreateDirectory(App.DataFolder);
+            File.WriteAllText(SettingsFile, Current.Id.ToString());
+        }
+        catch (IOException) { }
+        catch (UnauthorizedAccessException) { }
+    }
+
+    /// The light catching a pane of glass: a sheen over its top half and a bright rim. Nothing in other themes.
+    public static void GlassShine(Graphics g, RectangleF r, float radius)
+    {
+        if (!Current.IsGlass || r.Width < 2 || r.Height < 2) return;
+        bool dark = Current.DarkTitleBar;
+
+        var top = new RectangleF(r.X + 1, r.Y + 1, r.Width - 2, Math.Max(1, r.Height * 0.48f));
+        using (var sheenPath = Rounded(top, Math.Min(radius, top.Height / 2)))
+        using (var sheen = new LinearGradientBrush(new RectangleF(top.X, top.Y - 1, top.Width, top.Height + 2), Color.FromArgb(dark ? 62 : 130, Color.White), Color.FromArgb(0, Color.White), LinearGradientMode.Vertical))
+            g.FillPath(sheen, sheenPath);
+
+        using var rimPath = Rounded(r, radius);
+        using var rimBrush = new LinearGradientBrush(new RectangleF(r.X, r.Y - 1, r.Width, r.Height + 2), Color.FromArgb(dark ? 190 : 240, Color.White), Color.FromArgb(dark ? 38 : 110, Color.White), LinearGradientMode.Vertical);
+        using var rim = new Pen(rimBrush, 1.15f);
+        g.DrawPath(rim, rimPath);
+    }
 
     static readonly string IconFamily =
         FontFamily.Families.Any(f => f.Name == "Segoe Fluent Icons") ? "Segoe Fluent Icons" : "Segoe MDL2 Assets";

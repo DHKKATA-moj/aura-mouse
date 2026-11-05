@@ -189,3 +189,6 @@ Sentuh langsung
 Jari Anda menggerakkan kursor tanpa klik. Ketuk: klik. Ketuk lalu tahan dan gerakkan, atau tahan lalu gerakkan: seret. Tahan: klik kanan.
 Kursor pergi ke tempat yang Anda sentuh, dan ketukan mengklik di sana. Tahan: klik kanan. Tahan lalu gerakkan: seret.
 Menunggu…
+TEMA
+Gelap
+Terang

@@ -162,6 +162,8 @@ internal sealed class PillButton : PressableControl
                 break;
         }
 
+        Theme.GlassShine(g, r, r.Height / 2);
+
         var font = Theme.Font(11, FontStyle.Bold);
         float textWidth = g.MeasureString(Text, font).Width + 2;
         float glyphWidth = Glyph.Length > 0 ? 24 : 0;
@@ -194,6 +196,7 @@ internal sealed class SidebarItem : PressableControl
                 using var pen = Theme.AccentPen(r, 1.4f);
                 g.DrawPath(pen, path);
             }
+            Theme.GlassShine(g, r, 12);
         }
         var fore = Selected ? Theme.Text : Theme.Muted;
         Theme.DrawGlyph(g, Glyph, 11.5f, Selected ? Theme.Accent : fore, M(new RectangleF(10, 0, 32, H)));
@@ -228,11 +231,13 @@ internal sealed class ChoiceCard : PressableControl
             using var border = Hover ? Theme.AccentPen(r, 1.5f) : new Pen(Theme.Border, 1.2f);
             g.DrawPath(border, path);
         }
+        Theme.GlassShine(g, r, 18);
 
         var icon = M(new RectangleF(20, r.Y + (r.Height - 54) / 2, 54, 54));
         using (var iconPath = Theme.Rounded(icon, 16))
         using (var iconBrush = Theme.AccentBrush(icon, Hover ? 255 : 215))
             g.FillPath(iconBrush, iconPath);
+        Theme.GlassShine(g, icon, 16);
         Theme.DrawGlyph(g, Glyph, 18, Color.White, icon);
 
         float textX = 92, textW = W - textX - 52;
@@ -268,6 +273,7 @@ internal static class CodeTiles
                 : filled ? Theme.AccentPen(r, 1.5f, 150)
                 : new Pen(Theme.Border, 1.5f);
             g.DrawPath(pen, path);
+            Theme.GlassShine(g, r, 14);
 
             if (filled)
             {
@@ -394,6 +400,7 @@ internal sealed class StatusPill : AnimatedControl
             using var pen = new Pen(Theme.WithAlpha(color, 90), 1.2f);
             g.DrawPath(pen, path);
         }
+        Theme.GlassShine(g, r, 16);
 
         float cx = L.Rtl ? W - 24 : 24, cy = H / 2;
         if (_tone == Tone.Busy)
@@ -406,5 +413,50 @@ internal sealed class StatusPill : AnimatedControl
         using (var dot = new SolidBrush(color)) g.FillEllipse(dot, cx - 5, cy - 5, 10, 10);
 
         Theme.DrawText(g, _message, Theme.Font(10.5f), Theme.Text, M(new RectangleF(44, 4, W - 60, H - 8)), StringAlignment.Near);
+    }
+}
+
+/// One theme to choose: a small picture of it, drawn in that theme's own colours, and its name.
+internal sealed class ThemeSwatch : PressableControl
+{
+    public Theme.Palette Palette { get; init; } = Theme.Current;
+    public bool Selected { get; init; }
+
+    protected override void Draw(Graphics g)
+    {
+        var shown = Theme.Current;
+        var picture = new RectangleF(2, 2, W - 4, 60);
+        var previous = g.Clip;
+        using (var frame = Theme.Rounded(picture, 10))
+        {
+            g.SetClip(frame, CombineMode.Intersect);
+            using (var fill = new SolidBrush(Palette.Background)) g.FillPath(fill, frame);
+            foreach (var glow in Palette.Glows)
+            {
+                using var ellipse = new GraphicsPath();
+                ellipse.AddEllipse(picture.X + glow.X * picture.Width, picture.Y + glow.Y * picture.Height, glow.W * picture.Width, glow.H * picture.Height);
+                using var brush = new PathGradientBrush(ellipse) { CenterColor = Theme.WithAlpha(glow.Color, glow.Alpha), SurroundColors = [Color.FromArgb(0, glow.Color)] };
+                g.FillPath(brush, ellipse);
+            }
+            g.Clip = previous;
+
+            var pill = new RectangleF(picture.X + 12, picture.Y + 16, picture.Width - 24, 28);
+            using var pillPath = Theme.Rounded(pill, 14);
+            using (var surface = new SolidBrush(Palette.Surface)) g.FillPath(surface, pillPath);
+            using (var edge = new Pen(Palette.Border, 1.1f)) g.DrawPath(edge, pillPath);
+            Theme.Set(Palette.Id); // only while drawing the picture: the shine belongs to that theme
+            Theme.GlassShine(g, pill, 14);
+            Theme.Set(shown.Id);
+            using var dot = new SolidBrush(Palette.Accent);
+            g.FillEllipse(dot, L.Rtl ? pill.Right - 20 : pill.X + 9, pill.Y + 9, 10, 10);
+            using var line = new SolidBrush(Theme.WithAlpha(Palette.Text, 170));
+            g.FillRectangle(line, L.Rtl ? pill.X + 12 : pill.X + 26, pill.Y + 12, pill.Width - 38, 4);
+
+            using var ring = Selected ? Theme.AccentPen(picture, 2.4f) : new Pen(Theme.Border, 1.1f);
+            g.DrawPath(ring, frame);
+        }
+
+        Theme.DrawText(g, Text, Theme.Font(9.5f, Selected ? FontStyle.Bold : FontStyle.Regular), Selected ? Theme.Text : Theme.Muted, new RectangleF(0, 64, W, H - 64));
+        DrawFocusRing(g, new RectangleF(0, 0, W, H), 10);
     }
 }

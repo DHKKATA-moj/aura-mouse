@@ -189,3 +189,6 @@ Tocar directamente
 Tu dedo mueve el cursor sin hacer clic. Toque: clic. Toca, luego mantén y mueve, o mantén y mueve: arrastrar. Mantener: clic derecho.
 El cursor va donde tocas y un toque hace clic allí. Mantener: clic derecho. Mantener y mover: arrastrar.
 Esperando…
+TEMA
+Oscuro
+Claro

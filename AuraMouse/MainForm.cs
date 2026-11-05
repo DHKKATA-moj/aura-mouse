@@ -64,6 +64,7 @@ internal sealed class MainForm : Form
         _startHidden = startHidden;
         _resumeLast = resumeLast;
         L.Load();
+        Theme.Load();
         Text = "Aura Mouse";
         AutoScaleMode = AutoScaleMode.None;
         BackColor = Theme.Background;
@@ -421,7 +422,7 @@ internal sealed class MainForm : Form
         var address = Add(new TextBox
         {
             Font = Theme.RealFont(11),
-            BackColor = Theme.Surface,
+            BackColor = Theme.SolidSurface,
             ForeColor = Theme.Text,
             BorderStyle = BorderStyle.FixedSingle,
             PlaceholderText = L.T("remote_address"),
@@ -588,7 +589,25 @@ internal sealed class MainForm : Form
 
     void RenderSettings()
     {
-        AddCentered(new TextBlock { Text = L.T("nav_settings"), FontSize = 18, Bold = true }, 84, ContentWidth, 40);
+        AddCentered(new TextBlock { Text = L.T("nav_settings"), FontSize = 18, Bold = true }, 76, ContentWidth, 38);
+
+        var titleAlign = L.Rtl ? StringAlignment.Far : StringAlignment.Near;
+        Add(new TextBlock { Text = L.T("theme_title"), FontSize = 9.5f, Bold = true, Color = Theme.Muted, Align = titleAlign }, Pad, 118, ContentWidth, 24);
+        (ThemeId Id, string Name)[] themes =
+        [
+            (ThemeId.Dark, L.T("theme_dark")),
+            (ThemeId.Light, L.T("theme_light")),
+            (ThemeId.Glass, "Liquid Glass"),
+            (ThemeId.GlassDark, "Liquid Glass " + L.T("theme_dark")),
+        ];
+        const float swatchGap = 10;
+        float swatchWidth = (ContentWidth - swatchGap * (themes.Length - 1)) / themes.Length;
+        for (int i = 0; i < themes.Length; i++)
+        {
+            var (id, name) = themes[i];
+            var swatch = Add(new ThemeSwatch { Text = name, Palette = Theme.PaletteOf(id), Selected = id == Theme.Current.Id }, Pad + i * (swatchWidth + swatchGap), 142, swatchWidth, 108);
+            swatch.Click += (_, _) => ChooseTheme(id);
+        }
 
         bool on = AutoStart.Enabled;
         var startup = new PillButton { Text = L.T(on ? "on" : "off"), Glyph = Glyphs.Power, Kind = on ? ButtonKind.Primary : ButtonKind.Ghost };
@@ -597,9 +616,9 @@ internal sealed class MainForm : Form
             PairStore.SetAutoStart(!on);
             Navigate();
         };
-        AddSettingRow(146, L.T("auto_start"), L.T("auto_start_tip"), startup);
+        AddSettingRow(262, L.T("auto_start"), L.T("auto_start_tip"), startup);
 
-        var hint = AddCentered(new TextBlock { Text = L.T("shortcut_click"), FontSize = 9.5f, Color = Theme.Muted }, 456, ContentWidth, 48);
+        var hint = AddCentered(new TextBlock { Text = L.T("shortcut_click"), FontSize = 9.5f, Color = Theme.Muted }, 544, ContentWidth, 48);
 
         ShortcutBox Box(int[] keys, Func<int[]> other, Action<int[]> save)
         {
@@ -609,8 +628,20 @@ internal sealed class MainForm : Form
             box.Clashes += () => hint.Text = L.T("shortcut_clash");
             return box;
         }
-        AddSettingRow(250, L.T("lock_title"), L.T("lock_sub"), Box(Shortcuts.Lock, () => Shortcuts.Escape, Shortcuts.SetLock));
-        AddSettingRow(354, L.T("emergency_title"), L.T("emergency_sub"), Box(Shortcuts.Escape, () => Shortcuts.Lock, Shortcuts.SetEscape));
+        AddSettingRow(356, L.T("lock_title"), L.T("lock_sub"), Box(Shortcuts.Lock, () => Shortcuts.Escape, Shortcuts.SetLock));
+        AddSettingRow(450, L.T("emergency_title"), L.T("emergency_sub"), Box(Shortcuts.Escape, () => Shortcuts.Lock, Shortcuts.SetEscape));
+    }
+
+    void ChooseTheme(ThemeId id)
+    {
+        Theme.Set(id);
+        Theme.Save();
+        _backdrop?.Dispose();
+        _backdrop = null;
+        BackColor = Theme.Background;
+        ApplyTitleBar();
+        if (_transfers != null) _transfers.BackColor = Theme.Background;
+        Navigate();
     }
 
     void AddSettingRow(float y, string title, string subtitle, Control control)
@@ -1158,7 +1189,12 @@ internal sealed class MainForm : Form
     protected override void OnHandleCreated(EventArgs e)
     {
         base.OnHandleCreated(e);
-        int dark = 1;
+        ApplyTitleBar();
+    }
+
+    void ApplyTitleBar()
+    {
+        int dark = Theme.Current.DarkTitleBar ? 1 : 0;
         Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int));
     }
 
@@ -1197,11 +1233,11 @@ internal sealed class MainForm : Form
         var bmp = new Bitmap(size.Width, size.Height);
         using var g = Graphics.FromImage(bmp);
         g.Clear(Theme.Background);
-        Glow(g, new RectangleF(-size.Width * 0.45f, -size.Height * 0.35f, size.Width * 1.1f, size.Height * 0.8f), Theme.Accent, 48);
-        Glow(g, new RectangleF(size.Width * 0.35f, size.Height * 0.55f, size.Width * 1.0f, size.Height * 0.8f), Theme.Accent2, 42);
+        foreach (var glow in Theme.Current.Glows)
+            Glow(g, new RectangleF(size.Width * glow.X, size.Height * glow.Y, size.Width * glow.W, size.Height * glow.H), glow.Color, glow.Alpha);
 
         int edge = L.Rtl ? size.Width - sidebarWidth : sidebarWidth;
-        using (var strip = new SolidBrush(Theme.WithAlpha(Theme.Surface, 170)))
+        using (var strip = new SolidBrush(Theme.Current.Sidebar))
             g.FillRectangle(strip, L.Rtl ? edge : 0, 0, sidebarWidth, size.Height);
         using (var line = new Pen(Theme.Border)) g.DrawLine(line, edge, 0, edge, size.Height);
         return bmp;

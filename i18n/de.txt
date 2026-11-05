@@ -189,3 +189,6 @@ Direkt berühren
 Dein Finger bewegt den Zeiger ohne Klick. Tippen: Klick. Tippen, dann halten und bewegen, oder halten und bewegen: ziehen. Halten: Rechtsklick.
 Der Zeiger geht dorthin, wo du berührst, und Tippen klickt dort. Halten: Rechtsklick. Halten und bewegen: ziehen.
 Warte…
+DESIGN
+Dunkel
+Hell

@@ -189,3 +189,6 @@ Touch directly
 Your finger moves the cursor without clicking. Tap: click. Tap then press and move, or hold then move: drag. Hold: right click.
 The cursor goes where you touch, and a tap clicks there. Hold: right click. Hold then move: drag.
 Waiting…
+THEME
+Dark
+Light

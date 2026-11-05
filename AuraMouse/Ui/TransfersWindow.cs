@@ -28,7 +28,7 @@ internal sealed class TransfersWindow : Form
     protected override void OnHandleCreated(EventArgs e)
     {
         base.OnHandleCreated(e);
-        int dark = 1;
+        int dark = Theme.Current.DarkTitleBar ? 1 : 0;
         Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int));
     }
 
