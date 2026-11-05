@@ -92,6 +92,11 @@ Each file in [i18n](i18n) has one line per line of `en.txt`, in the same order. 
 
 The translations haven't been reviewed by native speakers, so corrections are welcome.
 
+## How it was made
+
+Built by DHKKATA-moj with Claude (Anthropic) as a coding assistant. The design hasn't been independently audited; see
+[SECURITY.md](SECURITY.md).
+
 ## License
 
 [MIT](LICENSE)
