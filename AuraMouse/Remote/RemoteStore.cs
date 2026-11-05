@@ -126,6 +126,7 @@ internal static class RemoteStore
         }
         catch (IOException) { }
         catch (UnauthorizedAccessException) { }
+        catch (CryptographicException) { } // Windows can't encrypt here: it just asks again next time
     }
 
     static byte[] Seal(byte[] key) => ProtectedData.Protect(key, null, DataProtectionScope.CurrentUser);

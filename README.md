@@ -30,6 +30,9 @@ Indonesian, Chinese, Japanese and Korean.
 
 You need Windows 10 or 11 on each computer, and Android 10 or newer for the phone app.
 
+**Using a cut-down copy of Windows?** Download `AuraMouse-Lite.exe` instead. It works the same but is smaller, and the app
+copes without the firewall service, Explorer or icon fonts. It may take a little longer to start.
+
 1. Download `AuraMouse.exe` from [Releases](../../releases) and run it on each computer. There's nothing to install.
 2. On the first computer, choose **Get a code**. When Windows asks about the firewall, press **Yes**.
 3. On each other computer, choose **Enter a code** and type the code.

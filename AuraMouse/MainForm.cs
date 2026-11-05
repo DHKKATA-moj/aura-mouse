@@ -1119,7 +1119,11 @@ internal sealed class MainForm : Form
     /// A notice and a beep (the notice can't show over a fullscreen game): high for locked, low for free.
     void OnLockChanged(bool locked)
     {
-        _ = Task.Run(() => Console.Beep(locked ? 880 : 440, 120));
+        _ = Task.Run(() =>
+        {
+            try { Console.Beep(locked ? 880 : 440, 120); }
+            catch (Exception e) when (e is IOException or InvalidOperationException or PlatformNotSupportedException) { } // no sound device or service
+        });
         RunOnUi(() =>
         {
             DragUi.ShowNotice(L.T(locked ? "locked_notice" : "unlocked_notice"));
@@ -1195,7 +1199,8 @@ internal sealed class MainForm : Form
     void ApplyTitleBar()
     {
         int dark = Theme.Current.DarkTitleBar ? 1 : 0;
-        Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int));
+        try { Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int)); }
+        catch (DllNotFoundException) { } // only the title bar's colour
     }
 
     protected override void OnShown(EventArgs e)

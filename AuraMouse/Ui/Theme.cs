@@ -109,8 +109,16 @@ internal static class Theme
         g.DrawPath(rim, rimPath);
     }
 
-    static readonly string IconFamily =
-        FontFamily.Families.Any(f => f.Name == "Segoe Fluent Icons") ? "Segoe Fluent Icons" : "Segoe MDL2 Assets";
+    /// Cut-down copies of Windows can be missing the icon fonts. Null then, and only icons whose meaning
+    /// would otherwise be lost get a plain character instead of showing empty squares.
+    internal static string? IconFamily { get; set; } = new[] { "Segoe Fluent Icons", "Segoe MDL2 Assets" }
+        .FirstOrDefault(name => FontFamily.Families.Any(f => f.Name == name));
+
+    static readonly Dictionary<char, string> PlainIcons = new()
+    {
+        ['\uE74D'] = "\u00D7", ['\uE711'] = "\u00D7", ['\uE710'] = "+", ['\uE8DA'] = "\u2026", ['\uE838'] = "\u2026",
+        ['\uE76C'] = ">", ['\uE76B'] = "<", ['\uE72B'] = "\u2190", ['\uE72A'] = "\u2192",
+    };
 
     static readonly Dictionary<(string, float, FontStyle), Font> Fonts = [];
     static readonly Dictionary<float, Font> IconFonts = [];
@@ -128,7 +136,7 @@ internal static class Theme
     public static Font Icon(float points)
     {
         if (!IconFonts.TryGetValue(points, out var f))
-            IconFonts[points] = f = new Font(IconFamily, points * 96f / 72f, FontStyle.Regular, GraphicsUnit.Pixel);
+            IconFonts[points] = f = new Font(IconFamily ?? "Segoe UI", points * 96f / 72f, FontStyle.Regular, GraphicsUnit.Pixel);
         return f;
     }
 
@@ -199,6 +207,11 @@ internal static class Theme
     {
         using var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center, FormatFlags = StringFormatFlags.NoWrap };
         using var brush = new SolidBrush(color);
+        if (IconFamily == null)
+        {
+            if (glyph.Length == 1 && PlainIcons.TryGetValue(glyph[0], out var plain)) g.DrawString(plain, Font(points, FontStyle.Bold), brush, r, format);
+            return;
+        }
         g.DrawString(glyph, Icon(points), brush, r, format);
     }
 

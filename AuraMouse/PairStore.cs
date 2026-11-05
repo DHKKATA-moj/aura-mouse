@@ -183,6 +183,7 @@ internal static class PairStore
         }
         catch (IOException) { }
         catch (UnauthorizedAccessException) { }
+        catch (CryptographicException) { } // Windows can't encrypt here: stays connected now, and pairs again next time
     }
 
     static SavedComputer Protected(SavedComputer c) =>
@@ -237,22 +238,42 @@ internal static class AutoStart
 internal static class Firewall
 {
     static string Program => Environment.ProcessPath!;
+    internal static string FirewallService { get; set; } = "MpsSvc"; // settable so tests can pretend it's missing
+    internal static string Netsh { get; set; } = "netsh";
 
     // Tied to the exe's location: a copy somewhere else is a different program to the firewall.
     static string RuleName => "Aura Mouse LAN " + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(Program.ToLowerInvariant())))[..8];
 
-    /// Blocks while it runs, so call it off the UI thread.
+    /// Whether a Windows service exists and isn't disabled. False where it's been removed or turned off.
+    internal static bool ServiceEnabled(string name)
+    {
+        const int Disabled = 4;
+        try
+        {
+            using var key = Registry.LocalMachine.OpenSubKey($@"SYSTEM\CurrentControlSet\Services\{name}");
+            return key != null && key.GetValue("Start") is int start && start != Disabled;
+        }
+        catch (System.Security.SecurityException) { return true; } // can't tell, so assume it's there as usual
+    }
+
+    /// Blocks while it runs, so call it off the UI thread. Cut-down copies of Windows may have no firewall
+    /// service or no netsh, and then there's nothing blocking anyone and nothing to ask about.
     public static bool IsOpen()
     {
-        using var netsh = Process.Start(new ProcessStartInfo("netsh", $"advfirewall firewall show rule name=\"{RuleName}\"")
+        if (!ServiceEnabled(FirewallService)) return true;
+        try
         {
-            CreateNoWindow = true,
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-        })!;
-        netsh.StandardOutput.ReadToEnd();
-        netsh.WaitForExit();
-        return netsh.ExitCode == 0;
+            using var netsh = Process.Start(new ProcessStartInfo(Netsh, $"advfirewall firewall show rule name=\"{RuleName}\"")
+            {
+                CreateNoWindow = true,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+            })!;
+            netsh.StandardOutput.ReadToEnd();
+            netsh.WaitForExit();
+            return netsh.ExitCode == 0;
+        }
+        catch (Win32Exception) { return true; }
     }
 
     /// Replaces this exe's firewall rules (including a block from an earlier "no") with one allowing it,

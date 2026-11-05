@@ -29,7 +29,8 @@ internal sealed class TransfersWindow : Form
     {
         base.OnHandleCreated(e);
         int dark = Theme.Current.DarkTitleBar ? 1 : 0;
-        Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int));
+        try { Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int)); }
+        catch (DllNotFoundException) { } // only the title bar's colour
     }
 
     public void ShowNearCorner(Form owner)
@@ -183,7 +184,11 @@ internal sealed class TransferList : CanvasControl
             {
                 var folder = item.Folder;
                 AddButton(g, M(new RectangleF(bx - 36, r.Y + 14, 30, 30)), "", L.T("open_folder"),
-                    () => Process.Start(new ProcessStartInfo("explorer.exe", $"\"{folder}\"") { UseShellExecute = true }));
+                    () =>
+                    {
+                        try { Process.Start(new ProcessStartInfo("explorer.exe", $"\"{folder}\"") { UseShellExecute = true }); }
+                        catch (System.ComponentModel.Win32Exception) { } // no Explorer on this copy of Windows
+                    });
             }
         }
     }
