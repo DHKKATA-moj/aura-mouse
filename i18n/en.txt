@@ -192,3 +192,7 @@ Waiting…
 THEME
 Dark
 Light
+Remove from this PC
+Stops starting with Windows, removes its firewall rule, and forgets saved computers and settings. Received files stay
+Remove Aura Mouse's settings from this PC? Saved computers will need a new code to connect again.
+Done. You can now delete the Aura Mouse program file.

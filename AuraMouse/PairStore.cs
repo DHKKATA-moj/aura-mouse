@@ -217,6 +217,13 @@ internal static class AutoStart
         }
     }
 
+    /// Takes it out of starting with Windows, under any name it has had.
+    public static void RemoveAll()
+    {
+        using var key = Registry.CurrentUser.CreateSubKey(RunKey);
+        foreach (var name in OldValueNames.Prepend(ValueName)) key.DeleteValue(name, throwOnMissingValue: false);
+    }
+
     /// The exe may have been moved since it was turned on, or still be set up under one of the program's old names.
     public static void Refresh()
     {
@@ -296,5 +303,23 @@ internal static class Firewall
             return IsOpen();
         }
         catch (Win32Exception) { return false; } // the user said no
+    }
+
+    /// Takes this exe's rules out of the firewall. Windows asks the user first. Blocks, so call it off the UI thread.
+    public static bool Remove()
+    {
+        if (!ServiceEnabled(FirewallService)) return true;
+        try
+        {
+            using var netsh = Process.Start(new ProcessStartInfo(Netsh, $"advfirewall firewall delete rule name=all dir=in program=\"{Program}\"")
+            {
+                UseShellExecute = true,
+                Verb = "runas",
+                WindowStyle = ProcessWindowStyle.Hidden,
+            })!;
+            netsh.WaitForExit();
+            return true;
+        }
+        catch (Win32Exception) { return false; }
     }
 }

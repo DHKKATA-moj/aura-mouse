@@ -192,3 +192,7 @@ En attente…
 THÈME
 Sombre
 Clair
+Retirer de ce PC
+Ne démarre plus avec Windows, retire sa règle de pare-feu et oublie les ordinateurs enregistrés et les paramètres. Les fichiers reçus restent
+Retirer les paramètres d'Aura Mouse de ce PC ? Les ordinateurs enregistrés auront besoin d'un nouveau code.
+Terminé. Vous pouvez maintenant supprimer le fichier du programme Aura Mouse.

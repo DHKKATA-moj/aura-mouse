@@ -51,8 +51,8 @@
     <string name="channel_name">Подключение к компьютеру</string>
     <string name="notify_searching">Поиск компьютера</string>
     <string name="tab_remote">Удалённо</string>
-    <string name="remote_open">Удалённый рабочий стол</string>
-    <string name="remote_title">Удалённый рабочий стол</string>
+    <string name="remote_open">Удалённый доступ</string>
+    <string name="remote_title">Удалённый доступ</string>
     <string name="remote_sub">Просмотр и управление компьютером, только с разрешения владельца</string>
     <string name="remote_address">Адрес или имя компьютера</string>
     <string name="remote_searching">Поиск…</string>

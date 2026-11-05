@@ -597,8 +597,8 @@ internal sealed class MainForm : Form
         [
             (ThemeId.Dark, L.T("theme_dark")),
             (ThemeId.Light, L.T("theme_light")),
-            (ThemeId.Glass, "Liquid Glass"),
-            (ThemeId.GlassDark, "Liquid Glass " + L.T("theme_dark")),
+            (ThemeId.Glass, "Aura Glass"),
+            (ThemeId.GlassDark, "Aura Glass " + L.T("theme_dark")),
         ];
         const float swatchGap = 10;
         float swatchWidth = (ContentWidth - swatchGap * (themes.Length - 1)) / themes.Length;
@@ -618,7 +618,7 @@ internal sealed class MainForm : Form
         };
         AddSettingRow(262, L.T("auto_start"), L.T("auto_start_tip"), startup);
 
-        var hint = AddCentered(new TextBlock { Text = L.T("shortcut_click"), FontSize = 9.5f, Color = Theme.Muted }, 544, ContentWidth, 48);
+        var hint = AddCentered(new TextBlock { Text = L.T("shortcut_click"), FontSize = 9.5f, Color = Theme.Muted }, 536, ContentWidth, 40);
 
         ShortcutBox Box(int[] keys, Func<int[]> other, Action<int[]> save)
         {
@@ -630,6 +630,24 @@ internal sealed class MainForm : Form
         }
         AddSettingRow(356, L.T("lock_title"), L.T("lock_sub"), Box(Shortcuts.Lock, () => Shortcuts.Escape, Shortcuts.SetLock));
         AddSettingRow(450, L.T("emergency_title"), L.T("emergency_sub"), Box(Shortcuts.Escape, () => Shortcuts.Lock, Shortcuts.SetEscape));
+
+        var remove = new PillButton { Text = L.T("remove"), Glyph = Glyphs.Delete, Kind = ButtonKind.Danger };
+        remove.Click += (_, _) => RemoveFromThisPc();
+        AddSettingRow(588, L.T("uninstall_title"), L.T("uninstall_sub"), remove, subtitleHeight: 74);
+    }
+
+    /// Leaves nothing behind but the program file and the files people received.
+    async void RemoveFromThisPc()
+    {
+        if (MessageBox.Show(this, L.T("uninstall_confirm"), "Aura Mouse", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes) return;
+        StopAll();
+        StopRemote();
+        PairStore.Forget();
+        AutoStart.RemoveAll();
+        await Task.Run(Firewall.Remove); // Windows asks first; a no just leaves that rule
+        App.DeleteData();
+        MessageBox.Show(this, L.T("uninstall_done"), "Aura Mouse", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        ExitApp();
     }
 
     void ChooseTheme(ThemeId id)
@@ -644,13 +662,13 @@ internal sealed class MainForm : Form
         Navigate();
     }
 
-    void AddSettingRow(float y, string title, string subtitle, Control control)
+    void AddSettingRow(float y, string title, string subtitle, Control control, float subtitleHeight = 56)
     {
         const float controlWidth = 170;
         float textWidth = ContentWidth - controlWidth - 16;
         var align = L.Rtl ? StringAlignment.Far : StringAlignment.Near;
         Add(new TextBlock { Text = title, FontSize = 11, Bold = true, Align = align }, Pad, y, textWidth, 28);
-        Add(new TextBlock { Text = subtitle, FontSize = 9.5f, Color = Theme.Muted, Align = align }, Pad, y + 28, textWidth, 56);
+        Add(new TextBlock { Text = subtitle, FontSize = 9.5f, Color = Theme.Muted, Align = align }, Pad, y + 28, textWidth, subtitleHeight);
         Add(control, DesignWidth - Pad - controlWidth, y + 10, controlWidth, 48);
     }
 

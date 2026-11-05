@@ -192,3 +192,7 @@ Bekleniyor…
 TEMA
 Koyu
 Açık
+Bu PC'den kaldır
+Windows ile başlamayı durdurur, güvenlik duvarı kuralını kaldırır, kayıtlı bilgisayarları ve ayarları unutur. Alınan dosyalar kalır
+Aura Mouse ayarları bu PC'den kaldırılsın mı? Kayıtlı bilgisayarlar yeni bir kod gerektirecek.
+Tamam. Artık Aura Mouse program dosyasını silebilirsiniz.

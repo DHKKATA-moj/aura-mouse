@@ -192,3 +192,7 @@ Aguardando…
 TEMA
 Escuro
 Claro
+Remover deste PC
+Deixa de iniciar com o Windows, remove a regra do firewall e esquece computadores salvos e configurações. Os arquivos recebidos ficam
+Remover as configurações do Aura Mouse deste PC? Os computadores salvos precisarão de um novo código.
+Pronto. Agora você pode apagar o arquivo do programa Aura Mouse.

@@ -192,3 +192,7 @@ Menunggu…
 TEMA
 Gelap
 Terang
+Hapus dari PC ini
+Berhenti mulai bersama Windows, menghapus aturan firewall, dan melupakan komputer tersimpan serta pengaturan. File yang diterima tetap ada
+Hapus pengaturan Aura Mouse dari PC ini? Komputer tersimpan perlu kode baru untuk terhubung lagi.
+Selesai. Sekarang Anda bisa menghapus file program Aura Mouse.

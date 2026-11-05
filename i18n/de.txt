@@ -192,3 +192,7 @@ Warte…
 DESIGN
 Dunkel
 Hell
+Von diesem PC entfernen
+Startet nicht mehr mit Windows, entfernt seine Firewall-Regel und vergisst gespeicherte Computer und Einstellungen. Empfangene Dateien bleiben
+Einstellungen von Aura Mouse von diesem PC entfernen? Gespeicherte Computer brauchen dann einen neuen Code.
+Fertig. Du kannst die Programmdatei von Aura Mouse jetzt löschen.
