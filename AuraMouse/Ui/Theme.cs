@@ -5,7 +5,7 @@ namespace AuraMouse.Ui;
 
 internal enum Tone { Neutral, Busy, Good, Bad }
 
-internal enum ThemeId { Dark, Light, Glass, GlassDark }
+internal enum ThemeId { Dark, Light, Glass, GlassDark, Clear }
 
 /// Colours, fonts and drawing helpers. Controls draw in "design pixels" (96 DPI) and
 /// CanvasControl scales the Graphics by Theme.Scale, so everything stays sharp on high-DPI screens.
@@ -18,7 +18,8 @@ internal static class Theme
 
     internal sealed record Palette(
         ThemeId Id, Color Background, Color Surface, Color SurfaceHover, Color Border, Color Text, Color Muted,
-        Color Accent, Color Accent2, Color Good, Color Warn, Color Bad, Color Sidebar, bool DarkTitleBar, bool IsGlass, Glow[] Glows);
+        Color Accent, Color Accent2, Color Good, Color Warn, Color Bad, Color Sidebar, bool DarkTitleBar, bool IsGlass, Glow[] Glows,
+        bool SeeThrough = false);
 
     static Color C(int r, int g, int b, int a = 255) => Color.FromArgb(a, r, g, b);
 
@@ -38,7 +39,15 @@ internal static class Theme
             C(103, 232, 249), C(99, 102, 241), C(74, 222, 128), C(253, 186, 116), C(252, 129, 129), C(255, 255, 255, 18), true, true,
             [new(C(37, 99, 235), 235, -0.4f, -0.4f, 1.2f, 1.05f), new(C(147, 51, 234), 225, 0.35f, -0.3f, 1.05f, 0.95f),
              new(C(219, 39, 119), 170, 0.5f, 0.45f, 0.95f, 0.9f), new(C(13, 148, 136), 205, -0.35f, 0.45f, 1.05f, 0.95f)]),
+        // The window itself is see-through: Windows blurs whatever is behind it. Background is only
+        // what solid windows and the preview use.
+        new(ThemeId.Clear, C(24, 28, 40), C(255, 255, 255, 34), C(255, 255, 255, 58), C(255, 255, 255, 70), C(250, 252, 255), C(205, 214, 232),
+            C(103, 232, 249), C(99, 102, 241), C(74, 222, 128), C(253, 186, 116), C(252, 129, 129), C(255, 255, 255, 14), true, true,
+            [], SeeThrough: true),
     ];
+
+    /// Windows 11 22H2 and later can blur what's behind a window; older ones get the dark theme instead.
+    public static bool SeeThroughWorks => Environment.OSVersion.Version.Build >= 22621;
 
     static string SettingsFile => Path.Combine(App.DataFolder, "theme.txt");
 
@@ -75,7 +84,7 @@ internal static class Theme
     {
         try
         {
-            if (File.Exists(SettingsFile) && Enum.TryParse<ThemeId>(File.ReadAllText(SettingsFile).Trim(), out var id) && Enum.IsDefined(id)) Set(id);
+            if (File.Exists(SettingsFile) && Enum.TryParse<ThemeId>(File.ReadAllText(SettingsFile).Trim(), out var id) && Enum.IsDefined(id)) Set(id == ThemeId.Clear && !SeeThroughWorks ? ThemeId.Dark : id);
         }
         catch (IOException) { }
         catch (UnauthorizedAccessException) { }

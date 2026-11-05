@@ -431,6 +431,18 @@ internal sealed class ThemeSwatch : PressableControl
         {
             g.SetClip(frame, CombineMode.Intersect);
             using (var fill = new SolidBrush(Palette.Background)) g.FillPath(fill, frame);
+            if (Palette.SeeThrough)
+            {
+                // A hint of a blurred desktop showing through: soft stripes under a frosted layer.
+                Color[] behind = [Color.FromArgb(70, 120, 200), Color.FromArgb(200, 120, 150), Color.FromArgb(90, 170, 150)];
+                for (int s = 0; s < behind.Length; s++)
+                {
+                    using var stripe = new SolidBrush(Theme.WithAlpha(behind[s], 120));
+                    g.FillRectangle(stripe, picture.X + s * picture.Width / 3, picture.Y, picture.Width / 3 + 1, picture.Height);
+                }
+                using var frost = new SolidBrush(Color.FromArgb(70, Palette.Background));
+                g.FillPath(frost, frame);
+            }
             foreach (var glow in Palette.Glows)
             {
                 using var ellipse = new GraphicsPath();

@@ -599,6 +599,7 @@ internal sealed class MainForm : Form
             (ThemeId.Light, L.T("theme_light")),
             (ThemeId.Glass, "Aura Glass"),
             (ThemeId.GlassDark, "Aura Glass " + L.T("theme_dark")),
+            .. Theme.SeeThroughWorks ? [(ThemeId.Clear, "Aura Clear")] : Array.Empty<(ThemeId, string)>(),
         ];
         const float swatchGap = 10;
         float swatchWidth = (ContentWidth - swatchGap * (themes.Length - 1)) / themes.Length;
@@ -1219,6 +1220,19 @@ internal sealed class MainForm : Form
         int dark = Theme.Current.DarkTitleBar ? 1 : 0;
         try { Native.DwmSetWindowAttribute(Handle, Native.DWMWA_USE_IMMERSIVE_DARK_MODE, ref dark, sizeof(int)); }
         catch (DllNotFoundException) { } // only the title bar's colour
+        if (!Theme.SeeThroughWorks) return;
+
+        // See-through: the whole window becomes "frame", which Windows fills with a blur of what's behind.
+        bool clear = Theme.Current.SeeThrough;
+        int backdrop = clear ? Native.DWMSBT_TRANSIENTWINDOW : Native.DWMSBT_AUTO;
+        var margins = clear ? new Native.MARGINS { Left = -1, Right = -1, Top = -1, Bottom = -1 } : default;
+        try
+        {
+            Native.DwmExtendFrameIntoClientArea(Handle, ref margins);
+            Native.DwmSetWindowAttribute(Handle, Native.DWMWA_SYSTEMBACKDROP_TYPE, ref backdrop, sizeof(int));
+        }
+        catch (DllNotFoundException) { }
+        catch (EntryPointNotFoundException) { }
     }
 
     protected override void OnShown(EventArgs e)
@@ -1248,14 +1262,18 @@ internal sealed class MainForm : Form
     {
         if (ClientSize.Width <= 0 || ClientSize.Height <= 0) return;
         _backdrop ??= CreateBackdrop(ClientSize, S(SidebarWidth));
+        // See-through pixels must replace what's there, not be drawn over it.
+        e.Graphics.CompositingMode = Theme.Current.SeeThrough ? CompositingMode.SourceCopy : CompositingMode.SourceOver;
         e.Graphics.DrawImageUnscaled(_backdrop, 0, 0);
+        e.Graphics.CompositingMode = CompositingMode.SourceOver;
     }
 
     static Bitmap CreateBackdrop(Size size, int sidebarWidth)
     {
         var bmp = new Bitmap(size.Width, size.Height);
         using var g = Graphics.FromImage(bmp);
-        g.Clear(Theme.Background);
+        // See-through keeps a light dark tint, so white text stays readable over a bright desktop.
+        g.Clear(Theme.Current.SeeThrough ? Color.FromArgb(95, 10, 14, 26) : Theme.Background);
         foreach (var glow in Theme.Current.Glows)
             Glow(g, new RectangleF(size.Width * glow.X, size.Height * glow.Y, size.Width * glow.W, size.Height * glow.H), glow.Color, glow.Alpha);
 

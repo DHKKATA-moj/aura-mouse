@@ -19,7 +19,8 @@
 - **Use your phone.** The Android app works as a touchpad and keyboard, sends files and views remote desktops.
 - **Turn computers on.** Wake a saved computer from another one or from the phone, if it supports Wake on LAN.
 - **Play games safely.** A shortcut locks the mouse to one screen, and another brings it back if it gets stuck.
-- **Choose a look.** The Windows app has dark, light and two Aura Glass themes.
+- **Choose a look.** The Windows app has dark, light and two Aura Glass themes. On Windows 11, Aura Clear makes the
+  window see-through, with what's behind it softly blurred.
 
 Everything stays on your local network and is encrypted. Devices must be on the same network.
 
