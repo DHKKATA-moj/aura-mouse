@@ -12,8 +12,8 @@ internal enum ClipKind { Text = 0, Image = 1, Files = 2 }
 
 /// Keeps every computer's clipboard the same. Whatever is copied (text, a picture, files) goes to
 /// the others the moment it's copied, whichever mouse or keyboard is in use. Copied files aren't sent
-/// right away: the others get their names, and pressing Ctrl+V on the desktop or in an Explorer
-/// window fetches them into that folder, like dragged files. Lives on the UI (STA) thread.
+/// right away: the others get their list, offered as files Explorer can paste (PasteData), so pasting
+/// any way at all fetches them. Lives on the UI (STA) thread.
 internal sealed class SharedClipboard : NativeWindow, IDisposable
 {
     const int WM_CLIPBOARDUPDATE = 0x031D, VK_CONTROL = 0x11, VK_V = 0x56;
@@ -21,7 +21,16 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
     static readonly string[] PrivateMarks = ["ExcludeClipboardContentFromMonitorProcessing", "Clipboard Viewer Ignore"];
     static readonly byte[] PngStart = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
 
-    sealed record RemoteFiles(DragInfo Info, uint Sequence);
+    /// Offered as real files (Explorer fetches them) or, for older senders and huge sets, as their names
+    /// with Ctrl+V watched instead.
+    sealed record RemoteFiles(DragInfo Info, uint Sequence, bool AsFiles);
+
+    [DllImport("ole32.dll")] static extern int OleSetClipboard(System.Runtime.InteropServices.ComTypes.IDataObject? data);
+    [DllImport("ole32.dll")] static extern int OleIsCurrentClipboard(System.Runtime.InteropServices.ComTypes.IDataObject data);
+
+    /// Where pasted files arrive before Explorer copies them to wherever they were pasted.
+    static readonly string Staging = Path.Combine(Path.GetTempPath(), "Aura Mouse paste");
+    PasteData? _offered;
 
     readonly SynchronizationContext _ui = SynchronizationContext.Current!;
     readonly System.Windows.Forms.Timer _settle = new() { Interval = 120 };
@@ -31,6 +40,9 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
 
     public SharedClipboard()
     {
+        try { if (Directory.Exists(Staging)) Directory.Delete(Staging, recursive: true); } // left over from last time
+        catch (IOException) { }
+        catch (UnauthorizedAccessException) { }
         CreateHandle(new CreateParams { Parent = new IntPtr(-3) }); // HWND_MESSAGE: never shown
         AddClipboardFormatListener(Handle);
         _settle.Tick += (_, _) =>
@@ -74,7 +86,8 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
                 var set = await Task.Run(() => FileSet.FromPaths(paths));
                 if (set.Files.Count == 0 || GetClipboardSequenceNumber() != sequence) return;
                 _localFiles = set;
-                var info = new DragInfo(set.Id, set.Title, set.Files.Count, set.TotalBytes);
+                var list = set.Files.Count <= PasteData.MaxFiles ? set.Files.Select(f => new ManifestFile(f.RelativePath, f.Size)).ToList() : null;
+                var info = new DragInfo(set.Id, set.Title, set.Files.Count, set.TotalBytes, list);
                 Copied?.Invoke(new Msg(MsgType.Clipboard, (int)ClipKind.Files) { Payload = TransferJson.Bytes(info) });
             }
             else if (Clipboard.ContainsImage())
@@ -125,9 +138,29 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
                 case ClipKind.Files:
                     var info = TransferJson.Read<DragInfo>(m.Payload);
                     if (!FileReceiver.IsValidId(info.Id)) return;
+                    var staging = Path.Combine(Staging, info.Id);
+                    bool started = false;
+                    var data = PasteData.For(info, () =>
+                    {
+                        // The first file Explorer reads starts the transfer; the rest wait for it.
+                        if (!started)
+                        {
+                            started = true;
+                            Directory.CreateDirectory(staging);
+                            PasteFiles?.Invoke(info, staging);
+                        }
+                        return staging;
+                    });
+                    // OLE has to be running on this thread first, or the offer quietly fails.
+                    if (data != null && Application.OleRequired() == ApartmentState.STA && OleSetClipboard(data) == 0)
+                    {
+                        _offered = data;
+                        _remoteFiles = new RemoteFiles(info, GetClipboardSequenceNumber(), AsFiles: true);
+                        break;
+                    }
                     // Their names, so pasting into a text box still gives something sensible.
                     Clipboard.SetDataObject(info.Title ?? string.Format(L.T("n_files"), info.Count), copy: true, retryTimes: 5, retryDelay: 100);
-                    _remoteFiles = new RemoteFiles(info, GetClipboardSequenceNumber());
+                    _remoteFiles = new RemoteFiles(info, GetClipboardSequenceNumber(), AsFiles: false);
                     break;
 
                 default:
@@ -141,7 +174,8 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
     /// A key went down on this computer (its own keyboard, or one controlling it). Any thread.
     public void KeyDown(int vk)
     {
-        if (vk != VK_V || _remoteFiles == null || GetAsyncKeyState(VK_CONTROL) >= 0) return;
+        // Explorer fetches files offered as files itself, so this is only for the other kind.
+        if (vk != VK_V || _remoteFiles is not { AsFiles: false } || GetAsyncKeyState(VK_CONTROL) >= 0) return;
         _ui.Post(_ =>
         {
             // Only while the clipboard still holds those files, and only into a folder.
@@ -152,6 +186,8 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
 
     public void Dispose()
     {
+        // Files offered but never fetched would be a promise nobody can keep once we're gone.
+        if (_offered != null && OleIsCurrentClipboard(_offered) == 0) OleSetClipboard(null);
         _settle.Dispose();
         if (Handle == IntPtr.Zero) return;
         RemoveClipboardFormatListener(Handle);

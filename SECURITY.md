@@ -29,7 +29,7 @@ Use it on a public or shared network with care: others there can see that it's r
 | Remote desktop | Off until turned on. Each new viewer needs the owner's approval, unless the owner chose to trust that device. A banner stays on screen while someone is viewing. |
 | Remote desktop code | Both screens show a 6-digit code derived from both keys, with the viewer committing to its key first. Different codes mean something is in the middle, so decline. |
 | Connections | Limited per address, with a short deadline and small frames until the other side has proved itself. |
-| Received files | Names are cleaned so they can't leave the target folder or hide their real extension, and on Windows files get the "from the internet" mark. |
+| Received files | Names are cleaned so they can't leave the target folder or hide their real extension. On Windows, files sent, dragged or pasted with Ctrl+V get the "from the internet" mark; files pasted through Explorer's Paste menu may not, because Explorer writes those copies itself. |
 | Clipboard | Content marked private by password managers is not shared automatically. |
 
 ## What it doesn't protect against

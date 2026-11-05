@@ -117,7 +117,9 @@ internal static class TransferCenter
 }
 
 /// Files being carried across the screen edge by a drag; they're transferred once dropped.
-internal sealed record DragInfo(string Id, string? Title, int Count, long Bytes);
+/// Files copied or dragged on one computer. Files lists them (up to PasteData.MaxFiles) so the clipboard
+/// on the others can show them as files; older versions leave it out, and then only Ctrl+V pastes them.
+internal sealed record DragInfo(string Id, string? Title, int Count, long Bytes, List<ManifestFile>? Files = null);
 
 internal sealed record ManifestFile(string Path, long Size);
 internal sealed record Manifest(string Id, string? Title, List<ManifestFile> Files);
