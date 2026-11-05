@@ -1,0 +1,191 @@
+Connect
+Remote desktop
+Computers
+Settings
+Back
+Stop
+Cancel
+Remove
+Dismiss
+Open folder
+Exit
+Open Aura Mouse
+Still running here. Right-click the icon to exit
+Something went wrong
+Connect your computers
+Use one mouse and keyboard across all of them, and move files between them
+Get a code
+Start here on your first computer
+Enter a code
+Use this on each of your other computers
+Install Aura Mouse on each computer and keep them on the same network
+Connect to {0}
+This PC
+Other PC
+YOUR CODE
+On your other computer, open Aura Mouse, choose Enter a code, and type this
+Add another computer with code {0}
+New code
+Too many wrong tries, so the code is off for safety. Paired computers still work
+Someone tried to connect with a wrong code
+where is it?
+Move the mouse toward a computer and I'll learn where it is, or drag it into place
+Encrypted connection
+Mouse stuck? Press {0}
+Send files
+You can also drag files and folders onto this window
+Pick the files to send
+No computer is connected yet
+Waiting for the other computer…
+Connected to 1 computer ✓ Move the mouse toward it
+Connected to {0} computers ✓ Move the mouse toward the one you want
+{0} connected ✓ Move the mouse to the left or right edge on its side so I learn where it is
+{0} connected ✓ Left and right are taken, so move the mouse to the top or bottom edge on its side, or drag it into place
+{0}'s mouse and keyboard are in control now
+The mouse is on {0} now
+Disconnected. Waiting for the other computer…
+Windows will ask: press Yes so the other computer can reach this one
+The firewall may block the other computer. If it can't connect, press Stop, start again and choose Yes
+Aura Mouse is already running, or another app is using its port.
+Enter the code
+It's shown on your other computer, under Get a code
+Type the code and I'll connect by myself
+Looking for the first computer… I'll connect as soon as I find it
+Looking for {0}… I'll connect as soon as it's on
+Saved, no code needed
+{0} no longer knows this computer. Pair again with a code using the button below
+New computer? Use a code
+Connecting…
+Connected ✓ Move either computer's mouse across the edge facing the other
+Disconnected
+Wrong code, try again
+Couldn't connect. Check both computers are on the same network and Aura Mouse is allowed through the firewall
+Type the 6-digit code
+Your computers
+Saved computers connect without a code
+No saved computers yet
+To add one, go to Connect and get a code
+Connects to this computer
+This computer connects to it
+Connected now ✓
+Turn on
+It's on ✓
+Off, or not answering
+Signal sent, waiting for it to come on…
+No answer. The setup below may be incomplete, or it's on and a firewall blocks the check
+This computer isn't on a network
+To turn on a computer, it needs a cable and power, Wake on LAN enabled in its BIOS and network card settings, and Fast Startup off
+Forget all
+Forget all saved computers? They'll need a new code to connect again.
+Start with Windows
+Starts hidden and repeats the last connection. Needed on every computer
+On
+Off
+Lock mouse
+Mouse locked
+Lock the mouse to this screen
+For games: the mouse won't cross to the other screen until you press it again
+Emergency return
+Brings the mouse back to this computer if it gets stuck on the other one
+Press the keys together…
+Click a shortcut to change it. Use any two keys or more. Esc cancels
+That overlaps the other shortcut. Choose different keys
+It needs at least two keys, so it can't trigger by accident in a game
+Mouse locked to this screen
+Mouse can cross screens again
+See and control another computer, only with its owner's approval
+Accepting requests
+Not accepting
+Others can ask to come in, and you decide
+Nobody can ask to come into this computer
+Computer's address or name
+COMPUTERS
+Refresh
+Searching…
+None found. Aura Mouse must be open on it, on the same network
+Enters without asking
+Available
+Not visible now
+View
+THIS COMPUTER
+DEVICES THAT ENTER THIS COMPUTER WITHOUT ASKING
+Can't reach the lock screen or administrator (UAC) prompts
+Couldn't find that address
+That's this computer. Remote desktop is for reaching a different one
+{0} wants to see and control this computer
+Phone {0} wants to see and control this computer
+From {0}. If you don't recognise it, decline
+The same number must show on their screen
+Let this device in without asking from now on
+Allow
+Decline
+{0} is viewing and controlling this PC
+End
+Full screen
+Next screen
+Waiting for the owner to approve\nTheir screen should show: {0}
+The owner didn't approve
+Another device is on that computer right now
+Couldn't reach it. Check Aura Mouse is open there and accepting requests
+The session ended
+File transfers
+to {0}
+from {0}
+{0} files
+1 file
+Interrupted, resuming from where it stopped…
+Done ✓
+Canceled
+{0} left
+{0} of {1}
+Disconnected. Send the same files again and it will resume where it stopped
+Not enough free space on the other computer
+Not enough free space on this computer
+The other computer canceled it
+A file changed while sending. Send it again
+Too many files (over 100,000)
+Not connected to {0}
+Connect to your computer
+On the computer, open Aura Mouse and choose Get a code. Then type the code here. Stay on the same Wi-Fi.
+Looking for the computer…
+Couldn't find it. Check Aura Mouse is open on the computer and both are on the same Wi-Fi
+{0} no longer knows this phone. Pair again with a code
+Disconnect
+Connected to {0}
+Control
+Files
+Remote
+Move one finger. Tap to click.\nTwo fingers: scroll, or tap to right-click.\nTap, then press and move: drag.
+Left
+Right
+Keyboard
+Send files to the computer
+Send what I copied on the phone
+Sent to the computer's clipboard
+Nothing copied on the phone yet
+Files from the computer go to Downloads/Aura Mouse. You can also use Share → Aura Mouse from any app.
+The computer copied: {0}
+Download to the phone
+Not connected to the computer
+To the computer
+From the computer
+It didn't finish
+Not enough free space
+Turn on a computer
+Sends the signal over this Wi-Fi. It only works on the same network as that computer.
+Connect to a computer once and it's saved here.
+Signal sent to {0}. It can take a minute to start
+The phone isn't on a Wi-Fi network
+Each computer needs a cable and power, Wake on LAN enabled in its BIOS and network card settings, and Fast Startup off.
+Connection to the computer
+Looking for the computer
+See and control a computer, only with its owner's approval
+Search again
+Inside, the button in the corner opens the keys and lets you choose how the mouse moves. Two fingers: scroll, or spread to zoom.
+Waiting for the owner to approve.\nTheir screen should show: {0}
+Menu
+Move like a mouse
+Touch directly
+Your finger moves the cursor without clicking. Tap: click. Tap then press and move, or hold then move: drag. Hold: right click.
+The cursor goes where you touch, and a tap clicks there. Hold: right click. Hold then move: drag.
+Waiting…

@@ -1,0 +1,191 @@
+Conectar
+Área de trabalho remota
+Computadores
+Configurações
+Voltar
+Parar
+Cancelar
+Remover
+Ocultar
+Abrir pasta
+Sair
+Abrir Aura Mouse
+Continua em execução aqui. Clique com o botão direito no ícone para sair
+Algo deu errado
+Conecte seus computadores
+Use um só mouse e teclado em todos e mova arquivos entre eles
+Obter um código
+Comece aqui no seu primeiro computador
+Digitar um código
+Use isto em cada um dos outros computadores
+Instale o Aura Mouse em cada computador e mantenha-os na mesma rede
+Conectar a {0}
+Este PC
+Outro PC
+SEU CÓDIGO
+No outro computador, abra o Aura Mouse, escolha Digitar um código e digite isto
+Adicionar outro computador com o código {0}
+Novo código
+Muitas tentativas erradas, então o código foi desativado por segurança. Computadores pareados continuam funcionando
+Alguém tentou conectar com um código errado
+onde está?
+Mova o mouse em direção a um computador e aprenderei onde ele está, ou arraste-o para o lugar
+Conexão criptografada
+Mouse travado? Pressione {0}
+Enviar arquivos
+Você também pode arrastar arquivos e pastas para esta janela
+Escolha os arquivos para enviar
+Nenhum computador conectado ainda
+Aguardando o outro computador…
+Conectado a 1 computador ✓ Mova o mouse em direção a ele
+Conectado a {0} computadores ✓ Mova o mouse em direção ao que quiser
+{0} conectado ✓ Mova o mouse para a borda esquerda ou direita do lado dele para eu aprender onde está
+{0} conectado ✓ Esquerda e direita estão ocupadas, então mova o mouse para a borda superior ou inferior do lado dele, ou arraste-o para o lugar
+O mouse e o teclado de {0} estão no controle agora
+O mouse está em {0} agora
+Desconectado. Aguardando o outro computador…
+O Windows vai perguntar: pressione Sim para que o outro computador alcance este
+O firewall pode bloquear o outro computador. Se não conectar, pressione Parar, comece de novo e escolha Sim
+O Aura Mouse já está em execução, ou outro app está usando a porta.
+Digite o código
+Ele aparece no outro computador, em Obter um código
+Digite o código e conecto sozinho
+Procurando o primeiro computador… Conecto assim que encontrar
+Procurando {0}… Conecto assim que ligar
+Salvo, nenhum código necessário
+{0} não reconhece mais este computador. Pareie de novo com um código usando o botão abaixo
+Computador novo? Use um código
+Conectando…
+Conectado ✓ Mova o mouse de qualquer computador pela borda voltada para o outro
+Desconectado
+Código errado, tente de novo
+Não foi possível conectar. Verifique se ambos estão na mesma rede e se o firewall permite o Aura Mouse
+Digite o código de 6 dígitos
+Seus computadores
+Computadores salvos conectam sem código
+Nenhum computador salvo ainda
+Para adicionar, vá em Conectar e obtenha um código
+Conecta a este computador
+Este computador conecta a ele
+Conectado agora ✓
+Ligar
+Está ligado ✓
+Desligado ou sem resposta
+Sinal enviado, aguardando ligar…
+Sem resposta. A configuração abaixo pode estar incompleta, ou ele está ligado e um firewall bloqueia a verificação
+Este computador não está em uma rede
+Para ligar um computador, ele precisa de cabo e energia, Wake on LAN ativado na BIOS e nas configurações da placa de rede, e Inicialização Rápida desativada
+Esquecer todos
+Esquecer todos os computadores salvos? Eles precisarão de um novo código para conectar.
+Iniciar com o Windows
+Inicia oculto e repete a última conexão. Necessário em cada computador
+Ligado
+Desligado
+Travar mouse
+Mouse travado
+Travar o mouse nesta tela
+Para jogos: o mouse não passa para a outra tela até você pressionar de novo
+Retorno de emergência
+Traz o mouse de volta a este computador se ele travar no outro
+Pressione as teclas juntas…
+Clique em um atalho para mudá-lo. Use duas teclas ou mais. Esc cancela
+Isso se sobrepõe ao outro atalho. Escolha outras teclas
+Precisa de pelo menos duas teclas para não disparar por acidente em um jogo
+Mouse travado nesta tela
+O mouse pode passar entre telas de novo
+Veja e controle outro computador, só com a aprovação do dono
+Aceitando pedidos
+Não aceitando
+Outros podem pedir para entrar, e você decide
+Ninguém pode pedir para entrar neste computador
+Endereço ou nome do computador
+COMPUTADORES
+Atualizar
+Procurando…
+Nenhum encontrado. O Aura Mouse precisa estar aberto nele, na mesma rede
+Entra sem perguntar
+Disponível
+Não visível agora
+Ver
+ESTE COMPUTADOR
+DISPOSITIVOS QUE ENTRAM NESTE COMPUTADOR SEM PERGUNTAR
+Não alcança a tela de bloqueio nem os avisos de administrador (UAC)
+Endereço não encontrado
+Este é este computador. A área de trabalho remota serve para alcançar outro
+{0} quer ver e controlar este computador
+O telefone {0} quer ver e controlar este computador
+De {0}. Se não reconhecer, recuse
+O mesmo número deve aparecer na tela dele
+Deixar este dispositivo entrar sem perguntar daqui em diante
+Permitir
+Recusar
+{0} está vendo e controlando este PC
+Encerrar
+Tela cheia
+Próxima tela
+Aguardando a aprovação do dono\nA tela dele deve mostrar: {0}
+O dono não aprovou
+Outro dispositivo está nesse computador agora
+Não foi possível alcançá-lo. Verifique se o Aura Mouse está aberto lá e aceitando pedidos
+A sessão terminou
+Transferências de arquivos
+para {0}
+de {0}
+{0} arquivos
+1 arquivo
+Interrompido, retomando de onde parou…
+Concluído ✓
+Cancelado
+Faltam {0}
+{0} de {1}
+Desconectado. Envie os mesmos arquivos de novo e continuará de onde parou
+Sem espaço livre suficiente no outro computador
+Sem espaço livre suficiente neste computador
+O outro computador cancelou
+Um arquivo mudou durante o envio. Envie de novo
+Arquivos demais (mais de 100.000)
+Não conectado a {0}
+Conecte ao seu computador
+No computador, abra o Aura Mouse e escolha Obter um código. Depois digite o código aqui. Fique no mesmo Wi-Fi.
+Procurando o computador…
+Não encontrado. Verifique se o Aura Mouse está aberto no computador e se ambos estão no mesmo Wi-Fi
+{0} não reconhece mais este telefone. Pareie de novo com um código
+Desconectar
+Conectado a {0}
+Controle
+Arquivos
+Remoto
+Mova um dedo. Toque para clicar.\nDois dedos: rolar, ou toque para clique direito.\nToque, depois segure e mova: arrastar.
+Esquerdo
+Direito
+Teclado
+Enviar arquivos ao computador
+Enviar o que copiei no telefone
+Enviado à área de transferência do computador
+Nada copiado no telefone ainda
+Arquivos do computador vão para Downloads/Aura Mouse. Você também pode usar Compartilhar → Aura Mouse em qualquer app.
+O computador copiou: {0}
+Baixar no telefone
+Não conectado ao computador
+Para o computador
+Do computador
+Não terminou
+Sem espaço livre suficiente
+Ligar um computador
+Envia o sinal por este Wi-Fi. Só funciona na mesma rede daquele computador.
+Conecte a um computador uma vez e ele fica salvo aqui.
+Sinal enviado a {0}. Pode levar um minuto para iniciar
+O telefone não está em uma rede Wi-Fi
+Cada computador precisa de cabo e energia, Wake on LAN ativado na BIOS e nas configurações da placa de rede, e Inicialização Rápida desativada.
+Conexão com o computador
+Procurando o computador
+Veja e controle um computador, só com a aprovação do dono
+Procurar de novo
+Lá dentro, o botão no canto abre as teclas e permite escolher como o mouse se move. Dois dedos: rolar, ou afastar para ampliar.
+Aguardando a aprovação do dono.\nA tela dele deve mostrar: {0}
+Menu
+Mover como um mouse
+Tocar diretamente
+Seu dedo move o cursor sem clicar. Toque: clique. Toque, depois segure e mova, ou segure e mova: arrastar. Segurar: clique direito.
+O cursor vai aonde você toca, e um toque clica ali. Segurar: clique direito. Segurar e mover: arrastar.
+Aguardando…

@@ -1,0 +1,191 @@
+Conectar
+Escritorio remoto
+Equipos
+Ajustes
+Atrás
+Detener
+Cancelar
+Quitar
+Ocultar
+Abrir carpeta
+Salir
+Abrir Aura Mouse
+Sigue en ejecución aquí. Haz clic derecho en el icono para salir
+Algo salió mal
+Conecta tus equipos
+Usa un solo ratón y teclado en todos ellos y mueve archivos entre ellos
+Obtener un código
+Empieza aquí en tu primer equipo
+Introducir un código
+Usa esto en cada uno de tus otros equipos
+Instala Aura Mouse en cada equipo y mantenlos en la misma red
+Conectar a {0}
+Este PC
+Otro PC
+TU CÓDIGO
+En tu otro equipo, abre Aura Mouse, elige Introducir un código y escribe esto
+Añade otro equipo con el código {0}
+Código nuevo
+Demasiados intentos fallidos: el código se ha desactivado por seguridad. Los equipos vinculados siguen funcionando
+Alguien intentó conectarse con un código incorrecto
+¿dónde está?
+Mueve el ratón hacia un equipo y aprenderé dónde está, o arrástralo a su lugar
+Conexión cifrada
+¿Ratón atascado? Pulsa {0}
+Enviar archivos
+También puedes arrastrar archivos y carpetas a esta ventana
+Elige los archivos que quieres enviar
+Aún no hay ningún equipo conectado
+Esperando al otro equipo…
+Conectado a 1 equipo ✓ Mueve el ratón hacia él
+Conectado a {0} equipos ✓ Mueve el ratón hacia el que quieras
+{0} conectado ✓ Mueve el ratón al borde izquierdo o derecho de su lado para que aprenda dónde está
+{0} conectado ✓ Izquierda y derecha están ocupadas: mueve el ratón al borde superior o inferior de su lado, o arrástralo a su lugar
+El ratón y el teclado de {0} tienen el control ahora
+El ratón está ahora en {0}
+Desconectado. Esperando al otro equipo…
+Windows te preguntará: pulsa Sí para que el otro equipo pueda llegar a este
+El firewall puede bloquear al otro equipo. Si no se conecta, pulsa Detener, empieza de nuevo y elige Sí
+Aura Mouse ya está en ejecución, u otra aplicación está usando su puerto.
+Introduce el código
+Se muestra en tu otro equipo, en Obtener un código
+Escribe el código y me conectaré solo
+Buscando el primer equipo… Me conectaré en cuanto lo encuentre
+Buscando {0}… Me conectaré en cuanto esté encendido
+Guardado, no hace falta código
+{0} ya no reconoce este equipo. Vincúlalo de nuevo con un código usando el botón de abajo
+¿Equipo nuevo? Usa un código
+Conectando…
+Conectado ✓ Mueve el ratón de cualquier equipo por el borde que da al otro
+Desconectado
+Código incorrecto, inténtalo de nuevo
+No se pudo conectar. Comprueba que ambos equipos están en la misma red y que el firewall permite Aura Mouse
+Escribe el código de 6 dígitos
+Tus equipos
+Los equipos guardados se conectan sin código
+Aún no hay equipos guardados
+Para añadir uno, ve a Conectar y obtén un código
+Se conecta a este equipo
+Este equipo se conecta a él
+Conectado ahora ✓
+Encender
+Está encendido ✓
+Apagado o sin respuesta
+Señal enviada, esperando a que se encienda…
+Sin respuesta. Puede que falte configuración, o está encendido y un firewall bloquea la comprobación
+Este equipo no está en una red
+Para encender un equipo necesita cable y corriente, Wake on LAN activado en la BIOS y en los ajustes de la tarjeta de red, y Fast Startup desactivado
+Olvidar todos
+¿Olvidar todos los equipos guardados? Necesitarán un código nuevo para volver a conectarse.
+Iniciar con Windows
+Se inicia oculto y repite la última conexión. Necesario en cada equipo
+Activado
+Desactivado
+Bloquear ratón
+Ratón bloqueado
+Bloquear el ratón en esta pantalla
+Para juegos: el ratón no pasará a la otra pantalla hasta que lo pulses de nuevo
+Regreso de emergencia
+Devuelve el ratón a este equipo si se queda atascado en el otro
+Pulsa las teclas a la vez…
+Haz clic en un atajo para cambiarlo. Usa dos teclas o más. Esc cancela
+Eso se solapa con el otro atajo. Elige otras teclas
+Necesita al menos dos teclas para no activarse por accidente en un juego
+Ratón bloqueado en esta pantalla
+El ratón puede volver a cruzar pantallas
+Ve y controla otro equipo, solo con la aprobación de su dueño
+Acepta solicitudes
+No acepta
+Otros pueden pedir entrar, y tú decides
+Nadie puede pedir entrar en este equipo
+Dirección o nombre del equipo
+EQUIPOS
+Actualizar
+Buscando…
+No se encontró ninguno. Aura Mouse debe estar abierto en él, en la misma red
+Entra sin preguntar
+Disponible
+No visible ahora
+Ver
+ESTE EQUIPO
+DISPOSITIVOS QUE ENTRAN EN ESTE EQUIPO SIN PREGUNTAR
+No puede llegar a la pantalla de bloqueo ni a los avisos de administrador (UAC)
+No se encontró esa dirección
+Ese es este equipo. El escritorio remoto sirve para llegar a otro
+{0} quiere ver y controlar este equipo
+El teléfono {0} quiere ver y controlar este equipo
+Desde {0}. Si no lo reconoces, rechaza
+Debe aparecer el mismo número en su pantalla
+Dejar entrar a este dispositivo sin preguntar a partir de ahora
+Permitir
+Rechazar
+{0} está viendo y controlando este PC
+Finalizar
+Pantalla completa
+Siguiente pantalla
+Esperando la aprobación del dueño\nSu pantalla debe mostrar: {0}
+El dueño no lo aprobó
+Otro dispositivo está en ese equipo ahora mismo
+No se pudo llegar. Comprueba que Aura Mouse está abierto allí y acepta solicitudes
+La sesión ha terminado
+Transferencias de archivos
+a {0}
+de {0}
+{0} archivos
+1 archivo
+Interrumpido, continuando desde donde se detuvo…
+Hecho ✓
+Cancelado
+Quedan {0}
+{0} de {1}
+Desconectado. Envía los mismos archivos otra vez y continuará donde se detuvo
+No hay espacio suficiente en el otro equipo
+No hay espacio suficiente en este equipo
+El otro equipo lo canceló
+Un archivo cambió durante el envío. Envíalo de nuevo
+Demasiados archivos (más de 100.000)
+No conectado a {0}
+Conéctate a tu equipo
+En el equipo, abre Aura Mouse y elige Obtener un código. Luego escribe aquí el código. Permanece en la misma Wi-Fi.
+Buscando el equipo…
+No se encontró. Comprueba que Aura Mouse está abierto en el equipo y que ambos están en la misma Wi-Fi
+{0} ya no reconoce este teléfono. Vincúlalo de nuevo con un código
+Desconectar
+Conectado a {0}
+Control
+Archivos
+Remoto
+Mueve un dedo. Toca para hacer clic.\nDos dedos: desplazar, o toca para clic derecho.\nToca, luego mantén y mueve: arrastrar.
+Izquierdo
+Derecho
+Teclado
+Enviar archivos al equipo
+Enviar lo que copié en el teléfono
+Enviado al portapapeles del equipo
+Aún no hay nada copiado en el teléfono
+Los archivos del equipo van a Downloads/Aura Mouse. También puedes usar Compartir → Aura Mouse desde cualquier app.
+El equipo copió: {0}
+Descargar en el teléfono
+No conectado al equipo
+Al equipo
+Del equipo
+No terminó
+No hay espacio suficiente
+Encender un equipo
+Envía la señal por esta Wi-Fi. Solo funciona en la misma red que ese equipo.
+Conéctate a un equipo una vez y se guardará aquí.
+Señal enviada a {0}. Puede tardar un minuto en arrancar
+El teléfono no está en una red Wi-Fi
+Cada equipo necesita cable y corriente, Wake on LAN activado en la BIOS y en los ajustes de la tarjeta de red, y Fast Startup desactivado.
+Conexión con el equipo
+Buscando el equipo
+Ve y controla un equipo, solo con la aprobación de su dueño
+Buscar de nuevo
+Dentro, el botón de la esquina abre las teclas y te deja elegir cómo se mueve el ratón. Dos dedos: desplazar, o separar para ampliar.
+Esperando la aprobación del dueño.\nSu pantalla debe mostrar: {0}
+Menú
+Mover como un ratón
+Tocar directamente
+Tu dedo mueve el cursor sin hacer clic. Toque: clic. Toca, luego mantén y mueve, o mantén y mueve: arrastrar. Mantener: clic derecho.
+El cursor va donde tocas y un toque hace clic allí. Mantener: clic derecho. Mantener y mover: arrastrar.
+Esperando…

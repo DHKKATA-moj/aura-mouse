@@ -1,0 +1,191 @@
+Hubungkan
+Desktop jarak jauh
+Komputer
+Pengaturan
+Kembali
+Hentikan
+Batal
+Hapus
+Sembunyikan
+Buka folder
+Keluar
+Buka Aura Mouse
+Masih berjalan di sini. Klik kanan ikon untuk keluar
+Terjadi kesalahan
+Hubungkan komputer Anda
+Pakai satu mouse dan keyboard untuk semuanya, dan pindahkan file di antaranya
+Dapatkan kode
+Mulai di sini pada komputer pertama Anda
+Masukkan kode
+Gunakan ini di setiap komputer lain
+Pasang Aura Mouse di setiap komputer dan jaga agar tetap di jaringan yang sama
+Hubungkan ke {0}
+PC ini
+PC lain
+KODE ANDA
+Di komputer lain, buka Aura Mouse, pilih Masukkan kode, lalu ketik ini
+Tambah komputer lain dengan kode {0}
+Kode baru
+Terlalu banyak percobaan salah, jadi kode dimatikan demi keamanan. Komputer yang sudah dipasangkan tetap berfungsi
+Seseorang mencoba terhubung dengan kode yang salah
+di mana?
+Gerakkan mouse ke arah komputer agar saya tahu letaknya, atau seret ke tempatnya
+Koneksi terenkripsi
+Mouse macet? Tekan {0}
+Kirim file
+Anda juga bisa menyeret file dan folder ke jendela ini
+Pilih file yang akan dikirim
+Belum ada komputer yang terhubung
+Menunggu komputer lain…
+Terhubung ke 1 komputer ✓ Gerakkan mouse ke arahnya
+Terhubung ke {0} komputer ✓ Gerakkan mouse ke yang Anda inginkan
+{0} terhubung ✓ Gerakkan mouse ke tepi kiri atau kanan di sisinya agar saya tahu letaknya
+{0} terhubung ✓ Kiri dan kanan sudah terisi, jadi gerakkan mouse ke tepi atas atau bawah di sisinya, atau seret ke tempatnya
+Mouse dan keyboard {0} sedang mengendalikan
+Mouse sekarang di {0}
+Terputus. Menunggu komputer lain…
+Windows akan bertanya: tekan Ya agar komputer lain bisa mencapai yang ini
+Firewall mungkin memblokir komputer lain. Jika tidak terhubung, tekan Hentikan, mulai lagi, dan pilih Ya
+Aura Mouse sudah berjalan, atau aplikasi lain memakai port-nya.
+Masukkan kode
+Ditampilkan di komputer lain, di bawah Dapatkan kode
+Ketik kode dan saya akan terhubung sendiri
+Mencari komputer pertama… Saya akan terhubung begitu menemukannya
+Mencari {0}… Saya akan terhubung begitu menyala
+Tersimpan, tidak perlu kode
+{0} tidak lagi mengenali komputer ini. Pasangkan lagi dengan kode lewat tombol di bawah
+Komputer baru? Gunakan kode
+Menghubungkan…
+Terhubung ✓ Gerakkan mouse komputer mana pun melewati tepi yang menghadap komputer lain
+Terputus
+Kode salah, coba lagi
+Tidak bisa terhubung. Pastikan kedua komputer di jaringan yang sama dan firewall mengizinkan Aura Mouse
+Ketik kode 6 digit
+Komputer Anda
+Komputer tersimpan terhubung tanpa kode
+Belum ada komputer tersimpan
+Untuk menambah, buka Hubungkan dan dapatkan kode
+Terhubung ke komputer ini
+Komputer ini terhubung ke sana
+Terhubung sekarang ✓
+Nyalakan
+Menyala ✓
+Mati atau tidak menjawab
+Sinyal terkirim, menunggu menyala…
+Tidak ada jawaban. Pengaturan di bawah mungkin belum lengkap, atau menyala dan firewall memblokir pemeriksaan
+Komputer ini tidak berada di jaringan
+Untuk menyalakan komputer, perlu kabel dan daya, Wake on LAN aktif di BIOS dan pengaturan kartu jaringan, serta Fast Startup mati
+Lupakan semua
+Lupakan semua komputer tersimpan? Perlu kode baru untuk terhubung lagi.
+Mulai bersama Windows
+Mulai tersembunyi dan mengulang koneksi terakhir. Diperlukan di setiap komputer
+Aktif
+Mati
+Kunci mouse
+Mouse terkunci
+Kunci mouse di layar ini
+Untuk game: mouse tidak pindah ke layar lain sampai Anda menekannya lagi
+Kembali darurat
+Mengembalikan mouse ke komputer ini jika macet di komputer lain
+Tekan tombol bersamaan…
+Klik pintasan untuk mengubahnya. Gunakan dua tombol atau lebih. Esc membatalkan
+Itu tumpang tindih dengan pintasan lain. Pilih tombol lain
+Perlu minimal dua tombol agar tidak terpicu tanpa sengaja saat bermain
+Mouse terkunci di layar ini
+Mouse bisa berpindah layar lagi
+Lihat dan kendalikan komputer lain, hanya dengan persetujuan pemiliknya
+Menerima permintaan
+Tidak menerima
+Orang lain bisa meminta masuk, dan Anda yang memutuskan
+Tidak ada yang bisa meminta masuk ke komputer ini
+Alamat atau nama komputer
+KOMPUTER
+Segarkan
+Mencari…
+Tidak ditemukan. Aura Mouse harus terbuka di sana, di jaringan yang sama
+Masuk tanpa bertanya
+Tersedia
+Tidak terlihat sekarang
+Lihat
+KOMPUTER INI
+PERANGKAT YANG MASUK KE KOMPUTER INI TANPA BERTANYA
+Tidak bisa mencapai layar kunci atau permintaan administrator (UAC)
+Alamat itu tidak ditemukan
+Itu komputer ini sendiri. Desktop jarak jauh untuk mencapai komputer lain
+{0} ingin melihat dan mengendalikan komputer ini
+Ponsel {0} ingin melihat dan mengendalikan komputer ini
+Dari {0}. Jika tidak mengenalinya, tolak
+Angka yang sama harus tampil di layarnya
+Izinkan perangkat ini masuk tanpa bertanya mulai sekarang
+Izinkan
+Tolak
+{0} sedang melihat dan mengendalikan PC ini
+Akhiri
+Layar penuh
+Layar berikutnya
+Menunggu persetujuan pemilik\nLayarnya harus menampilkan: {0}
+Pemilik tidak menyetujui
+Ada perangkat lain di komputer itu sekarang
+Tidak bisa dicapai. Pastikan Aura Mouse terbuka di sana dan menerima permintaan
+Sesi berakhir
+Transfer file
+ke {0}
+dari {0}
+{0} file
+1 file
+Terputus, melanjutkan dari titik berhenti…
+Selesai ✓
+Dibatalkan
+Sisa {0}
+{0} dari {1}
+Terputus. Kirim file yang sama lagi dan akan berlanjut dari titik berhenti
+Ruang kosong di komputer lain tidak cukup
+Ruang kosong di komputer ini tidak cukup
+Komputer lain membatalkannya
+File berubah saat dikirim. Kirim lagi
+Terlalu banyak file (lebih dari 100.000)
+Tidak terhubung ke {0}
+Hubungkan ke komputer Anda
+Di komputer, buka Aura Mouse dan pilih Dapatkan kode. Lalu ketik kodenya di sini. Tetap di Wi-Fi yang sama.
+Mencari komputer…
+Tidak ditemukan. Pastikan Aura Mouse terbuka di komputer dan keduanya di Wi-Fi yang sama
+{0} tidak lagi mengenali ponsel ini. Pasangkan lagi dengan kode
+Putuskan
+Terhubung ke {0}
+Kontrol
+File
+Jarak jauh
+Gerakkan satu jari. Ketuk untuk klik.\nDua jari: gulir, atau ketuk untuk klik kanan.\nKetuk, lalu tahan dan gerakkan: seret.
+Kiri
+Kanan
+Keyboard
+Kirim file ke komputer
+Kirim yang saya salin di ponsel
+Terkirim ke papan klip komputer
+Belum ada yang disalin di ponsel
+File dari komputer masuk ke Downloads/Aura Mouse. Anda juga bisa memakai Bagikan → Aura Mouse dari aplikasi apa pun.
+Komputer menyalin: {0}
+Unduh ke ponsel
+Tidak terhubung ke komputer
+Ke komputer
+Dari komputer
+Tidak selesai
+Ruang kosong tidak cukup
+Nyalakan komputer
+Mengirim sinyal lewat Wi-Fi ini. Hanya berfungsi di jaringan yang sama dengan komputer itu.
+Hubungkan ke komputer sekali dan akan tersimpan di sini.
+Sinyal terkirim ke {0}. Perlu satu menit untuk menyala
+Ponsel tidak berada di jaringan Wi-Fi
+Setiap komputer perlu kabel dan daya, Wake on LAN aktif di BIOS dan pengaturan kartu jaringan, serta Fast Startup mati.
+Koneksi ke komputer
+Mencari komputer
+Lihat dan kendalikan komputer, hanya dengan persetujuan pemiliknya
+Cari lagi
+Di dalam, tombol di sudut membuka tombol-tombol dan pilihan gerakan mouse. Dua jari: gulir, atau rentangkan untuk zoom.
+Menunggu persetujuan pemilik.\nLayarnya harus menampilkan: {0}
+Menu
+Gerakkan seperti mouse
+Sentuh langsung
+Jari Anda menggerakkan kursor tanpa klik. Ketuk: klik. Ketuk lalu tahan dan gerakkan, atau tahan lalu gerakkan: seret. Tahan: klik kanan.
+Kursor pergi ke tempat yang Anda sentuh, dan ketukan mengklik di sana. Tahan: klik kanan. Tahan lalu gerakkan: seret.
+Menunggu…

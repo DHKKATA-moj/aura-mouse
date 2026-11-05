@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Aura Mouse">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <clipPath id="body">
+      <path d="M50,12 C61.6,12 71,21.4 71,33 L71,67 C71,78.6 61.6,88 50,88 C38.4,88 29,78.6 29,67 L29,33 C29,21.4 38.4,12 50,12 Z"/>
+    </clipPath>
+  </defs>
+  <rect width="100" height="100" rx="24" fill="url(#sea)"/>
+  <path d="M50,12 C61.6,12 71,21.4 71,33 L71,67 C71,78.6 61.6,88 50,88 C38.4,88 29,78.6 29,67 L29,33 C29,21.4 38.4,12 50,12 Z" fill="#FFFFFF"/>
+  <g clip-path="url(#body)">
+    <path d="M29,56 C36,48 43,48 50,56 C57,64 64,64 71,56 L71,90 L29,90 Z" fill="#38BDF8"/>
+    <path d="M29,68 C36,60 43,60 50,68 C57,76 64,76 71,68 L71,90 L29,90 Z" fill="#2563EB"/>
+  </g>
+  <rect x="47" y="24" width="6" height="14" rx="3" fill="#2563EB"/>
+</svg>

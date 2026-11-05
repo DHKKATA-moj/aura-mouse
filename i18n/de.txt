@@ -1,0 +1,191 @@
+Verbinden
+Remotedesktop
+Computer
+Einstellungen
+Zurück
+Stoppen
+Abbrechen
+Entfernen
+Ausblenden
+Ordner öffnen
+Beenden
+Aura Mouse öffnen
+Läuft hier weiter. Zum Beenden Rechtsklick auf das Symbol
+Etwas ist schiefgelaufen
+Verbinde deine Computer
+Nutze eine Maus und Tastatur für alle und verschiebe Dateien zwischen ihnen
+Code holen
+Starte hier auf deinem ersten Computer
+Code eingeben
+Nutze das auf jedem weiteren Computer
+Installiere Aura Mouse auf jedem Computer und halte sie im selben Netzwerk
+Mit {0} verbinden
+Dieser PC
+Anderer PC
+DEIN CODE
+Öffne Aura Mouse auf dem anderen Computer, wähle Code eingeben und tippe dies ein
+Weiteren Computer mit Code {0} hinzufügen
+Neuer Code
+Zu viele Fehlversuche, daher ist der Code aus Sicherheitsgründen aus. Gekoppelte Computer funktionieren weiter
+Jemand wollte sich mit einem falschen Code verbinden
+wo steht er?
+Bewege die Maus zu einem Computer, dann lerne ich seine Position, oder ziehe ihn an seinen Platz
+Verschlüsselte Verbindung
+Maus hängt? Drücke {0}
+Dateien senden
+Du kannst Dateien und Ordner auch auf dieses Fenster ziehen
+Wähle die zu sendenden Dateien
+Noch kein Computer verbunden
+Warte auf den anderen Computer…
+Mit 1 Computer verbunden ✓ Bewege die Maus zu ihm
+Mit {0} Computern verbunden ✓ Bewege die Maus zum gewünschten
+{0} verbunden ✓ Bewege die Maus zum linken oder rechten Rand auf seiner Seite, damit ich seine Position lerne
+{0} verbunden ✓ Links und rechts sind belegt, also bewege die Maus zum oberen oder unteren Rand auf seiner Seite oder ziehe ihn an seinen Platz
+Maus und Tastatur von {0} steuern jetzt
+Die Maus ist jetzt auf {0}
+Getrennt. Warte auf den anderen Computer…
+Windows wird fragen: Drücke Ja, damit der andere Computer diesen erreichen kann
+Die Firewall blockiert eventuell den anderen Computer. Falls er sich nicht verbindet, drücke Stoppen, starte neu und wähle Ja
+Aura Mouse läuft bereits, oder eine andere App nutzt den Port.
+Code eingeben
+Er wird auf deinem anderen Computer unter Code holen angezeigt
+Tippe den Code ein, dann verbinde ich mich selbst
+Suche den ersten Computer… Ich verbinde mich, sobald ich ihn finde
+Suche {0}… Ich verbinde mich, sobald er an ist
+Gespeichert, kein Code nötig
+{0} kennt diesen Computer nicht mehr. Kopple ihn mit dem Button unten erneut per Code
+Neuer Computer? Code verwenden
+Verbinde…
+Verbunden ✓ Bewege die Maus eines Computers über den Rand zum anderen
+Getrennt
+Falscher Code, versuch es erneut
+Keine Verbindung. Prüfe, ob beide Computer im selben Netzwerk sind und die Firewall Aura Mouse erlaubt
+Tippe den 6-stelligen Code ein
+Deine Computer
+Gespeicherte Computer verbinden sich ohne Code
+Noch keine gespeicherten Computer
+Zum Hinzufügen gehe zu Verbinden und hole einen Code
+Verbindet sich mit diesem Computer
+Dieser Computer verbindet sich damit
+Jetzt verbunden ✓
+Einschalten
+Ist an ✓
+Aus oder antwortet nicht
+Signal gesendet, warte auf den Start…
+Keine Antwort. Die Einrichtung unten ist vielleicht unvollständig, oder er ist an und eine Firewall blockiert die Prüfung
+Dieser Computer ist in keinem Netzwerk
+Zum Einschalten braucht ein Computer Kabel und Strom, Wake on LAN im BIOS und in den Netzwerkkarten-Einstellungen sowie deaktivierten Schnellstart
+Alle vergessen
+Alle gespeicherten Computer vergessen? Sie brauchen dann einen neuen Code.
+Mit Windows starten
+Startet ausgeblendet und wiederholt die letzte Verbindung. Auf jedem Computer nötig
+An
+Aus
+Maus sperren
+Maus gesperrt
+Maus auf diesem Bildschirm sperren
+Für Spiele: Die Maus wechselt nicht zum anderen Bildschirm, bis du es erneut drückst
+Notfall-Rückkehr
+Holt die Maus zu diesem Computer zurück, wenn sie auf dem anderen hängt
+Drücke die Tasten zusammen…
+Klicke auf ein Kürzel, um es zu ändern. Nutze zwei oder mehr Tasten. Esc bricht ab
+Das überschneidet sich mit dem anderen Kürzel. Wähle andere Tasten
+Es braucht mindestens zwei Tasten, damit es im Spiel nicht versehentlich auslöst
+Maus auf diesem Bildschirm gesperrt
+Maus kann wieder Bildschirme wechseln
+Sieh und steuere einen anderen Computer, nur mit Zustimmung des Besitzers
+Nimmt Anfragen an
+Nimmt nicht an
+Andere können um Zugang bitten, und du entscheidest
+Niemand kann um Zugang zu diesem Computer bitten
+Adresse oder Name des Computers
+COMPUTER
+Aktualisieren
+Suche…
+Keiner gefunden. Aura Mouse muss dort offen sein, im selben Netzwerk
+Kommt ohne Nachfrage rein
+Verfügbar
+Gerade nicht sichtbar
+Ansehen
+DIESER COMPUTER
+GERÄTE, DIE OHNE NACHFRAGE AUF DIESEN COMPUTER KOMMEN
+Kein Zugriff auf Sperrbildschirm oder Administrator-Abfragen (UAC)
+Adresse nicht gefunden
+Das ist dieser Computer. Remotedesktop dient dazu, einen anderen zu erreichen
+{0} möchte diesen Computer sehen und steuern
+Telefon {0} möchte diesen Computer sehen und steuern
+Von {0}. Wenn du das nicht kennst, lehne ab
+Auf dem anderen Bildschirm muss dieselbe Zahl stehen
+Dieses Gerät ab jetzt ohne Nachfrage hereinlassen
+Erlauben
+Ablehnen
+{0} sieht und steuert diesen PC
+Beenden
+Vollbild
+Nächster Bildschirm
+Warte auf die Zustimmung des Besitzers\nDort sollte stehen: {0}
+Der Besitzer hat nicht zugestimmt
+Gerade ist ein anderes Gerät auf diesem Computer
+Nicht erreichbar. Prüfe, ob Aura Mouse dort offen ist und Anfragen annimmt
+Die Sitzung wurde beendet
+Dateiübertragungen
+an {0}
+von {0}
+{0} Dateien
+1 Datei
+Unterbrochen, setze an der Stelle fort…
+Fertig ✓
+Abgebrochen
+Noch {0}
+{0} von {1}
+Getrennt. Sende dieselben Dateien erneut, dann geht es an der Stelle weiter
+Nicht genug Speicher auf dem anderen Computer
+Nicht genug Speicher auf diesem Computer
+Der andere Computer hat abgebrochen
+Eine Datei hat sich beim Senden geändert. Sende sie erneut
+Zu viele Dateien (über 100.000)
+Nicht mit {0} verbunden
+Mit deinem Computer verbinden
+Öffne Aura Mouse auf dem Computer und wähle Code holen. Tippe den Code dann hier ein. Bleib im selben WLAN.
+Suche den Computer…
+Nicht gefunden. Prüfe, ob Aura Mouse auf dem Computer offen ist und beide im selben WLAN sind
+{0} kennt dieses Telefon nicht mehr. Kopple es erneut per Code
+Trennen
+Verbunden mit {0}
+Steuerung
+Dateien
+Remote
+Bewege einen Finger. Tippen zum Klicken.\nZwei Finger: scrollen oder tippen für Rechtsklick.\nTippen, dann halten und bewegen: ziehen.
+Links
+Rechts
+Tastatur
+Dateien an den Computer senden
+Senden, was ich auf dem Telefon kopiert habe
+An die Zwischenablage des Computers gesendet
+Noch nichts auf dem Telefon kopiert
+Dateien vom Computer landen in Downloads/Aura Mouse. Du kannst auch Teilen → Aura Mouse in jeder App nutzen.
+Der Computer hat kopiert: {0}
+Auf das Telefon laden
+Nicht mit dem Computer verbunden
+An den Computer
+Vom Computer
+Nicht abgeschlossen
+Nicht genug Speicher
+Computer einschalten
+Sendet das Signal über dieses WLAN. Funktioniert nur im selben Netzwerk wie der Computer.
+Verbinde dich einmal mit einem Computer, dann wird er hier gespeichert.
+Signal an {0} gesendet. Der Start kann eine Minute dauern
+Das Telefon ist in keinem WLAN
+Jeder Computer braucht Kabel und Strom, Wake on LAN im BIOS und in den Netzwerkkarten-Einstellungen sowie deaktivierten Schnellstart.
+Verbindung zum Computer
+Suche den Computer
+Sieh und steuere einen Computer, nur mit Zustimmung des Besitzers
+Erneut suchen
+Drinnen öffnet die Taste in der Ecke die Tasten und die Wahl der Mausbewegung. Zwei Finger: scrollen oder spreizen zum Zoomen.
+Warte auf die Zustimmung des Besitzers.\nDort sollte stehen: {0}
+Menü
+Wie eine Maus bewegen
+Direkt berühren
+Dein Finger bewegt den Zeiger ohne Klick. Tippen: Klick. Tippen, dann halten und bewegen, oder halten und bewegen: ziehen. Halten: Rechtsklick.
+Der Zeiger geht dorthin, wo du berührst, und Tippen klickt dort. Halten: Rechtsklick. Halten und bewegen: ziehen.
+Warte…

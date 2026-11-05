@@ -1,0 +1,191 @@
+Connecter
+Bureau à distance
+Ordinateurs
+Paramètres
+Retour
+Arrêter
+Annuler
+Retirer
+Masquer
+Ouvrir le dossier
+Quitter
+Ouvrir Aura Mouse
+Toujours actif ici. Clic droit sur l'icône pour quitter
+Une erreur s'est produite
+Connectez vos ordinateurs
+Utilisez une seule souris et un seul clavier sur tous, et déplacez des fichiers entre eux
+Obtenir un code
+Commencez ici sur votre premier ordinateur
+Saisir un code
+Utilisez ceci sur chacun de vos autres ordinateurs
+Installez Aura Mouse sur chaque ordinateur et gardez-les sur le même réseau
+Se connecter à {0}
+Ce PC
+Autre PC
+VOTRE CODE
+Sur l'autre ordinateur, ouvrez Aura Mouse, choisissez Saisir un code et tapez ceci
+Ajouter un autre ordinateur avec le code {0}
+Nouveau code
+Trop d'essais erronés : le code est désactivé par sécurité. Les ordinateurs associés fonctionnent toujours
+Quelqu'un a essayé de se connecter avec un mauvais code
+où est-il ?
+Déplacez la souris vers un ordinateur et j'apprendrai où il se trouve, ou faites-le glisser à sa place
+Connexion chiffrée
+Souris bloquée ? Appuyez sur {0}
+Envoyer des fichiers
+Vous pouvez aussi glisser des fichiers et dossiers sur cette fenêtre
+Choisissez les fichiers à envoyer
+Aucun ordinateur connecté pour l'instant
+En attente de l'autre ordinateur…
+Connecté à 1 ordinateur ✓ Déplacez la souris vers lui
+Connecté à {0} ordinateurs ✓ Déplacez la souris vers celui de votre choix
+{0} connecté ✓ Déplacez la souris vers le bord gauche ou droit de son côté pour que j'apprenne où il est
+{0} connecté ✓ La gauche et la droite sont prises : déplacez la souris vers le bord haut ou bas de son côté, ou faites-le glisser à sa place
+La souris et le clavier de {0} ont le contrôle
+La souris est maintenant sur {0}
+Déconnecté. En attente de l'autre ordinateur…
+Windows va demander : appuyez sur Oui pour que l'autre ordinateur puisse joindre celui-ci
+Le pare-feu peut bloquer l'autre ordinateur. S'il ne se connecte pas, appuyez sur Arrêter, recommencez et choisissez Oui
+Aura Mouse est déjà lancé, ou une autre application utilise son port.
+Saisissez le code
+Il s'affiche sur votre autre ordinateur, sous Obtenir un code
+Tapez le code et je me connecterai tout seul
+Recherche du premier ordinateur… Je me connecterai dès que je le trouve
+Recherche de {0}… Je me connecterai dès qu'il sera allumé
+Enregistré, aucun code nécessaire
+{0} ne reconnaît plus cet ordinateur. Associez-le de nouveau avec un code via le bouton ci-dessous
+Nouvel ordinateur ? Utilisez un code
+Connexion…
+Connecté ✓ Déplacez la souris de l'un ou l'autre ordinateur à travers le bord face à l'autre
+Déconnecté
+Mauvais code, réessayez
+Connexion impossible. Vérifiez que les deux ordinateurs sont sur le même réseau et que le pare-feu autorise Aura Mouse
+Tapez le code à 6 chiffres
+Vos ordinateurs
+Les ordinateurs enregistrés se connectent sans code
+Aucun ordinateur enregistré pour l'instant
+Pour en ajouter un, allez dans Connecter et obtenez un code
+Se connecte à cet ordinateur
+Cet ordinateur s'y connecte
+Connecté ✓
+Allumer
+Allumé ✓
+Éteint ou sans réponse
+Signal envoyé, en attente du démarrage…
+Pas de réponse. La configuration ci-dessous est peut-être incomplète, ou il est allumé et un pare-feu bloque la vérification
+Cet ordinateur n'est sur aucun réseau
+Pour allumer un ordinateur, il lui faut un câble et l'alimentation, Wake on LAN activé dans le BIOS et les réglages de la carte réseau, et le démarrage rapide désactivé
+Tout oublier
+Oublier tous les ordinateurs enregistrés ? Il leur faudra un nouveau code pour se reconnecter.
+Démarrer avec Windows
+Démarre masqué et répète la dernière connexion. Nécessaire sur chaque ordinateur
+Activé
+Désactivé
+Verrouiller la souris
+Souris verrouillée
+Verrouiller la souris sur cet écran
+Pour les jeux : la souris ne passera pas à l'autre écran tant que vous n'appuyez pas de nouveau
+Retour d'urgence
+Ramène la souris sur cet ordinateur si elle reste bloquée sur l'autre
+Appuyez sur les touches ensemble…
+Cliquez sur un raccourci pour le changer. Utilisez deux touches ou plus. Échap annule
+Cela chevauche l'autre raccourci. Choisissez d'autres touches
+Il faut au moins deux touches pour éviter un déclenchement accidentel en jeu
+Souris verrouillée sur cet écran
+La souris peut de nouveau changer d'écran
+Voyez et contrôlez un autre ordinateur, uniquement avec l'accord de son propriétaire
+Accepte les demandes
+N'accepte pas
+Les autres peuvent demander à entrer, et vous décidez
+Personne ne peut demander à entrer sur cet ordinateur
+Adresse ou nom de l'ordinateur
+ORDINATEURS
+Actualiser
+Recherche…
+Aucun trouvé. Aura Mouse doit y être ouvert, sur le même réseau
+Entre sans demander
+Disponible
+Non visible
+Voir
+CET ORDINATEUR
+APPAREILS QUI ENTRENT SUR CET ORDINATEUR SANS DEMANDER
+Ne peut pas atteindre l'écran de verrouillage ni les invites administrateur (UAC)
+Adresse introuvable
+C'est cet ordinateur. Le bureau à distance sert à en joindre un autre
+{0} veut voir et contrôler cet ordinateur
+Le téléphone {0} veut voir et contrôler cet ordinateur
+Depuis {0}. Si vous ne le reconnaissez pas, refusez
+Le même numéro doit s'afficher sur son écran
+Laisser entrer cet appareil sans demander à partir de maintenant
+Autoriser
+Refuser
+{0} voit et contrôle ce PC
+Terminer
+Plein écran
+Écran suivant
+En attente de l'accord du propriétaire\nSon écran doit afficher : {0}
+Le propriétaire n'a pas accepté
+Un autre appareil est déjà sur cet ordinateur
+Impossible de le joindre. Vérifiez que Aura Mouse y est ouvert et accepte les demandes
+La session est terminée
+Transferts de fichiers
+vers {0}
+de {0}
+{0} fichiers
+1 fichier
+Interrompu, reprise là où il s'est arrêté…
+Terminé ✓
+Annulé
+{0} restant
+{0} sur {1}
+Déconnecté. Renvoyez les mêmes fichiers et le transfert reprendra là où il s'est arrêté
+Pas assez d'espace libre sur l'autre ordinateur
+Pas assez d'espace libre sur cet ordinateur
+L'autre ordinateur l'a annulé
+Un fichier a changé pendant l'envoi. Renvoyez-le
+Trop de fichiers (plus de 100 000)
+Non connecté à {0}
+Connectez-vous à votre ordinateur
+Sur l'ordinateur, ouvrez Aura Mouse et choisissez Obtenir un code. Puis tapez le code ici. Restez sur le même Wi-Fi.
+Recherche de l'ordinateur…
+Introuvable. Vérifiez que Aura Mouse est ouvert sur l'ordinateur et que les deux sont sur le même Wi-Fi
+{0} ne reconnaît plus ce téléphone. Associez-le de nouveau avec un code
+Déconnecter
+Connecté à {0}
+Contrôle
+Fichiers
+À distance
+Bougez un doigt. Touchez pour cliquer.\nDeux doigts : défiler, ou toucher pour un clic droit.\nToucher, puis maintenir et bouger : glisser.
+Gauche
+Droite
+Clavier
+Envoyer des fichiers à l'ordinateur
+Envoyer ce que j'ai copié sur le téléphone
+Envoyé au presse-papiers de l'ordinateur
+Rien de copié sur le téléphone
+Les fichiers de l'ordinateur vont dans Downloads/Aura Mouse. Vous pouvez aussi utiliser Partager → Aura Mouse depuis n'importe quelle app.
+L'ordinateur a copié : {0}
+Télécharger sur le téléphone
+Non connecté à l'ordinateur
+Vers l'ordinateur
+Depuis l'ordinateur
+Non terminé
+Pas assez d'espace libre
+Allumer un ordinateur
+Envoie le signal via ce Wi-Fi. Fonctionne uniquement sur le même réseau que cet ordinateur.
+Connectez-vous une fois à un ordinateur et il sera enregistré ici.
+Signal envoyé à {0}. Le démarrage peut prendre une minute
+Le téléphone n'est pas sur un réseau Wi-Fi
+Chaque ordinateur a besoin d'un câble et de l'alimentation, de Wake on LAN activé dans le BIOS et les réglages de la carte réseau, et du démarrage rapide désactivé.
+Connexion à l'ordinateur
+Recherche de l'ordinateur
+Voyez et contrôlez un ordinateur, uniquement avec l'accord de son propriétaire
+Rechercher à nouveau
+À l'intérieur, le bouton dans le coin ouvre les touches et permet de choisir le mouvement de la souris. Deux doigts : défiler, ou écarter pour zoomer.
+En attente de l'accord du propriétaire.\nSon écran doit afficher : {0}
+Menu
+Déplacer comme une souris
+Toucher directement
+Votre doigt déplace le curseur sans cliquer. Toucher : clic. Toucher puis maintenir et bouger, ou maintenir et bouger : glisser. Maintenir : clic droit.
+Le curseur va où vous touchez, et un appui clique à cet endroit. Maintenir : clic droit. Maintenir et bouger : glisser.
+En attente…

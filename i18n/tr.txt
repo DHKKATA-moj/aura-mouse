@@ -1,0 +1,191 @@
+Bağlan
+Uzak masaüstü
+Bilgisayarlar
+Ayarlar
+Geri
+Durdur
+İptal
+Kaldır
+Gizle
+Klasörü aç
+Çıkış
+Aura Mouse'u aç
+Burada çalışmaya devam ediyor. Çıkmak için simgeye sağ tıklayın
+Bir şeyler ters gitti
+Bilgisayarlarınızı bağlayın
+Hepsinde tek fare ve klavye kullanın, dosyaları aralarında taşıyın
+Kod al
+İlk bilgisayarınızda buradan başlayın
+Kod gir
+Bunu diğer bilgisayarlarınızda kullanın
+Aura Mouse'u her bilgisayara kurun ve aynı ağda tutun
+{0} ile bağlan
+Bu PC
+Diğer PC
+KODUNUZ
+Diğer bilgisayarda Aura Mouse'u açın, Kod gir'i seçin ve bunu yazın
+{0} koduyla başka bilgisayar ekleyin
+Yeni kod
+Çok fazla yanlış deneme oldu, kod güvenlik için kapatıldı. Eşlenmiş bilgisayarlar çalışmaya devam eder
+Biri yanlış kodla bağlanmayı denedi
+nerede?
+Fareyi bir bilgisayara doğru götürün, yerini öğreneyim ya da onu yerine sürükleyin
+Şifreli bağlantı
+Fare takıldı mı? {0} tuşlarına basın
+Dosya gönder
+Dosya ve klasörleri bu pencereye de sürükleyebilirsiniz
+Gönderilecek dosyaları seçin
+Henüz bağlı bilgisayar yok
+Diğer bilgisayar bekleniyor…
+1 bilgisayara bağlı ✓ Fareyi ona doğru götürün
+{0} bilgisayara bağlı ✓ Fareyi istediğinize doğru götürün
+{0} bağlandı ✓ Yerini öğrenmem için fareyi onun tarafındaki sol veya sağ kenara götürün
+{0} bağlandı ✓ Sol ve sağ dolu, fareyi onun tarafındaki üst veya alt kenara götürün ya da yerine sürükleyin
+Şu an {0} fare ve klavyesi kontrol ediyor
+Fare şu an {0} üzerinde
+Bağlantı kesildi. Diğer bilgisayar bekleniyor…
+Windows soracak: diğer bilgisayarın buna ulaşabilmesi için Evet'e basın
+Güvenlik duvarı diğer bilgisayarı engelleyebilir. Bağlanamazsa Durdur'a basın, yeniden başlayın ve Evet'i seçin
+Aura Mouse zaten çalışıyor veya başka bir uygulama bağlantı noktasını kullanıyor.
+Kodu girin
+Diğer bilgisayarınızda Kod al altında gösterilir
+Kodu yazın, kendim bağlanırım
+İlk bilgisayar aranıyor… Bulunca bağlanırım
+{0} aranıyor… Açılınca bağlanırım
+Kayıtlı, kod gerekmez
+{0} artık bu bilgisayarı tanımıyor. Aşağıdaki düğmeyle kodla yeniden eşleyin
+Yeni bilgisayar mı? Kod kullanın
+Bağlanıyor…
+Bağlandı ✓ Herhangi bir bilgisayarın faresini diğerine bakan kenardan geçirin
+Bağlantı kesildi
+Yanlış kod, tekrar deneyin
+Bağlanılamadı. İki bilgisayarın aynı ağda olduğunu ve güvenlik duvarının Aura Mouse'a izin verdiğini kontrol edin
+6 haneli kodu yazın
+Bilgisayarlarınız
+Kayıtlı bilgisayarlar kodsuz bağlanır
+Henüz kayıtlı bilgisayar yok
+Eklemek için Bağlan'a gidin ve kod alın
+Bu bilgisayara bağlanır
+Bu bilgisayar ona bağlanır
+Şu an bağlı ✓
+Aç
+Açık ✓
+Kapalı veya yanıt vermiyor
+Sinyal gönderildi, açılması bekleniyor…
+Yanıt yok. Aşağıdaki kurulum eksik olabilir veya açık ama güvenlik duvarı kontrolü engelliyor
+Bu bilgisayar bir ağda değil
+Bir bilgisayarı açmak için kablo ve elektrik, BIOS ile ağ kartı ayarlarında Wake on LAN ve kapalı Hızlı Başlangıç gerekir
+Tümünü unut
+Tüm kayıtlı bilgisayarlar unutulsun mu? Yeniden bağlanmak için yeni kod gerekir.
+Windows ile başlat
+Gizli başlar ve son bağlantıyı tekrarlar. Her bilgisayarda gerekir
+Açık
+Kapalı
+Fareyi kilitle
+Fare kilitli
+Fareyi bu ekrana kilitle
+Oyunlar için: tekrar basana kadar fare diğer ekrana geçmez
+Acil dönüş
+Diğerinde takılırsa fareyi bu bilgisayara geri getirir
+Tuşlara birlikte basın…
+Değiştirmek için bir kısayola tıklayın. İki veya daha fazla tuş kullanın. Esc iptal eder
+Bu diğer kısayolla çakışıyor. Başka tuşlar seçin
+Oyunda yanlışlıkla çalışmaması için en az iki tuş gerekir
+Fare bu ekrana kilitlendi
+Fare yeniden ekranlar arasında geçebilir
+Başka bir bilgisayarı görün ve kontrol edin, yalnızca sahibinin onayıyla
+İstekleri kabul ediyor
+Kabul etmiyor
+Başkaları girmek isteyebilir, kararı siz verirsiniz
+Kimse bu bilgisayara girmek isteyemez
+Bilgisayarın adresi veya adı
+BİLGİSAYARLAR
+Yenile
+Aranıyor…
+Bulunamadı. Aura Mouse onda açık ve aynı ağda olmalı
+Sormadan girer
+Kullanılabilir
+Şu an görünmüyor
+Görüntüle
+BU BİLGİSAYAR
+BU BİLGİSAYARA SORMADAN GİREN CİHAZLAR
+Kilit ekranına ve yönetici (UAC) istemlerine ulaşamaz
+Bu adres bulunamadı
+Bu, bu bilgisayarın kendisi. Uzak masaüstü başka bir bilgisayara ulaşmak içindir
+{0} bu bilgisayarı görmek ve kontrol etmek istiyor
+{0} telefonu bu bilgisayarı görmek ve kontrol etmek istiyor
+{0} adresinden. Tanımıyorsanız reddedin
+Onun ekranında aynı sayı görünmeli
+Bu cihaz bundan sonra sormadan girsin
+İzin ver
+Reddet
+{0} bu PC'yi görüyor ve kontrol ediyor
+Bitir
+Tam ekran
+Sonraki ekran
+Sahibinin onayı bekleniyor\nOnun ekranında görünmeli: {0}
+Sahibi onaylamadı
+Şu an o bilgisayarda başka bir cihaz var
+Ulaşılamadı. Aura Mouse'un orada açık olduğunu ve istek kabul ettiğini kontrol edin
+Oturum sona erdi
+Dosya aktarımları
+{0} hedefine
+{0} kaynağından
+{0} dosya
+1 dosya
+Kesildi, kaldığı yerden devam ediliyor…
+Bitti ✓
+İptal edildi
+{0} kaldı
+{0} / {1}
+Bağlantı kesildi. Aynı dosyaları tekrar gönderin, kaldığı yerden devam eder
+Diğer bilgisayarda yeterli boş alan yok
+Bu bilgisayarda yeterli boş alan yok
+Diğer bilgisayar iptal etti
+Gönderim sırasında bir dosya değişti. Tekrar gönderin
+Çok fazla dosya (100.000'den fazla)
+{0} ile bağlı değil
+Bilgisayarınıza bağlanın
+Bilgisayarda Aura Mouse'u açın ve Kod al'ı seçin. Sonra kodu buraya yazın. Aynı Wi-Fi'da kalın.
+Bilgisayar aranıyor…
+Bulunamadı. Aura Mouse'un bilgisayarda açık olduğunu ve ikisinin aynı Wi-Fi'da olduğunu kontrol edin
+{0} artık bu telefonu tanımıyor. Kodla yeniden eşleyin
+Bağlantıyı kes
+{0} ile bağlı
+Kontrol
+Dosyalar
+Uzak
+Bir parmağı hareket ettirin. Tıklamak için dokunun.\nİki parmak: kaydırma veya sağ tık için dokunma.\nDokunun, sonra basılı tutup hareket ettirin: sürükleme.
+Sol
+Sağ
+Klavye
+Dosyaları bilgisayara gönder
+Telefonda kopyaladığımı gönder
+Bilgisayarın panosuna gönderildi
+Telefonda henüz kopyalanan bir şey yok
+Bilgisayardan gelen dosyalar Downloads/Aura Mouse'a gider. Herhangi bir uygulamada Paylaş → Aura Mouse da kullanabilirsiniz.
+Bilgisayar kopyaladı: {0}
+Telefona indir
+Bilgisayara bağlı değil
+Bilgisayara
+Bilgisayardan
+Tamamlanmadı
+Yeterli boş alan yok
+Bir bilgisayarı aç
+Sinyali bu Wi-Fi üzerinden gönderir. Yalnızca o bilgisayarla aynı ağda çalışır.
+Bir bilgisayara bir kez bağlanın, burada kaydedilir.
+Sinyal {0} hedefine gönderildi. Başlaması bir dakika sürebilir
+Telefon bir Wi-Fi ağında değil
+Her bilgisayar için kablo ve elektrik, BIOS ile ağ kartı ayarlarında Wake on LAN ve kapalı Hızlı Başlangıç gerekir.
+Bilgisayar bağlantısı
+Bilgisayar aranıyor
+Bir bilgisayarı görün ve kontrol edin, yalnızca sahibinin onayıyla
+Yeniden ara
+İçeride köşedeki düğme tuşları açar ve fare hareketini seçmenizi sağlar. İki parmak: kaydırma veya yakınlaştırmak için açma.
+Sahibinin onayı bekleniyor.\nOnun ekranında görünmeli: {0}
+Menü
+Fare gibi hareket ettir
+Doğrudan dokun
+Parmağınız imleci tıklamadan hareket ettirir. Dokunma: tıklama. Dokunup basılı tutarak veya basılı tutup hareket ettirerek: sürükleme. Basılı tutma: sağ tık.
+İmleç dokunduğunuz yere gider, dokunma orada tıklar. Basılı tutma: sağ tık. Basılı tutup hareket: sürükleme.
+Bekleniyor…

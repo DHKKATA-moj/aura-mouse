@@ -1,0 +1,29 @@
+# Build output
+bin/
+obj/
+publish/
+build/
+.gradle/
+.vs/
+.idea/
+*.user
+
+# Binaries belong in GitHub Releases, not in the repository
+*.exe
+*.apk
+*.aab
+*.pdb
+*.rar
+*.zip
+
+# Anything secret or local to one computer
+local.properties
+keystore.properties
+*.jks
+*.keystore
+*.pfx
+*.p12
+*.pem
+*.key
+.env
+.env.*
