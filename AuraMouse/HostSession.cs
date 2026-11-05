@@ -29,6 +29,7 @@ internal sealed class HostSession : IDisposable
         public Channel<Msg> Outbox { get; } = Channel.CreateUnbounded<Msg>(new() { SingleReader = true });
         public volatile Edge Edge = Edge.None;
         public CancellationTokenSource? Connection;
+        public int PairId { get; set; } // which saved computer this is
         public bool IsPhone { get; init; } // no screen to cross over to: it only drives us as a touchpad
         public byte[] FileKey { get; } = RandomNumberGenerator.GetBytes(32);
     }
@@ -253,10 +254,12 @@ internal sealed class HostSession : IDisposable
             var hostPublic = ecdh.ExportSubjectPublicKeyInfo();
             bool usingKey = hello.C != 0;
             byte[] secret;
+            SavedComputer? saved = null;
             if (usingKey)
             {
                 // A computer paired before uses its saved key; one we don't know gets a key nobody can match.
-                secret = PairStore.ClientById(hello.C)?.Key ?? RandomNumberGenerator.GetBytes(PairStore.KeySize);
+                saved = PairStore.ClientById(hello.C);
+                secret = saved?.Key ?? RandomNumberGenerator.GetBytes(PairStore.KeySize);
                 await Net.SendAsync(stream, Msg.WithPayload(MsgType.KeyShare, hostPublic), conn.Token);
             }
             else
@@ -298,7 +301,9 @@ internal sealed class HostSession : IDisposable
                 RenewCode(); // a code only ever works once
             }
 
-            peer = new Peer(Interlocked.Increment(ref _nextId), Net.CleanName(auth.PayloadText, "PC"), channel) { Connection = conn, IsPhone = auth.A == 1 };
+            // The key says which saved computer this is, whatever name it claims now.
+            var name = saved?.Name ?? Net.CleanName(auth.PayloadText, "PC");
+            peer = new Peer(Interlocked.Increment(ref _nextId), name, channel) { Connection = conn, IsPhone = auth.A == 1, PairId = saved?.Id ?? 0 };
             AddPeer(peer);
             peer.Outbox.Writer.TryWrite(new Msg(MsgType.FileKey, peer.Id) { Payload = peer.FileKey });
             if (usingKey) PairStore.BecomeHost();
@@ -306,6 +311,7 @@ internal sealed class HostSession : IDisposable
             {
                 // Paired with the code: from now on this computer connects with a key of its own.
                 var pair = PairStore.AddClient(peer.Name);
+                peer.PairId = pair.Id;
                 byte[] payload = [.. pair.Key, .. Encoding.UTF8.GetBytes(Environment.MachineName)];
                 peer.Outbox.Writer.TryWrite(new Msg(MsgType.PairKey, pair.Id) { Payload = payload });
             }
@@ -441,9 +447,9 @@ internal sealed class HostSession : IDisposable
     }
 
     /// Cuts off a computer that was just removed from the saved list.
-    public void Disconnect(string name)
+    public void Disconnect(int pairId)
     {
-        foreach (var p in _peers.Where(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+        foreach (var p in _peers.Where(p => p.PairId == pairId))
             p.Connection?.Cancel();
     }
 

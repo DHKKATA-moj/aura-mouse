@@ -45,7 +45,7 @@ internal static partial class FileReceiver
         partialDir.Attributes |= FileAttributes.Hidden;
         var state = ReceiveState.Load(partialDir.FullName, manifest);
 
-        item.Title = manifest.Title;
+        item.Title = manifest.Title is { } title ? Net.CleanName(title, "file") : null;
         item.FileCount = manifest.Files.Count;
         item.TotalBytes = manifest.Files.Sum(f => f.Size);
         item.Folder = root;
@@ -265,12 +265,14 @@ internal static class SafePath
     static readonly char[] Invalid = Path.GetInvalidFileNameChars();
     static readonly HashSet<string> Reserved = new(StringComparer.OrdinalIgnoreCase)
     {
-        "CON", "PRN", "AUX", "NUL",
+        "CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$",
+        "COM\u00B9", "COM\u00B2", "COM\u00B3", "LPT\u00B9", "LPT\u00B2", "LPT\u00B3",
         "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
         "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
     };
 
-    /// Splits a received relative path into safe names: no "..", no drive letters, no invalid characters.
+    /// Splits a received relative path into safe names: no "..", no drive letters, no invalid characters,
+    /// and no invisible ones, which can make "x<RLO>gnp.exe" display as "xexe.png".
     public static string[] Segments(string path)
     {
         var parts = path.Split('/', '\\').Where(p => p.Length > 0 && p != "." && p != "..").Select(Clean).ToArray();
@@ -279,9 +281,10 @@ internal static class SafePath
 
     static string Clean(string name)
     {
-        var clean = new string(name.Select(c => Array.IndexOf(Invalid, c) >= 0 ? '_' : c).ToArray()).Trim().TrimEnd('.');
+        var clean = new string(name.Where(c => char.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.Format)
+            .Select(c => Array.IndexOf(Invalid, c) >= 0 ? '_' : c).ToArray()).Trim().TrimEnd('.');
         if (clean.Length == 0) clean = "_";
-        if (Reserved.Contains(Path.GetFileNameWithoutExtension(clean))) clean = "_" + clean;
+        if (Reserved.Contains(clean.Split('.')[0].TrimEnd(' '))) clean = "_" + clean; // Windows ignores what follows the first dot
         return clean.Length > 150 ? clean[..150] : clean;
     }
 

@@ -234,9 +234,13 @@ object Link : LinkEvents {
     }
 
     /** The app came to the front: if something new was copied, the computer gets it too. */
+    private const val SENSITIVE_CLIP = "android.content.extra.IS_SENSITIVE"
+
     fun sendClipboardIfNew() {
         val active = link ?: return
         val clipboard = app.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        // Password managers mark what they copy. It only goes if the person presses Send themselves.
+        if (clipboard.primaryClipDescription?.extras?.getBoolean(SENSITIVE_CLIP) == true) return
         val text = runCatching { clipboard.primaryClip?.takeIf { it.itemCount > 0 }?.getItemAt(0)?.text?.toString() }.getOrNull()
         if (text.isNullOrEmpty() || text == lastClip || text.toByteArray().size > MAX_CLIPBOARD) return
         lastClip = text

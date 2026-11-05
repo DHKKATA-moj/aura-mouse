@@ -260,6 +260,7 @@ internal static class Firewall
     /// Windows asks the user first. Blocks while it runs, so call it off the UI thread.
     public static bool Open()
     {
+        if (Program.Contains('%')) return false; // cmd would expand it, in a command that runs as administrator
         var command = $"/c \"netsh advfirewall firewall delete rule name=all dir=in program=\"{Program}\" & " +
             $"netsh advfirewall firewall add rule name=\"{RuleName}\" dir=in action=allow enable=yes profile=any remoteip=localsubnet program=\"{Program}\"\"";
         try

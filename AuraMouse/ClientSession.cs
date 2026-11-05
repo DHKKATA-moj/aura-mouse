@@ -92,6 +92,8 @@ internal sealed class ClientSession : IDisposable
         }
     }
 
+    const int MaxAnnouncementsPerSecond = 32;
+
     async Task DiscoveryLoop(CancellationToken ct)
     {
         UdpClient udp;
@@ -107,6 +109,8 @@ internal sealed class ClientSession : IDisposable
             return;
         }
 
+        long windowStart = 0;
+        int inWindow = 0;
         using (udp)
         {
             while (!ct.IsCancellationRequested)
@@ -115,6 +119,12 @@ internal sealed class ClientSession : IDisposable
                 try { r = await udp.ReceiveAsync(ct); }
                 catch (OperationCanceledException) { return; }
                 catch (SocketException) { continue; }
+
+                // Real computers announce once a second. Anyone on the network could send thousands, and each
+                // would reach the window, so past a sensible number they're dropped.
+                long now = Environment.TickCount64;
+                if (now - windowStart >= 1000) (windowStart, inWindow) = (now, 0);
+                if (++inWindow > MaxAnnouncementsPerSecond) continue;
 
                 var text = Encoding.UTF8.GetString(r.Buffer);
                 if (text.StartsWith(Net.Beacon) && LanScan.IsNearby(r.RemoteEndPoint.Address))

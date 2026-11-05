@@ -280,7 +280,7 @@ internal sealed class MainForm : Form
                 if (client != null)
                 {
                     PairStore.RemoveClient(client.Id);
-                    _host?.Disconnect(name);
+                    _host?.Disconnect(client.Id);
                 }
                 if (isHost)
                 {

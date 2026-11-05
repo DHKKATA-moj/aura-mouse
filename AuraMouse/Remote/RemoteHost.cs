@@ -85,7 +85,7 @@ internal static class RemoteHandshake
 /// says yes or said yes earlier for that device.
 internal sealed class RemoteHost : IDisposable
 {
-    const int MaxViewSide = 3840, MinViewSide = 480, DefaultViewSide = 2560, MaxInFlight = 2;
+    const int MaxViewSide = 3840, MinViewSide = 480, DefaultViewSide = 2560, MaxInFlight = 2, ApprovedFrame = 1 << 20;
     const int FrameMs = 25, IdleFrameMs = 66, IdleAfterFrames = 40;
     const int SlowAckMs = 120, FastAckMs = 50, LowestQuality = 35, HighestQuality = 75, SharpQuality = 90;
     static readonly TimeSpan HandshakeTimeout = TimeSpan.FromSeconds(5), AskTimeout = TimeSpan.FromSeconds(30), DeclinedPause = TimeSpan.FromSeconds(15), AskGap = TimeSpan.FromSeconds(3);
@@ -160,8 +160,9 @@ internal sealed class RemoteHost : IDisposable
             if (!SHA256.HashData(viewerPublic).AsSpan().SequenceEqual(first.Payload)) return;
 
             bool usingKey = first.C != 0;
+            var trustedDevice = usingKey ? RemoteStore.TrustedById(first.C) : null;
             var secret = !usingKey ? RemoteHandshake.NoKey
-                : RemoteStore.TrustedById(first.C)?.Key ?? RandomNumberGenerator.GetBytes(RemoteStore.KeySize);
+                : trustedDevice?.Key ?? RandomNumberGenerator.GetBytes(RemoteStore.KeySize);
             channel = SecureChannel.Create(stream, ecdh, viewerPublic, sharerPublic, secret, isHost: true);
             channel.FrameLimit = SecureChannel.HandshakeFrame;
 
@@ -176,7 +177,8 @@ internal sealed class RemoteHost : IDisposable
             await Net.SendAsync(stream, new Msg(MsgType.Welcome), conn.Token);
             ticket.Dispose();
 
-            var name = Net.CleanName(auth.PayloadText, "?");
+            // The banner names the device that was trusted, not whatever it calls itself today.
+            var name = trustedDevice?.Name ?? Net.CleanName(auth.PayloadText, "?");
             var ip = (tcp.Client.RemoteEndPoint as IPEndPoint)?.Address ?? IPAddress.None;
             claimed = Interlocked.Exchange(ref _busy, 1) == 0;
             if (!claimed)
@@ -219,6 +221,7 @@ internal sealed class RemoteHost : IDisposable
                 }
             }
             conn.CancelAfter(Timeout.InfiniteTimeSpan);
+            channel.FrameLimit = ApprovedFrame; // approved now, so longer text from its keyboard is fine
 
             await channel.SendAsync(new Msg(MsgType.RemoteAccepted, 0, Screen.AllScreens.Length) { Payload = Encoding.UTF8.GetBytes(Environment.MachineName) }, conn.Token);
             await RunSession(tcp, channel, name, conn, read);

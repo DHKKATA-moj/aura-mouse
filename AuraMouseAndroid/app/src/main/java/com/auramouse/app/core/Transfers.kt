@@ -294,6 +294,7 @@ object Transfers {
 /** Names from the network: no "..", no separators, nothing the phone's storage would refuse. */
 object SafePath {
     private val BAD = Regex("[\\\\/:*?\"<>|\\p{Cntrl}]")
+    private val INVISIBLE = Regex("\\p{Cf}") // can make "x<RLO>gnp.exe" display as "xexe.png"
 
     fun segments(path: String): List<String> {
         val parts = path.split('/', '\\').filter { it.isNotEmpty() && it != "." && it != ".." }.map(::clean)
@@ -301,7 +302,7 @@ object SafePath {
     }
 
     private fun clean(name: String): String {
-        val clean = name.replace(BAD, "_").trim().trimEnd('.')
+        val clean = name.replace(INVISIBLE, "").replace(BAD, "_").trim().trimEnd('.')
         val safe = if (clean.isEmpty()) "_" else clean
         return if (safe.length > 150) safe.take(150) else safe
     }

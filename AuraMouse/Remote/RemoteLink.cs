@@ -14,7 +14,7 @@ internal enum RemoteEnd { Declined, Busy, Unreachable, Lost }
 /// The picture of the other screen, updated from the network thread and drawn by the window.
 internal sealed class RemoteCanvas : IDisposable
 {
-    const int MaxSide = 8192;
+    const int MaxSide = 4096; // the sharing side never sends more, and a fake one shouldn't make us set aside gigabytes
 
     readonly object _lock = new();
     Bitmap? _picture;

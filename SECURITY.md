@@ -29,16 +29,20 @@ Use it on a public or shared network with care: others there can see that it's r
 | Remote desktop | Off until turned on. Each new viewer needs the owner's approval, unless the owner chose to trust that device. A banner stays on screen while someone is viewing. |
 | Remote desktop code | Both screens show a 6-digit code derived from both keys, with the viewer committing to its key first. Different codes mean something is in the middle, so decline. |
 | Connections | Limited per address, with a short deadline and small frames until the other side has proved itself. |
-| Received files | Names are cleaned so they can't leave the target folder, and files get the Windows "from the internet" mark. |
-| Clipboard | Content marked private by password managers is not shared. |
+| Received files | Names are cleaned so they can't leave the target folder or hide their real extension, and on Windows files get the "from the internet" mark. |
+| Clipboard | Content marked private by password managers is not shared automatically. |
 
 ## What it doesn't protect against
 
-- **A paired device is fully trusted.** It can move the mouse, type, read the shared clipboard and send files. Remove
-  devices you no longer own from the saved list.
+- **A paired device is fully trusted.** It can move the mouse, type, read the shared clipboard, send files, and fetch
+  files you've copied. Remove devices you no longer own from the saved list, which cuts them off immediately.
 - **A compromised computer.** Malware running as your Windows user can read the same keys the program can.
 - **Careless approval.** The name in a remote desktop request is whatever the other device claims. Check the code
   and the address before allowing it.
+- **Interference from the same network.** Someone there can't guess the code, but can use up its tries so that new
+  devices can't pair until you press New code. They can also claim to refuse a trusted device, so it asks for approval
+  again; if a request appears where you expected direct entry, check the code. Anyone who can block traffic can cut
+  connections.
 - **Network visibility.** Computer names, and the fact that Aura Mouse is running, are visible on the local network.
   Nothing is hidden from someone watching which devices talk to each other.
 - **Secure Windows screens.** Input can't reach sign-in and administrator prompts; that is a Windows restriction.

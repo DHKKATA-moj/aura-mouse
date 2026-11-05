@@ -68,6 +68,7 @@ class RemoteLink(
     private var pointerY = -1
     @Volatile private var socket: Socket? = null
     @Volatile private var closed = false
+    private var keyRefused = false
 
     fun start() { thread(isDaemon = true, name = "remote receive") { run() } }
 
@@ -136,7 +137,7 @@ class RemoteLink(
                 if (key == null) throw IOException("Refused without a key")
                 // Its owner took the permission back: ask again like anyone else.
                 s.close()
-                saved?.let { events.onKeyRefused(it.name) }
+                keyRefused = true // forgotten only once the real computer lets us in: anyone can claim to refuse it
                 id = 0
                 key = null
                 continue
@@ -158,7 +159,10 @@ class RemoteLink(
                     id = m.a
                     key = m.payload
                 }
-                T.REMOTE_ACCEPTED -> events.onAccepted(RemoteSaved(Names.clean(m.text, ip.hostAddress ?: ""), ip.hostAddress ?: "", id, key), m.b)
+                T.REMOTE_ACCEPTED -> {
+                    if (keyRefused) saved?.let { events.onKeyRefused(it.name) }
+                    events.onAccepted(RemoteSaved(Names.clean(m.text, ip.hostAddress ?: ""), ip.hostAddress ?: "", id, key), m.b)
+                }
                 T.REMOTE_DENIED -> return if (m.a == BUSY) RemoteEnd.BUSY else RemoteEnd.DECLINED
                 T.REMOTE_FRAME -> m.payload?.let {
                     if (m.b !in 1..MAX_SIDE || m.c !in 1..MAX_SIDE) throw IOException("Bad picture size")
@@ -196,7 +200,7 @@ class RemoteLink(
     companion object {
         const val KEY_SIZE = 32
         private const val BUSY = 1
-        private const val MAX_SIDE = 8192
+        private const val MAX_SIDE = 4096 // the computer never sends more, and a fake one mustn't exhaust the phone's memory
         private const val CONNECT_MS = 5000
         private const val POINTER_INTERVAL_MS = 8L
         private val NO_KEY = "EasyMouse remote".toByteArray(Charsets.UTF_8)

@@ -19,8 +19,8 @@ android {
         applicationId = "com.auramouse.app"
         minSdk = 29 // Android 10: saving to Downloads needs no storage permission from here on
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.1"
+        versionCode = 3
+        versionName = "1.1.1"
     }
 
     signingConfigs {

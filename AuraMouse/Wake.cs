@@ -67,7 +67,7 @@ internal static partial class Wake
         {
             var info = TransferJson.Read<WakeInfo>(payload);
             var macs = Clean(info.Macs ?? []);
-            var name = (knownName ?? info.Name ?? "").Trim();
+            var name = Net.CleanName(knownName ?? info.Name, "");
             if (macs.Count > 0 && name.Length is > 0 and <= 40) PairStore.SaveWake(new WakeTarget(name, macs, ip?.ToString()));
         }
         catch (Exception e) when (e is InvalidDataException or System.Text.Json.JsonException) { }

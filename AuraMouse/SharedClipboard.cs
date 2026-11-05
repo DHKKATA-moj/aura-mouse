@@ -18,7 +18,7 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
 {
     const int WM_CLIPBOARDUPDATE = 0x031D, VK_CONTROL = 0x11, VK_V = 0x56;
     const int MaxImage = Msg.MaxPayload - 1024;
-    const string PrivateMark = "ExcludeClipboardContentFromMonitorProcessing";
+    static readonly string[] PrivateMarks = ["ExcludeClipboardContentFromMonitorProcessing", "Clipboard Viewer Ignore"];
     static readonly byte[] PngStart = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
 
     sealed record RemoteFiles(DragInfo Info, uint Sequence);
@@ -67,7 +67,7 @@ internal sealed class SharedClipboard : NativeWindow, IDisposable
 
         try
         {
-            if (Clipboard.ContainsData(PrivateMark)) return; // a password manager asking not to be shared
+            if (PrivateMarks.Any(Clipboard.ContainsData)) return; // a password manager asking not to be shared
             if (Clipboard.ContainsFileDropList())
             {
                 var paths = Clipboard.GetFileDropList().Cast<string>().ToArray();
