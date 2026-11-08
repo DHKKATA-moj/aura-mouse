@@ -70,11 +70,89 @@ internal static class DragUi
         {
             _label.Text = text;
             var area = Screen.FromPoint(Cursor.Position).Bounds;
-            int w = (int)(340 * Theme.Scale), h = (int)(48 * Theme.Scale);
+            // Wide enough for the text and its icon, whatever the language.
+            float textWidth = TextRenderer.MeasureText(text, Theme.Font(11, FontStyle.Bold)).Width;
+            int w = (int)(Math.Max(340, textWidth + 11 * 1.9f + 48) * Theme.Scale), h = (int)(48 * Theme.Scale);
+            w = Math.Min(w, area.Width - 20);
             Bounds = new Rectangle(area.Left + (area.Width - w) / 2, area.Top + (int)(40 * Theme.Scale), w, h);
             if (!Visible) Show();
             _hide.Stop();
             _hide.Start();
+        }
+    }
+
+    static AdminPromptForm? _adminPrompt;
+
+    /// Says an administrator's program is in the way, with a button that fixes it. Like the notice,
+    /// it never takes focus from the game, but it can be clicked.
+    public static void ShowAdminPrompt(string text, Action restart)
+    {
+        if (_adminPrompt == null || _adminPrompt.IsDisposed) _adminPrompt = new AdminPromptForm();
+        _adminPrompt.Open(text, restart);
+    }
+
+    sealed class AdminPromptForm : Form
+    {
+        readonly TextBlock _label = new() { FontSize = 10.5f, Bold = true }; // no icon: a label with one doesn't wrap
+        readonly PillButton _restart = new() { Glyph = Glyphs.Power, Kind = ButtonKind.Primary };
+        readonly PillButton _close = new() { Kind = ButtonKind.Ghost };
+        readonly System.Windows.Forms.Timer _hide = new() { Interval = 15000 };
+        Action? _onRestart;
+
+        public AdminPromptForm()
+        {
+            AutoScaleMode = AutoScaleMode.None;
+            FormBorderStyle = FormBorderStyle.None;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.Manual;
+            TopMost = true;
+            BackColor = Theme.SolidSurface;
+            Controls.AddRange([_label, _restart, _close]);
+            _restart.Click += (_, _) => { Hide(); _onRestart?.Invoke(); };
+            _close.Click += (_, _) => Hide();
+            _hide.Tick += (_, _) => { _hide.Stop(); Hide(); };
+        }
+
+        protected override bool ShowWithoutActivation => true;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= WS_EX_TOPMOST | WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE;
+                return cp;
+            }
+        }
+
+        public void Open(string text, Action restart)
+        {
+            _onRestart = restart;
+            _label.Text = text;
+            _restart.Text = L.T("admin_restart"); // here, in case the language changed since last time
+            _close.Text = L.T("not_now");
+            BackColor = Theme.SolidSurface;
+            int S(float v) => (int)(v * Theme.Scale);
+            var area = Screen.PrimaryScreen!.WorkingArea;
+            int w = S(460), h = S(136);
+            Bounds = new Rectangle(area.Left + (area.Width - w) / 2, area.Top + S(40), w, h);
+            _label.Bounds = new Rectangle(S(16), S(10), w - S(32), S(64));
+            _restart.Bounds = new Rectangle(w - S(16 + 230), S(80), S(230), S(42));
+            _close.Bounds = new Rectangle(w - S(16 + 230 + 10 + 120), S(80), S(120), S(42));
+            if (L.Rtl)
+            {
+                _restart.Left = S(16);
+                _close.Left = S(16 + 230 + 10);
+            }
+            if (!Visible) Show();
+            _hide.Stop();
+            _hide.Start();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            using var edge = new Pen(Theme.Border);
+            e.Graphics.DrawRectangle(edge, 0, 0, Width - 1, Height - 1);
         }
     }
 

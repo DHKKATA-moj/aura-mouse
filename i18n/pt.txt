@@ -196,3 +196,8 @@ Remover deste PC
 Deixa de iniciar com o Windows, remove a regra do firewall e esquece computadores salvos e configurações. Os arquivos recebidos ficam
 Remover as configurações do Aura Mouse deste PC? Os computadores salvos precisarão de um novo código.
 Pronto. Agora você pode apagar o arquivo do programa Aura Mouse.
+{0} é executado como administrador, por isso o Aura Mouse não o pode controlar. O rato voltou para aqui.
+Este programa é executado como administrador, por isso o Aura Mouse não o pode controlar. O rato voltou para aqui.
+Reiniciar como administrador
+Agora não
+O Aura Mouse está a ser executado como administrador

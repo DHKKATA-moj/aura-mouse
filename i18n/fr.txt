@@ -196,3 +196,8 @@ Retirer de ce PC
 Ne démarre plus avec Windows, retire sa règle de pare-feu et oublie les ordinateurs enregistrés et les paramètres. Les fichiers reçus restent
 Retirer les paramètres d'Aura Mouse de ce PC ? Les ordinateurs enregistrés auront besoin d'un nouveau code.
 Terminé. Vous pouvez maintenant supprimer le fichier du programme Aura Mouse.
+{0} s'exécute en tant qu'administrateur, Aura Mouse ne peut donc pas le contrôler. La souris est revenue ici.
+Ce programme s'exécute en tant qu'administrateur, Aura Mouse ne peut donc pas le contrôler. La souris est revenue ici.
+Redémarrer en tant qu'administrateur
+Pas maintenant
+Aura Mouse s'exécute en tant qu'administrateur

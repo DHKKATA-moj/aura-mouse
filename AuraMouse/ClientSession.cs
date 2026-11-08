@@ -66,6 +66,11 @@ internal sealed class ClientSession : IDisposable
             StopDrivingLocally(5000);
             Post(new Msg(MsgType.TakeOver));
         };
+        _capture.FrontWalledOff = () =>
+        {
+            if (_driving) _capture.Escape?.Invoke();
+            if (_active) GiveBack();
+        };
     }
 
     public bool CanTransfer => _connected && _fileKey != null;
@@ -254,13 +259,7 @@ internal sealed class ClientSession : IDisposable
 
             case MsgType.Move when _active:
                 var exit = _player.Move(m.A, m.B, edge => !_locked && edge == _enteredFrom, out int ratio);
-                if (exit != Edge.None)
-                {
-                    CancelCarry(); // went back without dropping
-                    Post(new Msg(MsgType.Leave, 0, ratio));
-                    InputPlayer.ReleaseModifiers();
-                    _active = false;
-                }
+                if (exit != Edge.None) GiveBack(ratio);
                 break;
 
             case MsgType.TextInput when _active:
@@ -409,6 +408,15 @@ internal sealed class ClientSession : IDisposable
             DragUi.HideGhost();
             StartDownload(carry.Id, DropFolder.At(Cursor.Position));
         }, null);
+    }
+
+    /// The other computer's mouse goes back to it, at this point along the edge it came in by.
+    void GiveBack(int ratio = 5000)
+    {
+        _active = false;
+        CancelCarry(); // went back without dropping
+        Post(new Msg(MsgType.Leave, 0, ratio));
+        InputPlayer.ReleaseModifiers();
     }
 
     void CancelCarry()

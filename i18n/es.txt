@@ -196,3 +196,8 @@ Quitar de este PC
 Deja de iniciarse con Windows, quita su regla del firewall y olvida los equipos guardados y los ajustes. Los archivos recibidos se quedan
 ¿Quitar los ajustes de Aura Mouse de este PC? Los equipos guardados necesitarán un código nuevo para conectarse.
 Listo. Ya puedes borrar el archivo del programa Aura Mouse.
+{0} se ejecuta como administrador, así que Aura Mouse no puede controlarlo. El ratón ha vuelto aquí.
+Este programa se ejecuta como administrador, así que Aura Mouse no puede controlarlo. El ratón ha vuelto aquí.
+Reiniciar como administrador
+Ahora no
+Aura Mouse se ejecuta como administrador

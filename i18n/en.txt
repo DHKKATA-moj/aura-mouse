@@ -196,3 +196,8 @@ Remove from this PC
 Stops starting with Windows, removes its firewall rule, and forgets saved computers and settings. Received files stay
 Remove Aura Mouse's settings from this PC? Saved computers will need a new code to connect again.
 Done. You can now delete the Aura Mouse program file.
+{0} runs as administrator, so Aura Mouse can't control it. The mouse came back here.
+This program runs as administrator, so Aura Mouse can't control it. The mouse came back here.
+Restart as administrator
+Not now
+Aura Mouse is running as administrator

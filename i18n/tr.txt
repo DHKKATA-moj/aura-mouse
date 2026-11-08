@@ -196,3 +196,8 @@ Bu PC'den kaldır
 Windows ile başlamayı durdurur, güvenlik duvarı kuralını kaldırır, kayıtlı bilgisayarları ve ayarları unutur. Alınan dosyalar kalır
 Aura Mouse ayarları bu PC'den kaldırılsın mı? Kayıtlı bilgisayarlar yeni bir kod gerektirecek.
 Tamam. Artık Aura Mouse program dosyasını silebilirsiniz.
+{0} yönetici olarak çalışıyor, bu yüzden Aura Mouse onu kontrol edemiyor. Fare buraya geri döndü.
+Bu program yönetici olarak çalışıyor, bu yüzden Aura Mouse onu kontrol edemiyor. Fare buraya geri döndü.
+Yönetici olarak yeniden başlat
+Şimdi değil
+Aura Mouse yönetici olarak çalışıyor

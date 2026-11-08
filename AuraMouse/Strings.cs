@@ -205,6 +205,11 @@ internal static class L
         ["err_too_many"] = "Too many files (over 100,000)",
         ["err_generic"] = "Something went wrong",
         ["port_busy"] = "Aura Mouse is already running, or another app is using its port.",
+        ["admin_in_front"] = "{0} runs as administrator, so Aura Mouse can't control it. The mouse came back here.",
+        ["admin_in_front_unnamed"] = "This program runs as administrator, so Aura Mouse can't control it. The mouse came back here.",
+        ["admin_restart"] = "Restart as administrator",
+        ["not_now"] = "Not now",
+        ["admin_now"] = "Aura Mouse is running as administrator",
     };
 
     public static string T(string key)

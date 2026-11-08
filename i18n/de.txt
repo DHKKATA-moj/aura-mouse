@@ -196,3 +196,8 @@ Von diesem PC entfernen
 Startet nicht mehr mit Windows, entfernt seine Firewall-Regel und vergisst gespeicherte Computer und Einstellungen. Empfangene Dateien bleiben
 Einstellungen von Aura Mouse von diesem PC entfernen? Gespeicherte Computer brauchen dann einen neuen Code.
 Fertig. Du kannst die Programmdatei von Aura Mouse jetzt löschen.
+{0} läuft als Administrator, daher kann Aura Mouse es nicht steuern. Die Maus ist wieder hier.
+Dieses Programm läuft als Administrator, daher kann Aura Mouse es nicht steuern. Die Maus ist wieder hier.
+Als Administrator neu starten
+Nicht jetzt
+Aura Mouse läuft als Administrator

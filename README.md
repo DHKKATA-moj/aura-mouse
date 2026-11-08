@@ -59,6 +59,14 @@ screen. Both screens show the same number, so you can check you're approving the
 
 You can change both under **Settings**.
 
+### Games run as administrator
+
+Windows keeps ordinary programs away from ones run as administrator, which many games are. When one comes to the
+front, Aura Mouse brings the mouse back to the computer you're sitting at and offers to restart as administrator.
+Choose **Restart as administrator** there, or from the tray icon, to use the mouse with that game. It remembers, and
+starts as administrator from then on; say **No** when Windows asks to go back to normal. While it runs as administrator,
+dragging or pasting files to and from Explorer may not work.
+
 ## Security
 
 Anyone considering this on a shared network should read [SECURITY.md](SECURITY.md). It covers how pairing and encryption

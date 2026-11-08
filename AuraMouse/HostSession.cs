@@ -142,6 +142,11 @@ internal sealed class HostSession : IDisposable
         };
         _capture.Escape = () => { if (_active is { } a) { Post(a, MsgType.Release); ComeBack(a, 5000); } };
         _capture.LockShortcut = ToggleLock;
+        _capture.FrontWalledOff = () =>
+        {
+            _capture.Escape?.Invoke();
+            if (_driver != null) TakeBackFromDriver();
+        };
         _capture.Install();
         // Not on the window's thread: started there, every await would come back to it, and any busy
         // moment (a slow clipboard, a redraw) would hold up all the mouse movement passing through here.

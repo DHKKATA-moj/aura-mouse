@@ -13,6 +13,9 @@ internal sealed class InputCapture : IDisposable
     readonly HookProc _mouseProc, _keyProc; // kept as fields so the GC doesn't collect them
     readonly ChordDetector _lockChord = new(), _escapeChord = new();
     IntPtr _mouseHook, _keyHook;
+    System.Threading.Timer? _watch;
+    IntPtr _walledWindow;
+    int _watching;
     Thread? _thread;
     uint _threadId;
     volatile Action<Msg>? _sink; // set while capturing
@@ -35,6 +38,11 @@ internal sealed class InputCapture : IDisposable
 
     /// The user's lock shortcut was pressed, capturing or not.
     public Action? LockShortcut { get; set; }
+
+    /// An administrator's program is in front, so the hooks have gone deaf and played input is thrown
+    /// away. Called a few times a second for as long as that lasts, from a timer thread: whatever this
+    /// computer is doing across computers has to end, or its hidden cursor and the way-back keys are lost.
+    public Action? FrontWalledOff { get; set; }
 
     public bool Capturing => _sink != null;
 
@@ -68,6 +76,25 @@ internal sealed class InputCapture : IDisposable
         };
         _thread.Start();
         ready.Wait();
+        if (!Elevation.IsAdmin) _watch = new System.Threading.Timer(_ => Watch(), null, 250, 250);
+    }
+
+    void Watch()
+    {
+        if (Interlocked.Exchange(ref _watching, 1) == 1) return; // the last check is still going
+        try
+        {
+            if (!Elevation.FrontIsWalledOff(out var window, out var name))
+            {
+                _walledWindow = IntPtr.Zero;
+                return;
+            }
+            FrontWalledOff?.Invoke();
+            if (window == _walledWindow) return;
+            _walledWindow = window;
+            Elevation.RaiseAdminInFront(name);
+        }
+        finally { Volatile.Write(ref _watching, 0); }
     }
 
     public void Begin(Action<Msg> sink)
@@ -163,6 +190,7 @@ internal sealed class InputCapture : IDisposable
 
     public void Dispose()
     {
+        _watch?.Dispose();
         End();
         if (_thread == null) return;
         PostThreadMessage(_threadId, WM_QUIT, IntPtr.Zero, IntPtr.Zero); // the thread unhooks and exits

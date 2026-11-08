@@ -83,6 +83,12 @@ internal sealed class MainForm : Form
             _transfers.ShowNearCorner(this);
         });
         _tray = CreateTray();
+        Elevation.AdminInFront += name => RunOnUi(() =>
+        {
+            // Only matters while working across computers; opening Task Manager on its own is fine.
+            if (_peers.Count == 0 && !_clientConnected) return;
+            DragUi.ShowAdminPrompt(name.Length > 0 ? string.Format(L.T("admin_in_front"), name) : L.T("admin_in_front_unnamed"), RestartAsAdmin);
+        });
         _wakeTimer.Tick += (_, _) => CheckWakeTargets();
         _wakeTimer.Start();
         Render();
@@ -104,10 +110,17 @@ internal sealed class MainForm : Form
             menu.Items.Add(L.T("tray_open"), null, (_, _) => BringBack());
             if (_host != null || _client != null)
                 menu.Items.Add(L.T(IsLocked ? "unlocked_notice" : "lock_mouse"), null, (_, _) => ToggleLock());
+            if (!Elevation.IsAdmin) menu.Items.Add(L.T("admin_restart"), null, (_, _) => RestartAsAdmin());
             menu.Items.Add(new ToolStripSeparator());
             menu.Items.Add(L.T("tray_exit"), null, (_, _) => ExitApp());
         };
         return tray;
+    }
+
+    /// For games run as administrator. The new copy takes over once this one has closed, and reconnects.
+    void RestartAsAdmin()
+    {
+        if (Elevation.StartAsAdmin()) ExitApp();
     }
 
     /// Any thread.
