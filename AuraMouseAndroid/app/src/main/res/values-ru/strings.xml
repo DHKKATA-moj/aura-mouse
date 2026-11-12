@@ -48,6 +48,16 @@
     <string name="power_off_title">Выключить %1$s?</string>
     <string name="power_off_sub">Выключится через 20 секунд. Тот, кто у компьютера, ещё может это остановить.</string>
     <string name="power_off_sent">%1$s скоро выключится</string>
+    <string name="tile_wake_label">Включить ПК</string>
+    <string name="tile_shutdown_label">Выключить ПК</string>
+    <string name="tile_wake_sent">Сигнал отправлен на компьютер</string>
+    <string name="tile_off_sending">Выключение компьютера…</string>
+    <string name="tile_off_fail">Не удалось связаться с компьютером</string>
+    <string name="tile_none">Откройте Aura Mouse и сначала подключитесь к компьютеру</string>
+    <string name="tile_add_hint">Добавьте кнопки в Пункт управления, чтобы пользоваться без открытия приложения:</string>
+    <string name="tile_add_wake">Добавить кнопку «Включить ПК»</string>
+    <string name="tile_add_shutdown">Добавить кнопку «Выключить ПК»</string>
+    <string name="tile_add_manual">Добавьте из Пункта управления, затем «Изменить»</string>
     <string name="remove">Удалить</string>
     <string name="power_sent">Сигнал отправлен на %1$s. Запуск может занять минуту</string>
     <string name="power_no_network">Телефон не подключён к Wi-Fi</string>

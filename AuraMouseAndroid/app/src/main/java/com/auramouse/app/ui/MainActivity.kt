@@ -427,6 +427,11 @@ class MainActivity : Activity() {
         column.addView(label(getString(R.string.power_sub), 14f, Style.MUTED), wrap(bottom = 24))
         if (Link.wakeTargets.isEmpty()) column.addView(label(getString(R.string.power_empty), 15f, Style.TEXT), wrap(bottom = 24))
         addComputers(column)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && Link.hasSavedComputer()) {
+            column.addView(label(getString(R.string.tile_add_hint), 13f, Style.MUTED), wrap(bottom = 8))
+            column.addView(ghost(getString(R.string.tile_add_wake)) { requestTile(WakeTileService::class.java, R.string.tile_wake_label, R.drawable.ic_tile_wake) }, full(bottom = 8))
+            column.addView(ghost(getString(R.string.tile_add_shutdown)) { requestTile(ShutdownTileService::class.java, R.string.tile_shutdown_label, R.drawable.ic_tile_shutdown) }, full(bottom = 16))
+        }
         column.addView(label(getString(R.string.power_needs), 12f, Style.MUTED), wrap())
         return ScrollView(this).apply { addView(column) }
     }
@@ -453,6 +458,22 @@ class MainActivity : Activity() {
             Link.removeWake(target)
         }.apply { contentDescription = getString(R.string.remove) }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(44)))
         return row
+    }
+
+    @android.annotation.SuppressLint("NewApi")
+    private fun requestTile(service: Class<*>, label: Int, icon: Int) {
+        val sb = getSystemService(android.app.StatusBarManager::class.java) ?: return
+        try {
+            sb.requestAddTileService(
+                android.content.ComponentName(this, service),
+                getString(label),
+                android.graphics.drawable.Icon.createWithResource(this, icon),
+                { it.run() },
+                { }
+            )
+        } catch (_: Exception) {
+            toast(R.string.tile_add_manual)
+        }
     }
 
     private fun confirmShutdown(target: WakeTarget) {

@@ -209,3 +209,13 @@ Turn off
 Turn off {0}?
 It will turn off in 20 seconds. Someone at the computer can still stop it.
 {0} will turn off in a moment
+Turn on PC
+Turn off PC
+Signal sent to the computer
+Turning off the computer…
+Couldn't reach the computer
+Open Aura Mouse and connect to a computer first
+Add buttons to Control Center to use these without opening the app:
+Add "Turn on PC" button
+Add "Turn off PC" button
+Add it from Control Center, then Edit

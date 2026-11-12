@@ -48,6 +48,16 @@
     <string name="power_off_title">%1$s बंद करें?</string>
     <string name="power_off_sub">यह 20 सेकंड में बंद हो जाएगा। कंप्यूटर के पास मौजूद कोई इसे अब भी रोक सकता है।</string>
     <string name="power_off_sent">%1$s थोड़ी देर में बंद हो जाएगा</string>
+    <string name="tile_wake_label">PC चालू करें</string>
+    <string name="tile_shutdown_label">PC बंद करें</string>
+    <string name="tile_wake_sent">कंप्यूटर को सिग्नल भेजा गया</string>
+    <string name="tile_off_sending">कंप्यूटर बंद किया जा रहा है…</string>
+    <string name="tile_off_fail">कंप्यूटर तक नहीं पहुँच सके</string>
+    <string name="tile_none">पहले Aura Mouse खोलें और किसी कंप्यूटर से कनेक्ट करें</string>
+    <string name="tile_add_hint">ऐप खोले बिना इस्तेमाल के लिए कंट्रोल सेंटर में बटन जोड़ें:</string>
+    <string name="tile_add_wake">\"PC चालू करें\" बटन जोड़ें</string>
+    <string name="tile_add_shutdown">\"PC बंद करें\" बटन जोड़ें</string>
+    <string name="tile_add_manual">इसे कंट्रोल सेंटर से, फिर Edit से जोड़ें</string>
     <string name="remove">हटाएँ</string>
     <string name="power_sent">%1$s को संकेत भेजा। शुरू होने में एक मिनट लग सकता है</string>
     <string name="power_no_network">फ़ोन Wi-Fi नेटवर्क पर नहीं है</string>

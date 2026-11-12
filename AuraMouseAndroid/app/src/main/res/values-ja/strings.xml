@@ -48,6 +48,16 @@
     <string name="power_off_title">%1$s の電源を切りますか？</string>
     <string name="power_off_sub">20 秒後に電源が切れます。コンピューターの前にいる人はまだ止められます。</string>
     <string name="power_off_sent">%1$s はまもなく電源が切れます</string>
+    <string name="tile_wake_label">PCをオン</string>
+    <string name="tile_shutdown_label">PCをオフ</string>
+    <string name="tile_wake_sent">コンピューターに信号を送信しました</string>
+    <string name="tile_off_sending">コンピューターをオフにしています…</string>
+    <string name="tile_off_fail">コンピューターに接続できませんでした</string>
+    <string name="tile_none">先に Aura Mouse を開いてコンピューターに接続してください</string>
+    <string name="tile_add_hint">アプリを開かずに使えるよう、コントロールセンターにボタンを追加：</string>
+    <string name="tile_add_wake">「PCをオン」ボタンを追加</string>
+    <string name="tile_add_shutdown">「PCをオフ」ボタンを追加</string>
+    <string name="tile_add_manual">コントロールセンターの編集から追加してください</string>
     <string name="remove">削除</string>
     <string name="power_sent">%1$s に信号を送信しました。起動に 1 分ほどかかる場合があります</string>
     <string name="power_no_network">スマートフォンは Wi-Fi に接続していません</string>

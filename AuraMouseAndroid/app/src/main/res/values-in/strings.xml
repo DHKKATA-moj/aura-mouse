@@ -48,6 +48,16 @@
     <string name="power_off_title">Matikan %1$s?</string>
     <string name="power_off_sub">Akan mati dalam 20 detik. Seseorang di komputer masih bisa menghentikannya.</string>
     <string name="power_off_sent">%1$s akan mati sebentar lagi</string>
+    <string name="tile_wake_label">Nyalakan PC</string>
+    <string name="tile_shutdown_label">Matikan PC</string>
+    <string name="tile_wake_sent">Sinyal dikirim ke komputer</string>
+    <string name="tile_off_sending">Mematikan komputer…</string>
+    <string name="tile_off_fail">Tidak bisa menghubungi komputer</string>
+    <string name="tile_none">Buka Aura Mouse dan sambungkan ke komputer dulu</string>
+    <string name="tile_add_hint">Tambahkan tombol ke Pusat Kontrol untuk memakainya tanpa membuka aplikasi:</string>
+    <string name="tile_add_wake">Tambah tombol \"Nyalakan PC\"</string>
+    <string name="tile_add_shutdown">Tambah tombol \"Matikan PC\"</string>
+    <string name="tile_add_manual">Tambahkan dari Pusat Kontrol, lalu Edit</string>
     <string name="remove">Hapus</string>
     <string name="power_sent">Sinyal terkirim ke %1$s. Perlu satu menit untuk menyala</string>
     <string name="power_no_network">Ponsel tidak berada di jaringan Wi-Fi</string>

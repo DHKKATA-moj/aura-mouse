@@ -48,6 +48,16 @@
     <string name="power_off_title">تطفّي %1$s؟</string>
     <string name="power_off_sub">راح تنطفي بعد 20 ثانية. اللي عند الحاسبة يكدر يوقفها.</string>
     <string name="power_off_sent">%1$s راح تنطفي بعد لحظة</string>
+    <string name="tile_wake_label">تشغيل الحاسبة</string>
+    <string name="tile_shutdown_label">إطفاء الحاسبة</string>
+    <string name="tile_wake_sent">تم إرسال الإشارة للحاسبة</string>
+    <string name="tile_off_sending">يتم إطفاء الحاسبة…</string>
+    <string name="tile_off_fail">ما كدرنا نوصل للحاسبة</string>
+    <string name="tile_none">افتح Aura Mouse واتصل بحاسبة أول</string>
+    <string name="tile_add_hint">ضيف أزرار للكنترول سنتر حتى تستعملها بدون ما تفتح التطبيق:</string>
+    <string name="tile_add_wake">ضيف زر \"تشغيل الحاسبة\"</string>
+    <string name="tile_add_shutdown">ضيف زر \"إطفاء الحاسبة\"</string>
+    <string name="tile_add_manual">ضيفها من الكنترول سنتر، بعدين Edit</string>
     <string name="remove">إزالة</string>
     <string name="power_sent">انرسلت الإشارة إلى %1$s. ممكن تاخذ دقيقة حتى تشتغل</string>
     <string name="power_no_network">التلفون مو متصل بواي فاي</string>

@@ -209,3 +209,13 @@ Aura Mouse éteint cet ordinateur, à la demande de votre téléphone.
 Éteindre {0} ?
 Il s'éteindra dans 20 secondes. Quelqu'un à l'ordinateur peut encore l'arrêter.
 {0} va s'éteindre dans un instant
+Allumer le PC
+Éteindre le PC
+Signal envoyé à l'ordinateur
+Extinction de l'ordinateur…
+Ordinateur injoignable
+Ouvrez Aura Mouse et connectez-vous à un ordinateur d'abord
+Ajoutez des boutons au Centre de contrôle pour les utiliser sans ouvrir l'appli :
+Ajouter le bouton « Allumer le PC »
+Ajouter le bouton « Éteindre le PC »
+Ajoutez-le depuis le Centre de contrôle, puis Modifier

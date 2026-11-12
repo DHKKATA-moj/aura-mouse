@@ -209,3 +209,13 @@ Kapat
 {0} kapatılsın mı?
 20 saniye içinde kapanacak. Bilgisayarın başındaki biri hâlâ durdurabilir.
 {0} birazdan kapanacak
+Bilgisayarı aç
+Bilgisayarı kapat
+Bilgisayara sinyal gönderildi
+Bilgisayar kapatılıyor…
+Bilgisayara ulaşılamadı
+Önce Aura Mouse'u açıp bir bilgisayara bağlan
+Uygulamayı açmadan kullanmak için Kontrol Merkezi'ne düğme ekle:
+"Bilgisayarı aç" düğmesi ekle
+"Bilgisayarı kapat" düğmesi ekle
+Kontrol Merkezi'nden, sonra Düzenle'den ekle

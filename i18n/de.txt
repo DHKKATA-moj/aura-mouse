@@ -209,3 +209,13 @@ Ausschalten
 {0} ausschalten?
 Er wird in 20 Sekunden ausgeschaltet. Jemand am Computer kann es noch stoppen.
 {0} wird gleich ausgeschaltet
+PC einschalten
+PC ausschalten
+Signal an den Computer gesendet
+Computer wird ausgeschaltet…
+Computer nicht erreichbar
+Öffne Aura Mouse und verbinde dich zuerst mit einem Computer
+Füge Schnelleinstellungen hinzu, um sie ohne die App zu nutzen:
+Schaltfläche „PC einschalten" hinzufügen
+Schaltfläche „PC ausschalten" hinzufügen
+Über das Kontrollzentrum hinzufügen, dann Bearbeiten

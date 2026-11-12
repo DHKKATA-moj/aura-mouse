@@ -47,6 +47,28 @@
             android:exported="false"
             android:foregroundServiceType="connectedDevice" />
 
+        <service
+            android:name=".ui.WakeTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_wake"
+            android:label="@string/tile_wake_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".ui.ShutdownTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_shutdown"
+            android:label="@string/tile_shutdown_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
         <provider
             android:name=".ui.ClipProvider"
             android:authorities="com.auramouse.app.clip"

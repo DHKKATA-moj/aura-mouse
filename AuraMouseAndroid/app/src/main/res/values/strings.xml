@@ -48,6 +48,16 @@
     <string name="power_off_title">Turn off %1$s?</string>
     <string name="power_off_sub">It will turn off in 20 seconds. Someone at the computer can still stop it.</string>
     <string name="power_off_sent">%1$s will turn off in a moment</string>
+    <string name="tile_wake_label">Turn on PC</string>
+    <string name="tile_shutdown_label">Turn off PC</string>
+    <string name="tile_wake_sent">Signal sent to the computer</string>
+    <string name="tile_off_sending">Turning off the computer…</string>
+    <string name="tile_off_fail">Couldn\'t reach the computer</string>
+    <string name="tile_none">Open Aura Mouse and connect to a computer first</string>
+    <string name="tile_add_hint">Add buttons to Control Center to use these without opening the app:</string>
+    <string name="tile_add_wake">Add \"Turn on PC\" button</string>
+    <string name="tile_add_shutdown">Add \"Turn off PC\" button</string>
+    <string name="tile_add_manual">Add it from Control Center, then Edit</string>
     <string name="remove">Remove</string>
     <string name="power_sent">Signal sent to %1$s. It can take a minute to start</string>
     <string name="power_no_network">The phone isn\'t on a Wi-Fi network</string>

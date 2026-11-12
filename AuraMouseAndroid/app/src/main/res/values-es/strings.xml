@@ -48,6 +48,16 @@
     <string name="power_off_title">¿Apagar %1$s?</string>
     <string name="power_off_sub">Se apagará en 20 segundos. Alguien en el equipo aún puede detenerlo.</string>
     <string name="power_off_sent">%1$s se apagará en un momento</string>
+    <string name="tile_wake_label">Encender PC</string>
+    <string name="tile_shutdown_label">Apagar PC</string>
+    <string name="tile_wake_sent">Señal enviada al equipo</string>
+    <string name="tile_off_sending">Apagando el equipo…</string>
+    <string name="tile_off_fail">No se pudo contactar el equipo</string>
+    <string name="tile_none">Abre Aura Mouse y conéctate a un equipo primero</string>
+    <string name="tile_add_hint">Añade botones al Centro de control para usarlos sin abrir la app:</string>
+    <string name="tile_add_wake">Añadir botón \"Encender PC\"</string>
+    <string name="tile_add_shutdown">Añadir botón \"Apagar PC\"</string>
+    <string name="tile_add_manual">Añádelo desde el Centro de control y luego Editar</string>
     <string name="remove">Quitar</string>
     <string name="power_sent">Señal enviada a %1$s. Puede tardar un minuto en arrancar</string>
     <string name="power_no_network">El teléfono no está en una red Wi-Fi</string>

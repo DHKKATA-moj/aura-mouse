@@ -48,6 +48,16 @@
     <string name="power_off_title">%1$s خاموش شود؟</string>
     <string name="power_off_sub">تا ۲۰ ثانیه دیگر خاموش می‌شود. کسی که پای رایانه است هنوز می‌تواند جلوی آن را بگیرد.</string>
     <string name="power_off_sent">%1$s تا لحظاتی دیگر خاموش می‌شود</string>
+    <string name="tile_wake_label">روشن کردن رایانه</string>
+    <string name="tile_shutdown_label">خاموش کردن رایانه</string>
+    <string name="tile_wake_sent">سیگنال به رایانه ارسال شد</string>
+    <string name="tile_off_sending">در حال خاموش کردن رایانه…</string>
+    <string name="tile_off_fail">دسترسی به رایانه ممکن نشد</string>
+    <string name="tile_none">ابتدا Aura Mouse را باز کن و به یک رایانه وصل شو</string>
+    <string name="tile_add_hint">برای استفاده بدون باز کردن برنامه، دکمه‌ها را به مرکز کنترل اضافه کن:</string>
+    <string name="tile_add_wake">افزودن دکمه «روشن کردن رایانه»</string>
+    <string name="tile_add_shutdown">افزودن دکمه «خاموش کردن رایانه»</string>
+    <string name="tile_add_manual">از مرکز کنترل و سپس ویرایش اضافه کن</string>
     <string name="remove">حذف</string>
     <string name="power_sent">سیگنال به %1$s ارسال شد. شروع ممکن است یک دقیقه طول بکشد</string>
     <string name="power_no_network">تلفن در شبکه وای‌فای نیست</string>

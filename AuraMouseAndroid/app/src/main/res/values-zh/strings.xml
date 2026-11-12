@@ -48,6 +48,16 @@
     <string name="power_off_title">关闭 %1$s？</string>
     <string name="power_off_sub">将在 20 秒后关机。电脑旁的人仍可以阻止。</string>
     <string name="power_off_sent">%1$s 即将关机</string>
+    <string name="tile_wake_label">开机</string>
+    <string name="tile_shutdown_label">关机</string>
+    <string name="tile_wake_sent">已向电脑发送信号</string>
+    <string name="tile_off_sending">正在关闭电脑…</string>
+    <string name="tile_off_fail">无法连接到电脑</string>
+    <string name="tile_none">请先打开 Aura Mouse 并连接到一台电脑</string>
+    <string name="tile_add_hint">向控制中心添加按钮，无需打开应用即可使用：</string>
+    <string name="tile_add_wake">添加\"开机\"按钮</string>
+    <string name="tile_add_shutdown">添加\"关机\"按钮</string>
+    <string name="tile_add_manual">从控制中心然后\"编辑\"中添加</string>
     <string name="remove">移除</string>
     <string name="power_sent">信号已发送到 %1$s。启动可能需要一分钟</string>
     <string name="power_no_network">手机未连接 Wi-Fi 网络</string>

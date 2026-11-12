@@ -294,6 +294,68 @@ object Link : LinkEvents {
     /** Turn off the computer we're connected to. */
     fun shutdown() { link?.shutdown() }
 
+    // ───── from the Quick Settings tiles, with no app window open ─────
+
+    /** The saved computer, matched to its wake details. */
+    private fun savedWakeTarget(): WakeTarget? {
+        val host = store.host
+        val targets = store.wakeTargets
+        return targets.firstOrNull { host != null && it.name.equals(host.name, ignoreCase = true) } ?: targets.firstOrNull()
+    }
+
+    /** Wake the saved computer (Wake on LAN). Needs no connection. done(true) if the signal went out. */
+    fun wakeSaved(done: (Boolean) -> Unit) {
+        val target = savedWakeTarget()
+        if (target == null) { done(false); return }
+        thread(isDaemon = true) {
+            val sent = runCatching { Network.wake(target.macs) }.getOrDefault(0)
+            main.post { done(sent > 0) }
+        }
+    }
+
+    /** Turn off the saved computer. Uses the live link if there is one, else connects just long enough. */
+    fun shutdownSaved(done: (Boolean) -> Unit) {
+        val existing = link
+        if (existing != null && state == State.CONNECTED) { existing.shutdown(); done(true); return }
+        val host = store.host
+        if (host == null) { done(false); return }
+        thread(isDaemon = true) {
+            val ok = sendShutdownOnce(host)
+            main.post { done(ok) }
+        }
+    }
+
+    private val noEvents = object : LinkEvents {
+        override fun onPaired(host: SavedHost) {}
+        override fun onDisconnected() {}
+        override fun onDrivingChanged(driving: Boolean) {}
+        override fun onClipboard(kind: Int, payload: ByteArray) {}
+        override fun onFilesReady(id: String) {}
+        override fun onWakeInfo(name: String, macs: List<String>) {}
+    }
+
+    private fun sendShutdownOnce(host: SavedHost): Boolean {
+        val addresses = LinkedHashSet<InetAddress>()
+        runCatching { host.ip?.let { addresses.add(InetAddress.getByName(it)) } }
+        addresses.addAll(runCatching { Network.findHosts() }.getOrDefault(emptyList()))
+        for (ip in addresses) {
+            val attempt = HostLink(deviceName, noEvents)
+            try {
+                if (attempt.connectSaved(ip, host)) {
+                    store.host = SavedHost(host.id, host.name, host.key, ip.hostAddress)
+                    attempt.shutdown()
+                    Thread.sleep(900) // let the send loop flush it before we hang up
+                    attempt.close()
+                    return true
+                }
+            } catch (_: Exception) {
+            }
+        }
+        return false
+    }
+
+    fun hasSavedComputer(): Boolean = store.host != null
+
     /** Progress comes in thousands of small steps; the screen only needs a few a second. */
     private fun notifyUi() {
         main.post {

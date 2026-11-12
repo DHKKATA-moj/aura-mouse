@@ -48,6 +48,16 @@
     <string name="power_off_title">Desligar %1$s?</string>
     <string name="power_off_sub">Será desligado em 20 segundos. Alguém no computador ainda pode parar.</string>
     <string name="power_off_sent">%1$s vai desligar num instante</string>
+    <string name="tile_wake_label">Ligar PC</string>
+    <string name="tile_shutdown_label">Desligar PC</string>
+    <string name="tile_wake_sent">Sinal enviado ao computador</string>
+    <string name="tile_off_sending">A desligar o computador…</string>
+    <string name="tile_off_fail">Não foi possível contactar o computador</string>
+    <string name="tile_none">Abre o Aura Mouse e liga-te a um computador primeiro</string>
+    <string name="tile_add_hint">Adiciona botões ao Centro de Controlo para os usares sem abrir a app:</string>
+    <string name="tile_add_wake">Adicionar botão \"Ligar PC\"</string>
+    <string name="tile_add_shutdown">Adicionar botão \"Desligar PC\"</string>
+    <string name="tile_add_manual">Adiciona-o no Centro de Controlo e depois Editar</string>
     <string name="remove">Remover</string>
     <string name="power_sent">Sinal enviado a %1$s. Pode levar um minuto para iniciar</string>
     <string name="power_no_network">O telefone não está em uma rede Wi-Fi</string>

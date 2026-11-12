@@ -209,3 +209,13 @@ Matikan
 Matikan {0}?
 Akan mati dalam 20 detik. Seseorang di komputer masih bisa menghentikannya.
 {0} akan mati sebentar lagi
+Nyalakan PC
+Matikan PC
+Sinyal dikirim ke komputer
+Mematikan komputer…
+Tidak bisa menghubungi komputer
+Buka Aura Mouse dan sambungkan ke komputer dulu
+Tambahkan tombol ke Pusat Kontrol untuk memakainya tanpa membuka aplikasi:
+Tambah tombol "Nyalakan PC"
+Tambah tombol "Matikan PC"
+Tambahkan dari Pusat Kontrol, lalu Edit

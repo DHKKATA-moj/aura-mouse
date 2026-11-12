@@ -48,6 +48,16 @@
     <string name="power_off_title">%1$s kapatılsın mı?</string>
     <string name="power_off_sub">20 saniye içinde kapanacak. Bilgisayarın başındaki biri hâlâ durdurabilir.</string>
     <string name="power_off_sent">%1$s birazdan kapanacak</string>
+    <string name="tile_wake_label">Bilgisayarı aç</string>
+    <string name="tile_shutdown_label">Bilgisayarı kapat</string>
+    <string name="tile_wake_sent">Bilgisayara sinyal gönderildi</string>
+    <string name="tile_off_sending">Bilgisayar kapatılıyor…</string>
+    <string name="tile_off_fail">Bilgisayara ulaşılamadı</string>
+    <string name="tile_none">Önce Aura Mouse\'u açıp bir bilgisayara bağlan</string>
+    <string name="tile_add_hint">Uygulamayı açmadan kullanmak için Kontrol Merkezi\'ne düğme ekle:</string>
+    <string name="tile_add_wake">\"Bilgisayarı aç\" düğmesi ekle</string>
+    <string name="tile_add_shutdown">\"Bilgisayarı kapat\" düğmesi ekle</string>
+    <string name="tile_add_manual">Kontrol Merkezi\'nden, sonra Düzenle\'den ekle</string>
     <string name="remove">Kaldır</string>
     <string name="power_sent">Sinyal %1$s hedefine gönderildi. Başlaması bir dakika sürebilir</string>
     <string name="power_no_network">Telefon bir Wi-Fi ağında değil</string>

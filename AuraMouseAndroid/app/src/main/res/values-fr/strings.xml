@@ -48,6 +48,16 @@
     <string name="power_off_title">Éteindre %1$s ?</string>
     <string name="power_off_sub">Il s\'éteindra dans 20 secondes. Quelqu\'un à l\'ordinateur peut encore l\'arrêter.</string>
     <string name="power_off_sent">%1$s va s\'éteindre dans un instant</string>
+    <string name="tile_wake_label">Allumer le PC</string>
+    <string name="tile_shutdown_label">Éteindre le PC</string>
+    <string name="tile_wake_sent">Signal envoyé à l\'ordinateur</string>
+    <string name="tile_off_sending">Extinction de l\'ordinateur…</string>
+    <string name="tile_off_fail">Ordinateur injoignable</string>
+    <string name="tile_none">Ouvrez Aura Mouse et connectez-vous à un ordinateur d\'abord</string>
+    <string name="tile_add_hint">Ajoutez des boutons au Centre de contrôle pour les utiliser sans ouvrir l\'appli :</string>
+    <string name="tile_add_wake">Ajouter le bouton « Allumer le PC »</string>
+    <string name="tile_add_shutdown">Ajouter le bouton « Éteindre le PC »</string>
+    <string name="tile_add_manual">Ajoutez-le depuis le Centre de contrôle, puis Modifier</string>
     <string name="remove">Retirer</string>
     <string name="power_sent">Signal envoyé à %1$s. Le démarrage peut prendre une minute</string>
     <string name="power_no_network">Le téléphone n\'est pas sur un réseau Wi-Fi</string>

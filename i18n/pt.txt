@@ -209,3 +209,13 @@ Desligar
 Desligar {0}?
 Será desligado em 20 segundos. Alguém no computador ainda pode parar.
 {0} vai desligar num instante
+Ligar PC
+Desligar PC
+Sinal enviado ao computador
+A desligar o computador…
+Não foi possível contactar o computador
+Abre o Aura Mouse e liga-te a um computador primeiro
+Adiciona botões ao Centro de Controlo para os usares sem abrir a app:
+Adicionar botão "Ligar PC"
+Adicionar botão "Desligar PC"
+Adiciona-o no Centro de Controlo e depois Editar

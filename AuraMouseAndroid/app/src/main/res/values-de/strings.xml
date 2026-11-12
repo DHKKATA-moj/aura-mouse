@@ -48,6 +48,16 @@
     <string name="power_off_title">%1$s ausschalten?</string>
     <string name="power_off_sub">Er wird in 20 Sekunden ausgeschaltet. Jemand am Computer kann es noch stoppen.</string>
     <string name="power_off_sent">%1$s wird gleich ausgeschaltet</string>
+    <string name="tile_wake_label">PC einschalten</string>
+    <string name="tile_shutdown_label">PC ausschalten</string>
+    <string name="tile_wake_sent">Signal an den Computer gesendet</string>
+    <string name="tile_off_sending">Computer wird ausgeschaltet…</string>
+    <string name="tile_off_fail">Computer nicht erreichbar</string>
+    <string name="tile_none">Öffne Aura Mouse und verbinde dich zuerst mit einem Computer</string>
+    <string name="tile_add_hint">Füge Schnelleinstellungen hinzu, um sie ohne die App zu nutzen:</string>
+    <string name="tile_add_wake">Schaltfläche „PC einschalten\" hinzufügen</string>
+    <string name="tile_add_shutdown">Schaltfläche „PC ausschalten\" hinzufügen</string>
+    <string name="tile_add_manual">Über das Kontrollzentrum hinzufügen, dann Bearbeiten</string>
     <string name="remove">Entfernen</string>
     <string name="power_sent">Signal an %1$s gesendet. Der Start kann eine Minute dauern</string>
     <string name="power_no_network">Das Telefon ist in keinem WLAN</string>
