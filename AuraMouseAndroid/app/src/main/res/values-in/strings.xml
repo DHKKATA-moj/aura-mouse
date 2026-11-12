@@ -44,6 +44,10 @@
     <string name="power_sub">Mengirim sinyal lewat Wi-Fi ini. Hanya berfungsi di jaringan yang sama dengan komputer itu.</string>
     <string name="power_empty">Hubungkan ke komputer sekali dan akan tersimpan di sini.</string>
     <string name="power_on">Nyalakan</string>
+    <string name="power_off">Matikan</string>
+    <string name="power_off_title">Matikan %1$s?</string>
+    <string name="power_off_sub">Akan mati dalam 20 detik. Seseorang di komputer masih bisa menghentikannya.</string>
+    <string name="power_off_sent">%1$s akan mati sebentar lagi</string>
     <string name="remove">Hapus</string>
     <string name="power_sent">Sinyal terkirim ke %1$s. Perlu satu menit untuk menyala</string>
     <string name="power_no_network">Ponsel tidak berada di jaringan Wi-Fi</string>

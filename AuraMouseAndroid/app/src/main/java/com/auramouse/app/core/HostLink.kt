@@ -121,6 +121,9 @@ class HostLink(private val deviceName: String, private val events: LinkEvents) :
 
     fun sendClipboardText(text: String) { queue.add(Msg(T.CLIPBOARD, Clip.TEXT, payload = text.toByteArray(Charsets.UTF_8))) }
 
+    /** Ask the connected computer to turn itself off (it counts down and can be stopped there). */
+    fun shutdown() { queue.add(Msg(T.SHUTDOWN)) }
+
     /** The computer's own mouse is free to take over again. */
     fun release() {
         if (!driving) return

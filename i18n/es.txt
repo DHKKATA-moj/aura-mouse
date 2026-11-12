@@ -201,3 +201,11 @@ Este programa se ejecuta como administrador, así que Aura Mouse no puede contro
 Reiniciar como administrador
 Ahora no
 Aura Mouse se ejecuta como administrador
+Este equipo se apagará en {0} segundos. Lo pidió un teléfono vinculado.
+No apagar
+Apagado cancelado
+Aura Mouse está apagando este equipo, pedido desde tu teléfono.
+Apagar
+¿Apagar {0}?
+Se apagará en 20 segundos. Alguien en el equipo aún puede detenerlo.
+{0} se apagará en un momento

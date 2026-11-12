@@ -44,6 +44,10 @@
     <string name="power_sub">Sinyali bu Wi-Fi üzerinden gönderir. Yalnızca o bilgisayarla aynı ağda çalışır.</string>
     <string name="power_empty">Bir bilgisayara bir kez bağlanın, burada kaydedilir.</string>
     <string name="power_on">Aç</string>
+    <string name="power_off">Kapat</string>
+    <string name="power_off_title">%1$s kapatılsın mı?</string>
+    <string name="power_off_sub">20 saniye içinde kapanacak. Bilgisayarın başındaki biri hâlâ durdurabilir.</string>
+    <string name="power_off_sent">%1$s birazdan kapanacak</string>
     <string name="remove">Kaldır</string>
     <string name="power_sent">Sinyal %1$s hedefine gönderildi. Başlaması bir dakika sürebilir</string>
     <string name="power_no_network">Telefon bir Wi-Fi ağında değil</string>

@@ -44,6 +44,10 @@
     <string name="power_sub">Envía la señal por esta Wi-Fi. Solo funciona en la misma red que ese equipo.</string>
     <string name="power_empty">Conéctate a un equipo una vez y se guardará aquí.</string>
     <string name="power_on">Encender</string>
+    <string name="power_off">Apagar</string>
+    <string name="power_off_title">¿Apagar %1$s?</string>
+    <string name="power_off_sub">Se apagará en 20 segundos. Alguien en el equipo aún puede detenerlo.</string>
+    <string name="power_off_sent">%1$s se apagará en un momento</string>
     <string name="remove">Quitar</string>
     <string name="power_sent">Señal enviada a %1$s. Puede tardar un minuto en arrancar</string>
     <string name="power_no_network">El teléfono no está en una red Wi-Fi</string>

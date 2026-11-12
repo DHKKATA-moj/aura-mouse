@@ -12,7 +12,7 @@
     <ApplicationIcon>Assets\AuraMouse.ico</ApplicationIcon>
     <Product>Aura Mouse</Product>
     <AssemblyTitle>Aura Mouse</AssemblyTitle>
-    <Version>1.2.4</Version>
+    <Version>1.2.5</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <!-- The UI is built in code, not with the designer, so designer serialization rules don't apply. -->
     <NoWarn>$(NoWarn);WFO1000</NoWarn>

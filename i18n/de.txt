@@ -201,3 +201,11 @@ Dieses Programm läuft als Administrator, daher kann Aura Mouse es nicht steuern
 Als Administrator neu starten
 Nicht jetzt
 Aura Mouse läuft als Administrator
+Dieser Computer wird in {0} Sekunden ausgeschaltet. Angefordert von einem gekoppelten Telefon.
+Nicht ausschalten
+Herunterfahren abgebrochen
+Aura Mouse schaltet diesen Computer aus, angefordert von deinem Telefon.
+Ausschalten
+{0} ausschalten?
+Er wird in 20 Sekunden ausgeschaltet. Jemand am Computer kann es noch stoppen.
+{0} wird gleich ausgeschaltet

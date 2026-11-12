@@ -18,6 +18,8 @@
 - **Remote desktop.** See and control another computer on your network, only after its owner approves.
 - **Use your phone.** The Android app works as a touchpad and keyboard, sends files and views remote desktops.
 - **Turn computers on.** Wake a saved computer from another one or from the phone, if it supports Wake on LAN.
+- **Turn one off from your phone.** On the **Turn on a computer** screen, the computer you're connected to shows a
+  **Turn off** button. It gives a 20-second countdown that anyone sitting at the computer can stop.
 - **Play games safely.** A shortcut locks the mouse to one screen, and another brings it back if it gets stuck.
 - **Choose a look.** The Windows app has dark, light and two Aura Glass themes. On Windows 11, Aura Clear makes the
   window see-through, with what's behind it softly blurred.

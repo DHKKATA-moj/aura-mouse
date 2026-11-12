@@ -201,3 +201,11 @@ Ce programme s'exécute en tant qu'administrateur, Aura Mouse ne peut donc pas l
 Redémarrer en tant qu'administrateur
 Pas maintenant
 Aura Mouse s'exécute en tant qu'administrateur
+Cet ordinateur va s'éteindre dans {0} secondes. Demandé depuis un téléphone jumelé.
+Ne pas éteindre
+Extinction annulée
+Aura Mouse éteint cet ordinateur, à la demande de votre téléphone.
+Éteindre
+Éteindre {0} ?
+Il s'éteindra dans 20 secondes. Quelqu'un à l'ordinateur peut encore l'arrêter.
+{0} va s'éteindre dans un instant

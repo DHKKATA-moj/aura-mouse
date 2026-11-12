@@ -201,3 +201,11 @@ Program ini berjalan sebagai administrator, jadi Aura Mouse tidak bisa mengendal
 Mulai ulang sebagai administrator
 Nanti saja
 Aura Mouse berjalan sebagai administrator
+Komputer ini akan dimatikan dalam {0} detik. Diminta dari ponsel yang dipasangkan.
+Jangan matikan
+Mematikan dibatalkan
+Aura Mouse sedang mematikan komputer ini, diminta dari ponsel Anda.
+Matikan
+Matikan {0}?
+Akan mati dalam 20 detik. Seseorang di komputer masih bisa menghentikannya.
+{0} akan mati sebentar lagi

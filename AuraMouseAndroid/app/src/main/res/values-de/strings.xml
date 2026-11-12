@@ -44,6 +44,10 @@
     <string name="power_sub">Sendet das Signal über dieses WLAN. Funktioniert nur im selben Netzwerk wie der Computer.</string>
     <string name="power_empty">Verbinde dich einmal mit einem Computer, dann wird er hier gespeichert.</string>
     <string name="power_on">Einschalten</string>
+    <string name="power_off">Ausschalten</string>
+    <string name="power_off_title">%1$s ausschalten?</string>
+    <string name="power_off_sub">Er wird in 20 Sekunden ausgeschaltet. Jemand am Computer kann es noch stoppen.</string>
+    <string name="power_off_sent">%1$s wird gleich ausgeschaltet</string>
     <string name="remove">Entfernen</string>
     <string name="power_sent">Signal an %1$s gesendet. Der Start kann eine Minute dauern</string>
     <string name="power_no_network">Das Telefon ist in keinem WLAN</string>

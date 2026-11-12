@@ -44,6 +44,10 @@
     <string name="power_sub">이 Wi-Fi로 신호를 보냅니다. 해당 컴퓨터와 같은 네트워크에서만 작동합니다.</string>
     <string name="power_empty">컴퓨터에 한 번 연결하면 여기에 저장됩니다.</string>
     <string name="power_on">켜기</string>
+    <string name="power_off">끄기</string>
+    <string name="power_off_title">%1$s을(를) 끌까요?</string>
+    <string name="power_off_sub">20초 후에 꺼집니다. 컴퓨터 앞에 있는 사람이 아직 멈출 수 있습니다.</string>
+    <string name="power_off_sent">%1$s이(가) 곧 꺼집니다</string>
     <string name="remove">제거</string>
     <string name="power_sent">%1$s에 신호를 보냈습니다. 시작까지 1분 정도 걸릴 수 있습니다</string>
     <string name="power_no_network">휴대폰이 Wi-Fi 네트워크에 없습니다</string>

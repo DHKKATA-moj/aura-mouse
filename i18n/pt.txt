@@ -201,3 +201,11 @@ Este programa é executado como administrador, por isso o Aura Mouse não o pode
 Reiniciar como administrador
 Agora não
 O Aura Mouse está a ser executado como administrador
+Este computador será desligado em {0} segundos. Pedido a partir de um telemóvel associado.
+Não desligar
+Encerramento cancelado
+O Aura Mouse está a desligar este computador, pedido a partir do teu telemóvel.
+Desligar
+Desligar {0}?
+Será desligado em 20 segundos. Alguém no computador ainda pode parar.
+{0} vai desligar num instante

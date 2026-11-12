@@ -210,6 +210,10 @@ internal static class L
         ["admin_restart"] = "Restart as administrator",
         ["not_now"] = "Not now",
         ["admin_now"] = "Aura Mouse is running as administrator",
+        ["shutdown_soon"] = "This computer will turn off in {0} seconds. Asked for from a paired phone.",
+        ["shutdown_cancel"] = "Don't turn off",
+        ["shutdown_canceled"] = "Shutdown cancelled",
+        ["shutdown_warning"] = "Aura Mouse is turning this computer off, asked for from your phone.",
     };
 
     public static string T(string key)

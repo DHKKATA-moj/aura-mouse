@@ -81,6 +81,9 @@ internal sealed class HostSession : IDisposable
     /// The mouse was locked to its screen or let go, from any computer's shortcut. Any thread.
     public event Action<bool>? LockChanged;
 
+    /// A trusted phone asked to turn this computer off.
+    public event Action? ShutdownRequested;
+
     public bool Locked => _locked;
 
     static int NewCode() => RandomNumberGenerator.GetInt32(100_000, 1_000_000);
@@ -344,6 +347,7 @@ internal sealed class HostSession : IDisposable
                         Wake.Accept(m.Payload, peer.Name, (tcp.Client.RemoteEndPoint as IPEndPoint)?.Address);
                         foreach (var p in _peers) if (p.IsPhone) SendWakeList(p);
                         break;
+                    case MsgType.Shutdown when peer.IsPhone: ShutdownRequested?.Invoke(); break;
                 }
             }
         }

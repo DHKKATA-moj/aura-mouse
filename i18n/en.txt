@@ -201,3 +201,11 @@ This program runs as administrator, so Aura Mouse can't control it. The mouse ca
 Restart as administrator
 Not now
 Aura Mouse is running as administrator
+This computer will turn off in {0} seconds. Asked for from a paired phone.
+Don't turn off
+Shutdown cancelled
+Aura Mouse is turning this computer off, asked for from your phone.
+Turn off
+Turn off {0}?
+It will turn off in 20 seconds. Someone at the computer can still stop it.
+{0} will turn off in a moment

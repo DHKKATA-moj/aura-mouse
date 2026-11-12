@@ -44,6 +44,10 @@
     <string name="power_sub">Envia o sinal por este Wi-Fi. Só funciona na mesma rede daquele computador.</string>
     <string name="power_empty">Conecte a um computador uma vez e ele fica salvo aqui.</string>
     <string name="power_on">Ligar</string>
+    <string name="power_off">Desligar</string>
+    <string name="power_off_title">Desligar %1$s?</string>
+    <string name="power_off_sub">Será desligado em 20 segundos. Alguém no computador ainda pode parar.</string>
+    <string name="power_off_sent">%1$s vai desligar num instante</string>
     <string name="remove">Remover</string>
     <string name="power_sent">Sinal enviado a %1$s. Pode levar um minuto para iniciar</string>
     <string name="power_no_network">O telefone não está em uma rede Wi-Fi</string>

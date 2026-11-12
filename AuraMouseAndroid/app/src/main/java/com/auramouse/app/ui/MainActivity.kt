@@ -445,12 +445,27 @@ class MainActivity : Activity() {
             setPadding(dp(14), dp(10), dp(10), dp(10))
         }
         row.addView(label(target.name, 15f, Style.TEXT, bold = true, center = false).apply { maxLines = 1 }, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f).apply { marginEnd = dp(8) })
+        if (Link.isConnectedTo(target.name))
+            row.addView(ghost(getString(R.string.power_off)) { confirmShutdown(target) }.apply { setPadding(dp(14), 0, dp(14), 0) }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(44)).apply { marginEnd = dp(6) })
         row.addView(primary(getString(R.string.power_on)) { sendWake(target) }.apply { setPadding(dp(18), 0, dp(18), 0) }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(44)).apply { marginEnd = dp(6) })
         row.addView(small("✕") {
             powerMessage = null
             Link.removeWake(target)
         }.apply { contentDescription = getString(R.string.remove) }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, dp(44)))
         return row
+    }
+
+    private fun confirmShutdown(target: WakeTarget) {
+        android.app.AlertDialog.Builder(this)
+            .setTitle(getString(R.string.power_off_title, target.name))
+            .setMessage(getString(R.string.power_off_sub))
+            .setPositiveButton(getString(R.string.power_off)) { _, _ ->
+                Link.shutdown()
+                powerMessage = getString(R.string.power_off_sent, target.name)
+                render()
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
     }
 
     private fun sendWake(target: WakeTarget) {

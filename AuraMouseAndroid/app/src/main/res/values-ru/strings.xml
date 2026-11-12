@@ -44,6 +44,10 @@
     <string name="power_sub">Отправляет сигнал через этот Wi-Fi. Работает только в одной сети с компьютером.</string>
     <string name="power_empty">Подключитесь к компьютеру один раз, и он сохранится здесь.</string>
     <string name="power_on">Включить</string>
+    <string name="power_off">Выключить</string>
+    <string name="power_off_title">Выключить %1$s?</string>
+    <string name="power_off_sub">Выключится через 20 секунд. Тот, кто у компьютера, ещё может это остановить.</string>
+    <string name="power_off_sent">%1$s скоро выключится</string>
     <string name="remove">Удалить</string>
     <string name="power_sent">Сигнал отправлен на %1$s. Запуск может занять минуту</string>
     <string name="power_no_network">Телефон не подключён к Wi-Fi</string>

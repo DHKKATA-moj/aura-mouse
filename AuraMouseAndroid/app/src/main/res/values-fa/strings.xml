@@ -44,6 +44,10 @@
     <string name="power_sub">سیگنال را از این وای‌فای می‌فرستد. فقط در همان شبکه رایانه کار می‌کند.</string>
     <string name="power_empty">یک بار به رایانه وصل شوید تا اینجا ذخیره شود.</string>
     <string name="power_on">روشن کردن</string>
+    <string name="power_off">خاموش کردن</string>
+    <string name="power_off_title">%1$s خاموش شود؟</string>
+    <string name="power_off_sub">تا ۲۰ ثانیه دیگر خاموش می‌شود. کسی که پای رایانه است هنوز می‌تواند جلوی آن را بگیرد.</string>
+    <string name="power_off_sent">%1$s تا لحظاتی دیگر خاموش می‌شود</string>
     <string name="remove">حذف</string>
     <string name="power_sent">سیگنال به %1$s ارسال شد. شروع ممکن است یک دقیقه طول بکشد</string>
     <string name="power_no_network">تلفن در شبکه وای‌فای نیست</string>

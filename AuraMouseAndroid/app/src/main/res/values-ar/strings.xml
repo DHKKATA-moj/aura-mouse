@@ -44,6 +44,10 @@
     <string name="power_sub">يرسل الإشارة عبر هذا الواي فاي. يشتغل بس على نفس شبكة الحاسبة.</string>
     <string name="power_empty">اتصل بالحاسبة مرة وحدة وتنحفظ هنا.</string>
     <string name="power_on">شغّلها</string>
+    <string name="power_off">إطفاء</string>
+    <string name="power_off_title">تطفّي %1$s؟</string>
+    <string name="power_off_sub">راح تنطفي بعد 20 ثانية. اللي عند الحاسبة يكدر يوقفها.</string>
+    <string name="power_off_sent">%1$s راح تنطفي بعد لحظة</string>
     <string name="remove">إزالة</string>
     <string name="power_sent">انرسلت الإشارة إلى %1$s. ممكن تاخذ دقيقة حتى تشتغل</string>
     <string name="power_no_network">التلفون مو متصل بواي فاي</string>

@@ -825,6 +825,7 @@ internal sealed class MainForm : Form
         PairStore.BecomeHost();
         var host = new HostSession();
         host.LockChanged += OnLockChanged;
+        host.ShutdownRequested += () => RunOnUi(() => { if (_host == host) OnShutdownRequested(); });
         host.StatusChanged += s => RunOnUi(() => { if (_host == host) OnHostStatus(s); });
         host.PeersChanged += () => RunOnUi(() => { if (_host == host) RefreshPeers(); });
         host.PairingCodeChanged += code => RunOnUi(() =>
@@ -1149,6 +1150,18 @@ internal sealed class MainForm : Form
     // ───────────────────────── shared ─────────────────────────
 
     /// A notice and a beep (the notice can't show over a fullscreen game): high for locked, low for free.
+    /// A trusted phone asked to turn this computer off. Windows counts down and can be stopped; we also
+    /// show our own warning with a Cancel button, in case nobody's watching the system one.
+    void OnShutdownRequested()
+    {
+        if (Power.Shutdown())
+            DragUi.ShowShutdownPrompt(Power.ShutdownDelaySeconds, () =>
+            {
+                Power.CancelShutdown();
+                DragUi.ShowNotice(L.T("shutdown_canceled"));
+            });
+    }
+
     void OnLockChanged(bool locked)
     {
         _ = Task.Run(() =>

@@ -44,6 +44,10 @@
     <string name="power_sub">Sends the signal over this Wi-Fi. It only works on the same network as that computer.</string>
     <string name="power_empty">Connect to a computer once and it\'s saved here.</string>
     <string name="power_on">Turn on</string>
+    <string name="power_off">Turn off</string>
+    <string name="power_off_title">Turn off %1$s?</string>
+    <string name="power_off_sub">It will turn off in 20 seconds. Someone at the computer can still stop it.</string>
+    <string name="power_off_sent">%1$s will turn off in a moment</string>
     <string name="remove">Remove</string>
     <string name="power_sent">Signal sent to %1$s. It can take a minute to start</string>
     <string name="power_no_network">The phone isn\'t on a Wi-Fi network</string>

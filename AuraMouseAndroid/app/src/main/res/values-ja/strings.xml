@@ -44,6 +44,10 @@
     <string name="power_sub">この Wi-Fi で信号を送ります。そのコンピューターと同じネットワークでのみ動作します。</string>
     <string name="power_empty">一度コンピューターに接続すると、ここに保存されます。</string>
     <string name="power_on">電源オン</string>
+    <string name="power_off">電源を切る</string>
+    <string name="power_off_title">%1$s の電源を切りますか？</string>
+    <string name="power_off_sub">20 秒後に電源が切れます。コンピューターの前にいる人はまだ止められます。</string>
+    <string name="power_off_sent">%1$s はまもなく電源が切れます</string>
     <string name="remove">削除</string>
     <string name="power_sent">%1$s に信号を送信しました。起動に 1 分ほどかかる場合があります</string>
     <string name="power_no_network">スマートフォンは Wi-Fi に接続していません</string>

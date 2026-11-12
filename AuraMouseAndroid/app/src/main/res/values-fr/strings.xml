@@ -44,6 +44,10 @@
     <string name="power_sub">Envoie le signal via ce Wi-Fi. Fonctionne uniquement sur le même réseau que cet ordinateur.</string>
     <string name="power_empty">Connectez-vous une fois à un ordinateur et il sera enregistré ici.</string>
     <string name="power_on">Allumer</string>
+    <string name="power_off">Éteindre</string>
+    <string name="power_off_title">Éteindre %1$s ?</string>
+    <string name="power_off_sub">Il s\'éteindra dans 20 secondes. Quelqu\'un à l\'ordinateur peut encore l\'arrêter.</string>
+    <string name="power_off_sent">%1$s va s\'éteindre dans un instant</string>
     <string name="remove">Retirer</string>
     <string name="power_sent">Signal envoyé à %1$s. Le démarrage peut prendre une minute</string>
     <string name="power_no_network">Le téléphone n\'est pas sur un réseau Wi-Fi</string>

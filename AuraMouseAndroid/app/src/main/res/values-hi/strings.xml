@@ -44,6 +44,10 @@
     <string name="power_sub">इस Wi-Fi से संकेत भेजता है। केवल उस कंप्यूटर वाले नेटवर्क पर काम करता है।</string>
     <string name="power_empty">एक बार कंप्यूटर से कनेक्ट करें, वह यहाँ सहेजा जाएगा।</string>
     <string name="power_on">चालू करें</string>
+    <string name="power_off">बंद करें</string>
+    <string name="power_off_title">%1$s बंद करें?</string>
+    <string name="power_off_sub">यह 20 सेकंड में बंद हो जाएगा। कंप्यूटर के पास मौजूद कोई इसे अब भी रोक सकता है।</string>
+    <string name="power_off_sent">%1$s थोड़ी देर में बंद हो जाएगा</string>
     <string name="remove">हटाएँ</string>
     <string name="power_sent">%1$s को संकेत भेजा। शुरू होने में एक मिनट लग सकता है</string>
     <string name="power_no_network">फ़ोन Wi-Fi नेटवर्क पर नहीं है</string>

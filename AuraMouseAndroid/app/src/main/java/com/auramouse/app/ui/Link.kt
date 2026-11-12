@@ -287,6 +287,13 @@ object Link : LinkEvents {
         notifyUi()
     }
 
+    /** True while connected to this exact computer, so it can be turned off from here. */
+    fun isConnectedTo(name: String): Boolean =
+        state == State.CONNECTED && saved?.name.equals(name, ignoreCase = true)
+
+    /** Turn off the computer we're connected to. */
+    fun shutdown() { link?.shutdown() }
+
     /** Progress comes in thousands of small steps; the screen only needs a few a second. */
     private fun notifyUi() {
         main.post {

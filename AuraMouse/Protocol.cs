@@ -55,6 +55,7 @@ internal enum MsgType : byte
     DropAt = 29,      // host -> client, the files you dragged over were dropped; payload = id, send them now
     TextInput = 33,   // like Key, payload = UTF-8 text, for a phone's on-screen keyboard (any language)
     WakeInfo = 31,    // either way when connecting, payload = JSON WakeInfo: how to turn this computer on later
+    Shutdown = 32,    // phone -> host, turn this computer off (after a short, cancelable delay)
     Lock = 30,        // either way, A = 1 while the mouse must stay on the screen it's on (the user's shortcut)
     FileKey = 40,  // host -> client, A = the client's id, payload = secret for its file connections
     FileReady = 41, // host -> client, payload = id of files the host wants to send; the client connects to fetch them
@@ -128,10 +129,11 @@ internal readonly record struct Msg(MsgType Type, int A = 0, int B = 0, int C = 
 
 internal static class Net
 {
-    public const int TcpPort = 47800;
-    public const int DiscoveryPort = 47801;
-    public const int FilePort = 47802;
-    public const int RemotePort = 47810;
+    // Settable only so a test can run a second host on free ports while the real app holds these.
+    public static int TcpPort = 47800;
+    public static int DiscoveryPort = 47801;
+    public static int FilePort = 47802;
+    public static int RemotePort = 47810;
     public const string Beacon = "EASYMOUSE12|"; // bumped with the protocol so old versions don't list each other
 
     /// Low latency, and a computer that vanished (shut down, asleep) is noticed within seconds

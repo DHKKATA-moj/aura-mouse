@@ -44,6 +44,10 @@
     <string name="power_sub">通过此 Wi-Fi 发送信号。仅在与该电脑相同的网络中有效。</string>
     <string name="power_empty">连接过一次电脑后，它就会保存在这里。</string>
     <string name="power_on">开机</string>
+    <string name="power_off">关机</string>
+    <string name="power_off_title">关闭 %1$s？</string>
+    <string name="power_off_sub">将在 20 秒后关机。电脑旁的人仍可以阻止。</string>
+    <string name="power_off_sent">%1$s 即将关机</string>
     <string name="remove">移除</string>
     <string name="power_sent">信号已发送到 %1$s。启动可能需要一分钟</string>
     <string name="power_no_network">手机未连接 Wi-Fi 网络</string>

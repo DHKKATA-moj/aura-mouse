@@ -11,7 +11,7 @@ object T {
     const val HELLO = 1; const val WELCOME = 2; const val REJECTED = 3; const val KEY_SHARE = 4; const val AUTH = 5; const val PAKE_SHARE = 6
     const val MOVE = 11; const val BUTTON = 12; const val WHEEL = 13; const val KEY = 14; const val CLIPBOARD = 15
     const val CLIENT_ENTER = 24; const val RETURN = 25; const val STOP_DRIVING = 26; const val TAKE_OVER = 27
-    const val DROP_AT = 29; const val WAKE_INFO = 31; const val TEXT_INPUT = 33
+    const val DROP_AT = 29; const val WAKE_INFO = 31; const val SHUTDOWN = 32; const val TEXT_INPUT = 33
     const val FILE_KEY = 40; const val FILE_READY = 41; const val PAIR_KEY = 42
     const val FILE_START = 50; const val MANIFEST = 51; const val MANIFEST_ACK = 52; const val FILE_CHUNK = 53
     const val FILE_END = 54; const val DONE = 55; const val CANCEL = 56

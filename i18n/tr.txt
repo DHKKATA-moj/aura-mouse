@@ -201,3 +201,11 @@ Bu program yönetici olarak çalışıyor, bu yüzden Aura Mouse onu kontrol ede
 Yönetici olarak yeniden başlat
 Şimdi değil
 Aura Mouse yönetici olarak çalışıyor
+Bu bilgisayar {0} saniye içinde kapanacak. Eşleştirilmiş bir telefondan istendi.
+Kapatma
+Kapatma iptal edildi
+Aura Mouse bu bilgisayarı kapatıyor, telefonundan istendi.
+Kapat
+{0} kapatılsın mı?
+20 saniye içinde kapanacak. Bilgisayarın başındaki biri hâlâ durdurabilir.
+{0} birazdan kapanacak

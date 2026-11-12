@@ -81,6 +81,88 @@ internal static class DragUi
         }
     }
 
+    static ShutdownPromptForm? _shutdownPrompt;
+
+    /// A phone asked to turn this computer off. Shows a counting-down warning with a Cancel button;
+    /// if it isn't cancelled, onDone runs when the count reaches zero (Windows then does the shutdown).
+    public static void ShowShutdownPrompt(int seconds, Action onCancel)
+    {
+        if (_shutdownPrompt == null || _shutdownPrompt.IsDisposed) _shutdownPrompt = new ShutdownPromptForm();
+        _shutdownPrompt.Begin(seconds, onCancel);
+    }
+
+    public static void HideShutdownPrompt() => _shutdownPrompt?.Hide();
+
+    sealed class ShutdownPromptForm : Form
+    {
+        readonly TextBlock _label = new() { FontSize = 10.5f, Bold = true };
+        readonly PillButton _cancel = new() { Glyph = Glyphs.Stop, Kind = ButtonKind.Danger };
+        readonly System.Windows.Forms.Timer _tick = new() { Interval = 1000 };
+        Action? _onCancel;
+        int _left;
+
+        public ShutdownPromptForm()
+        {
+            AutoScaleMode = AutoScaleMode.None;
+            FormBorderStyle = FormBorderStyle.None;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.Manual;
+            TopMost = true;
+            BackColor = Theme.SolidSurface;
+            Controls.AddRange([_label, _cancel]);
+            _cancel.Click += (_, _) => { _onCancel?.Invoke(); Hide(); };
+            _tick.Tick += (_, _) =>
+            {
+                if (--_left <= 0) { Hide(); return; } // Windows takes over from here
+                UpdateLabel();
+            };
+        }
+
+        protected override bool ShowWithoutActivation => true;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= WS_EX_TOPMOST | WS_EX_TOOLWINDOW | WS_EX_NOACTIVATE;
+                return cp;
+            }
+        }
+
+        public void Begin(int seconds, Action onCancel)
+        {
+            _onCancel = onCancel;
+            _left = seconds;
+            _cancel.Text = L.T("shutdown_cancel");
+            BackColor = Theme.SolidSurface;
+            int S(float v) => (int)(v * Theme.Scale);
+            var area = Screen.PrimaryScreen!.WorkingArea;
+            int w = S(460), h = S(140);
+            Bounds = new Rectangle(area.Left + (area.Width - w) / 2, area.Top + S(40), w, h);
+            _label.Bounds = new Rectangle(S(16), S(12), w - S(32), S(66));
+            _cancel.Bounds = new Rectangle(L.Rtl ? S(16) : w - S(16 + 200), S(84), S(200), S(42));
+            UpdateLabel();
+            if (!Visible) Show();
+            _tick.Stop();
+            _tick.Start();
+        }
+
+        void UpdateLabel() => _label.Text = string.Format(L.T("shutdown_soon"), _left);
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            using var edge = new Pen(Theme.Border);
+            e.Graphics.DrawRectangle(edge, 0, 0, Width - 1, Height - 1);
+        }
+
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            base.OnVisibleChanged(e);
+            if (!Visible) _tick.Stop();
+        }
+    }
+
     static AdminPromptForm? _adminPrompt;
 
     /// Says an administrator's program is in the way, with a button that fixes it. Like the notice,
