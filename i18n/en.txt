@@ -221,3 +221,15 @@ Add "Turn off PC" button
 Add it from Control Center, then Edit
 Games run as administrator
 The mouse keeps working over them. Windows asks once, then Aura Mouse always starts as administrator
+Games
+Games that need administrator
+Add a game and it opens as administrator with no Windows box, so the mouse can cross to it and you can start it from another computer.
+No games added yet. Add one below.
+Opens as administrator, no box
+Not set up. Remove it and add it again
+Play
+Add a game
+Couldn't start the game
+Turn on "Games run as administrator" in Settings so the mouse crosses to them.
+Games (.exe)
+All files

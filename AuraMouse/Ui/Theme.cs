@@ -285,6 +285,8 @@ internal static class Glyphs
     public const string Delete = "\uE74D";
     public const string Settings = "\uE713";
     public const string Computers = "\uE977";
+    public const string Game = "\uE7FC";
+    public const string Play = "\uE768";
     public const string Mouse = "";
     public const string Monitor = "";
     public const string Keyboard = "";

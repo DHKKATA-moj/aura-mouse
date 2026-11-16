@@ -221,3 +221,15 @@ Uygulamayı açmadan kullanmak için Kontrol Merkezi'ne düğme ekle:
 Kontrol Merkezi'nden, sonra Düzenle'den ekle
 Yönetici olarak çalışan oyunlar
 Fare bunların üzerinde de çalışır. Windows bir kez sorar, sonra Aura Mouse hep yönetici olarak başlar
+Oyunlar
+Yönetici gerektiren oyunlar
+Bir oyun ekle; Windows penceresi olmadan yönetici olarak açılır, böylece fare ona geçebilir ve başka bir bilgisayardan başlatabilirsin.
+Henüz oyun eklenmedi. Aşağıdan bir tane ekle.
+Yönetici olarak açılır, pencere yok
+Ayarlanmadı. Kaldırıp yeniden ekle
+Oyna
+Oyun ekle
+Oyun başlatılamadı
+Farenin geçmesi için Ayarlar'da "Yönetici olarak oyunlar"ı aç.
+Oyunlar (.exe)
+Tüm dosyalar

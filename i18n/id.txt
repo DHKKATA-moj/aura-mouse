@@ -221,3 +221,15 @@ Tambah tombol "Matikan PC"
 Tambahkan dari Pusat Kontrol, lalu Edit
 Game yang berjalan sebagai administrator
 Mouse tetap berfungsi di atasnya. Windows bertanya sekali, lalu Aura Mouse selalu berjalan sebagai administrator
+Game
+Game yang perlu administrator
+Tambahkan game dan ia akan terbuka sebagai administrator tanpa kotak Windows, sehingga mouse bisa menyeberang ke sana dan kamu bisa memulainya dari komputer lain.
+Belum ada game. Tambahkan satu di bawah.
+Terbuka sebagai administrator, tanpa kotak
+Belum disiapkan. Hapus dan tambahkan lagi
+Main
+Tambah game
+Tidak bisa memulai game
+Nyalakan "Game sebagai administrator" di Pengaturan agar mouse menyeberang ke sana.
+Game (.exe)
+Semua berkas

@@ -221,3 +221,15 @@ Adicionar botão "Desligar PC"
 Adiciona-o no Centro de Controlo e depois Editar
 Jogos executados como administrador
 O mouse continua funcionando sobre eles. O Windows pergunta uma vez e o Aura Mouse passa a iniciar sempre como administrador
+Jogos
+Jogos que precisam de administrador
+Adicione um jogo e ele abre como administrador sem a janela do Windows, assim o mouse pode passar para ele e você pode iniciá-lo de outro computador.
+Nenhum jogo adicionado ainda. Adicione um abaixo.
+Abre como administrador, sem janela
+Não configurado. Remova e adicione de novo
+Jogar
+Adicionar jogo
+Não foi possível iniciar o jogo
+Ative "Jogos como administrador" nas Configurações para o mouse passar para eles.
+Jogos (.exe)
+Todos os arquivos

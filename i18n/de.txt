@@ -221,3 +221,15 @@ Schaltfläche „PC ausschalten" hinzufügen
 Über das Kontrollzentrum hinzufügen, dann Bearbeiten
 Spiele, die als Administrator laufen
 Die Maus funktioniert auch über ihnen. Windows fragt einmal, danach startet Aura Mouse immer als Administrator
+Spiele
+Spiele, die Administrator brauchen
+Füge ein Spiel hinzu, dann startet es als Administrator ohne Windows-Fenster – die Maus kommt hinüber und du kannst es von einem anderen Computer aus starten.
+Noch keine Spiele hinzugefügt. Füge unten eines hinzu.
+Startet als Administrator, ohne Fenster
+Nicht eingerichtet. Entfernen und erneut hinzufügen
+Starten
+Spiel hinzufügen
+Spiel konnte nicht gestartet werden
+Schalte „Spiele als Administrator“ in den Einstellungen ein, damit die Maus hinüberkommt.
+Spiele (.exe)
+Alle Dateien

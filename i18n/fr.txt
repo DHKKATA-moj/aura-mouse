@@ -221,3 +221,15 @@ Ajouter le bouton « Éteindre le PC »
 Ajoutez-le depuis le Centre de contrôle, puis Modifier
 Jeux lancés en administrateur
 La souris continue de fonctionner dessus. Windows demande une fois, puis Aura Mouse démarre toujours en administrateur
+Jeux
+Jeux qui ont besoin de l'administrateur
+Ajoute un jeu et il s'ouvre en administrateur sans la fenêtre de Windows : la souris peut y passer et tu peux le lancer depuis un autre ordinateur.
+Aucun jeu ajouté. Ajoutes-en un ci-dessous.
+S'ouvre en administrateur, sans fenêtre
+Non configuré. Retire-le et ajoute-le à nouveau
+Jouer
+Ajouter un jeu
+Impossible de lancer le jeu
+Active « Jeux en administrateur » dans les Réglages pour que la souris y passe.
+Jeux (.exe)
+Tous les fichiers

@@ -216,6 +216,18 @@ internal static class L
         ["shutdown_warning"] = "Aura Mouse is turning this computer off, asked for from your phone.",
         ["admin_games"] = "Games run as administrator",
         ["admin_games_sub"] = "The mouse keeps working over them. Windows asks once, then Aura Mouse always starts as administrator",
+        ["nav_games"] = "Games",
+        ["games_title"] = "Games that need administrator",
+        ["games_sub"] = "Add a game and it opens as administrator with no Windows box, so the mouse can cross to it and you can start it from another computer.",
+        ["games_empty"] = "No games added yet. Add one below.",
+        ["games_ready"] = "Opens as administrator, no box",
+        ["games_not_ready"] = "Not set up. Remove it and add it again",
+        ["games_play"] = "Play",
+        ["games_add"] = "Add a game",
+        ["games_play_fail"] = "Couldn't start the game",
+        ["games_tip"] = "Turn on \"Games run as administrator\" in Settings so the mouse crosses to them.",
+        ["games_filter"] = "Games (.exe)",
+        ["games_filter_all"] = "All files",
     };
 
     public static string T(string key)

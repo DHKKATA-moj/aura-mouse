@@ -12,7 +12,7 @@ namespace AuraMouse;
 internal sealed class MainForm : Form
 {
     enum Page { Choose, Host, Client }
-    enum Section { Connection, Remote, Computers, Settings } // the sidebar; Connection shows the current Page
+    enum Section { Connection, Remote, Computers, Games, Settings } // the sidebar; Connection shows the current Page
 
     const float SidebarWidth = 210, DesignWidth = 540, WindowWidth = SidebarWidth + DesignWidth, WindowHeight = 690;
     const float Pad = 32, ContentWidth = DesignWidth - 2 * Pad;
@@ -170,6 +170,7 @@ internal sealed class MainForm : Form
         RenderSidebar();
         _wakeRows.Clear();
         if (_section == Section.Computers) RenderComputers();
+        else if (_section == Section.Games) RenderGames();
         else if (_section == Section.Settings) RenderSettings();
         else if (_section == Section.Remote) RenderRemote();
         else switch (_page)
@@ -193,6 +194,7 @@ internal sealed class MainForm : Form
             (Section.Connection, "nav_connection", Glyphs.Link),
             (Section.Remote, "nav_remote", Glyphs.Monitor),
             (Section.Computers, "nav_computers", Glyphs.Computers),
+            (Section.Games, "nav_games", Glyphs.Game),
             (Section.Settings, "nav_settings", Glyphs.Settings),
         })
         {
@@ -316,6 +318,50 @@ internal sealed class MainForm : Form
         }
         UpdateWakeRows();
         CheckWakeTargets();
+    }
+
+    /// Games that need administrator: added once, they open elevated with no Windows box, so the mouse
+    /// can cross to them and they can be started from another computer.
+    void RenderGames()
+    {
+        AddCentered(new TextBlock { Text = L.T("games_title"), FontSize = 18, Bold = true }, 76, ContentWidth, 38);
+        AddCentered(new TextBlock { Text = L.T("games_sub"), FontSize = 10, Color = Theme.Muted }, 114, ContentWidth, 44);
+
+        var games = Games.All();
+        if (games.Count == 0)
+            AddCentered(new TextBlock { Text = L.T("games_empty"), FontSize = 11 }, 210, ContentWidth, 60);
+
+        const float playWidth = 104, removeWidth = 42;
+        float textWidth = ContentWidth - playWidth - removeWidth - 20, y = 184;
+        var align = L.Rtl ? StringAlignment.Far : StringAlignment.Near;
+        foreach (var game in games)
+        {
+            Add(new TextBlock { Text = game.Name, FontSize = 11.5f, Bold = true, Align = align }, Pad, y, textWidth, 28);
+            Add(new TextBlock { Text = L.T(game.Ready ? "games_ready" : "games_not_ready"), FontSize = 9.5f, Color = game.Ready ? Theme.Good : Theme.Warn, Align = align }, Pad, y + 28, textWidth, 34);
+
+            var play = Add(new PillButton { Text = L.T("games_play"), Glyph = Glyphs.Play, Kind = ButtonKind.Primary }, DesignWidth - Pad - removeWidth - 8 - playWidth, y + 6, playWidth, 42);
+            play.Click += (_, _) => { if (!Games.Play(game.Path)) MessageBox.Show(this, L.T("games_play_fail"), "Aura Mouse", MessageBoxButtons.OK, MessageBoxIcon.Warning); };
+            var remove = Add(new PillButton { Glyph = Glyphs.Delete, Kind = ButtonKind.Danger }, DesignWidth - Pad - removeWidth, y + 6, removeWidth, 42);
+            remove.Click += (_, _) => { Games.Remove(game.Path); Navigate(); };
+            y += 68;
+        }
+
+        var add = AddCentered(new PillButton { Text = L.T("games_add"), Glyph = Glyphs.Game, Kind = ButtonKind.Primary }, 600, 220, 46);
+        add.Click += (_, _) => AddGame();
+        if (!Elevation.Always)
+            AddCentered(new TextBlock { Text = L.T("games_tip"), FontSize = 9, Color = Theme.Muted }, 652, ContentWidth, 36);
+    }
+
+    void AddGame()
+    {
+        using var dialog = new OpenFileDialog
+        {
+            Title = L.T("games_add"),
+            Filter = L.T("games_filter") + "|*.exe;*.lnk;*.url|" + L.T("games_filter_all") + "|*.*",
+        };
+        if (dialog.ShowDialog(this) != DialogResult.OK) return;
+        if (!Games.Add(dialog.FileName)) return; // Windows asked for administrator and the answer was no
+        Navigate();
     }
 
     // ───────────────────────── remote desktop ─────────────────────────
@@ -655,6 +701,7 @@ internal sealed class MainForm : Form
         StopRemote();
         PairStore.Forget();
         AutoStart.RemoveAll();
+        Games.RemoveAll();
         Elevation.RemoveIfThere();
         await Task.Run(Firewall.Remove); // Windows asks first; a no just leaves that rule
         App.DeleteData();

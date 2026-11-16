@@ -221,3 +221,15 @@ Añadir botón "Apagar PC"
 Añádelo desde el Centro de control y luego Editar
 Juegos ejecutados como administrador
 El ratón sigue funcionando sobre ellos. Windows pregunta una vez y Aura Mouse se inicia siempre como administrador
+Juegos
+Juegos que necesitan administrador
+Agrega un juego y se abrirá como administrador sin el cuadro de Windows, así el ratón puede pasar a él y puedes iniciarlo desde otra computadora.
+Aún no hay juegos. Agrega uno abajo.
+Se abre como administrador, sin cuadro
+Sin configurar. Quítalo y agrégalo de nuevo
+Jugar
+Agregar un juego
+No se pudo iniciar el juego
+Activa "Juegos como administrador" en Ajustes para que el ratón pase a ellos.
+Juegos (.exe)
+Todos los archivos
