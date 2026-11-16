@@ -62,20 +62,17 @@ internal static class Elevation
 
     static string HiddenFlag => Path.Combine(App.DataFolder, "start-hidden.txt");
 
-    /// Whether the task is there and starts this exe (a moved exe would start the old one, so that counts as off).
-    public static bool Always
-    {
-        get
-        {
-            var (code, xml) = Run("schtasks", $"/Query /TN \"{TaskName}\" /XML");
-            return code == 0 && xml.Contains(SecurityElement.Escape(Environment.ProcessPath!), StringComparison.OrdinalIgnoreCase);
-        }
-    }
+    /// Whether the "always as administrator" task is set up (by its name, wherever it points).
+    public static bool Always => Run("schtasks", $"/Query /TN \"{TaskName}\"").Code == 0;
 
     /// At start, before anything else: an ordinary copy hands over to the task if it's set up. True if it did.
     public static bool HandOverToTask(bool startHidden)
     {
-        if (IsAdmin || !Always) return false;
+        if (IsAdmin) return false;
+        var target = RegisteredPath();
+        // Not set up, or set up but pointing at a copy that's since been deleted: just run as usual.
+        if (target == null || (!target.Equals(Environment.ProcessPath, StringComparison.OrdinalIgnoreCase) && !File.Exists(target)))
+            return false;
         try
         {
             if (startHidden) { Directory.CreateDirectory(App.DataFolder); File.WriteAllText(HiddenFlag, "yes"); }
@@ -85,6 +82,18 @@ internal static class Elevation
         if (Run("schtasks", $"/Run /TN \"{TaskName}\"").Code == 0) return true;
         TakeHiddenFlag();
         return false;
+    }
+
+    /// The exe the task runs, or null if there's no task. Read from its XML.
+    static string? RegisteredPath()
+    {
+        var (code, xml) = Run("schtasks", $"/Query /TN \"{TaskName}\" /XML");
+        if (code != 0) return null;
+        var start = xml.IndexOf("<Command>", StringComparison.OrdinalIgnoreCase);
+        var end = xml.IndexOf("</Command>", StringComparison.OrdinalIgnoreCase);
+        if (start < 0 || end < 0) return null;
+        start += "<Command>".Length;
+        return System.Net.WebUtility.HtmlDecode(xml[start..end]).Trim();
     }
 
     /// In the copy the task started: whether the one that handed over was starting with Windows.
