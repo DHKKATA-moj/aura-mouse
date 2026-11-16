@@ -219,3 +219,5 @@ Ajoutez des boutons au Centre de contrôle pour les utiliser sans ouvrir l'appli
 Ajouter le bouton « Allumer le PC »
 Ajouter le bouton « Éteindre le PC »
 Ajoutez-le depuis le Centre de contrôle, puis Modifier
+Jeux lancés en administrateur
+La souris continue de fonctionner dessus. Windows demande une fois, puis Aura Mouse démarre toujours en administrateur

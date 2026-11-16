@@ -219,3 +219,5 @@ Añade botones al Centro de control para usarlos sin abrir la app:
 Añadir botón "Encender PC"
 Añadir botón "Apagar PC"
 Añádelo desde el Centro de control y luego Editar
+Juegos ejecutados como administrador
+El ratón sigue funcionando sobre ellos. Windows pregunta una vez y Aura Mouse se inicia siempre como administrador

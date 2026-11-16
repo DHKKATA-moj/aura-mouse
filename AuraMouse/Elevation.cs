@@ -1,24 +1,29 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Security.Principal;
+using System.Text;
 
 namespace AuraMouse;
 
 /// Programs run as administrator (many games) are walled off from ordinary ones: while one is in
 /// front, Windows stops telling Aura Mouse about the mouse and keyboard and won't let it move the
 /// cursor or type. Running Aura Mouse as administrator too removes the wall.
+///
+/// So that this doesn't mean a Windows question at every start, turning it on (Windows asks once)
+/// registers a scheduled task that may run Aura Mouse as administrator. From then on an ordinary
+/// start just runs that task and steps aside.
 internal static class Elevation
 {
-    public const string RestartArgument = "--restarted-from", ForGameArgument = "--for-game";
+    /// Given to the copy started as administrator when it's turned on or off, with the pid of the copy it replaces.
+    public const string SetupArgument = "--admin-on", UndoArgument = "--admin-off";
+    /// Given by the task, so the copy it starts never hands over to the task again.
+    public const string FromTaskArgument = "--from-task";
+
+    const string TaskName = "Aura Mouse (administrator)";
 
     public static bool IsAdmin { get; } = CheckAdmin();
-
-    /// An administrator's program came to the front (once for each of its windows), with its name.
-    /// Raised from a timer thread.
-    public static event Action<string>? AdminInFront;
-
-    internal static void RaiseAdminInFront(string name) => AdminInFront?.Invoke(name);
 
     static bool CheckAdmin()
     {
@@ -30,11 +35,9 @@ internal static class Elevation
         catch (Exception e) when (e is System.Security.SecurityException or UnauthorizedAccessException) { return false; }
     }
 
-    /// The window in front belongs to a program we can't reach, with its name for messages.
-    /// Ours or an ordinary program's: false.
-    public static bool FrontIsWalledOff(out IntPtr window, out string name)
+    /// The window in front belongs to a program we can't reach. Ours or an ordinary program's: false.
+    public static bool FrontIsWalledOff(out IntPtr window)
     {
-        name = "";
         window = GetForegroundWindow();
         if (IsAdmin || window == IntPtr.Zero) return false;
         GetWindowThreadProcessId(window, out uint pid);
@@ -44,7 +47,6 @@ internal static class Elevation
         if (process == IntPtr.Zero) return true; // a protected or system program: just as unreachable
         try
         {
-            name = NameOf(process);
             // An administrator's process won't even show its token to an ordinary one.
             if (!OpenProcessToken(process, TOKEN_QUERY, out var token)) return true;
             try
@@ -56,69 +58,172 @@ internal static class Elevation
         finally { CloseHandle(process); }
     }
 
-    static string NameOf(IntPtr process)
-    {
-        var buffer = new char[1024];
-        int size = buffer.Length;
-        return QueryFullProcessImageName(process, 0, buffer, ref size) ? Path.GetFileNameWithoutExtension(new string(buffer, 0, size)) : "";
-    }
+    // ---- Always as administrator ----
 
-    static string ChoiceFile => Path.Combine(App.DataFolder, "admin.txt");
+    static string HiddenFlag => Path.Combine(App.DataFolder, "start-hidden.txt");
 
-    /// The user chose to run as administrator once, so it does every time from then on.
-    public static bool Wanted
+    /// Whether the task is there and starts this exe (a moved exe would start the old one, so that counts as off).
+    public static bool Always
     {
-        get => File.Exists(ChoiceFile);
-        set
+        get
         {
-            try
-            {
-                if (value) { Directory.CreateDirectory(App.DataFolder); File.WriteAllText(ChoiceFile, "yes"); }
-                else File.Delete(ChoiceFile);
-            }
-            catch (IOException) { }
-            catch (UnauthorizedAccessException) { }
+            var (code, xml) = Run("schtasks", $"/Query /TN \"{TaskName}\" /XML");
+            return code == 0 && xml.Contains(SecurityElement.Escape(Environment.ProcessPath!), StringComparison.OrdinalIgnoreCase);
         }
     }
 
-    /// Starts a copy as administrator (Windows asks first) that takes over once this one has closed.
-    /// False if the user said no, which also stops it asking at every start.
-    public static bool StartAsAdmin(string passOn = ForGameArgument)
+    /// At start, before anything else: an ordinary copy hands over to the task if it's set up. True if it did.
+    public static bool HandOverToTask(bool startHidden)
+    {
+        if (IsAdmin || !Always) return false;
+        try
+        {
+            if (startHidden) { Directory.CreateDirectory(App.DataFolder); File.WriteAllText(HiddenFlag, "yes"); }
+        }
+        catch (IOException) { }
+        catch (UnauthorizedAccessException) { }
+        if (Run("schtasks", $"/Run /TN \"{TaskName}\"").Code == 0) return true;
+        TakeHiddenFlag();
+        return false;
+    }
+
+    /// In the copy the task started: whether the one that handed over was starting with Windows.
+    public static bool TakeHiddenFlag()
     {
         try
         {
-            using var _ = Process.Start(new ProcessStartInfo(Environment.ProcessPath!, $"{RestartArgument} {Environment.ProcessId} {passOn}".TrimEnd())
+            if (!File.Exists(HiddenFlag)) return false;
+            File.Delete(HiddenFlag);
+            return true;
+        }
+        catch (IOException) { return false; }
+        catch (UnauthorizedAccessException) { return false; }
+    }
+
+    /// Turns it on or off from the running copy. Windows asks first unless this copy is already
+    /// administrator. True if the change happened or is under way in a new copy (then this one must close).
+    public static bool Switch(bool on, out bool closeThisCopy)
+    {
+        closeThisCopy = false;
+        if (!on && IsAdmin) return RemoveTask();
+        try
+        {
+            // Turning on always goes through a new copy as administrator, which then carries on in place of this one.
+            using var _ = Process.Start(new ProcessStartInfo(Environment.ProcessPath!,
+                $"{(on ? SetupArgument : UndoArgument)} {Environment.ProcessId}")
             {
                 UseShellExecute = true,
                 Verb = "runas",
             });
-            Wanted = true;
+            closeThisCopy = on;
             return true;
         }
-        catch (Win32Exception)
-        {
-            Wanted = false;
-            return false;
-        }
+        catch (Win32Exception) { return false; } // the user said no
     }
 
-    /// In the copy started above: waits for the old one to close, so it can take over.
-    public static bool WaitForOldCopy(string[] args)
+    /// In the copy started by Switch. Returns whether this copy should go on to run as Aura Mouse.
+    public static bool FinishSwitch(string[] args)
     {
-        int at = Array.IndexOf(args, RestartArgument);
-        if (at < 0) return false;
-        if (at + 1 < args.Length && int.TryParse(args[at + 1], out int pid))
+        bool on = args.Contains(SetupArgument);
+        if (!on)
         {
-            try
-            {
-                using var old = Process.GetProcessById(pid);
-                old.WaitForExit(15000);
-            }
-            catch (ArgumentException) { } // already gone
-            catch (InvalidOperationException) { }
-            catch (Win32Exception) { }
+            RemoveTask();
+            return false;
         }
+        WaitForOldCopy(args);
+        if (IsAdmin) CreateTask();
         return true;
+    }
+
+    static void WaitForOldCopy(string[] args)
+    {
+        int at = Array.IndexOf(args, SetupArgument);
+        if (at < 0 || at + 1 >= args.Length || !int.TryParse(args[at + 1], out int pid)) return;
+        try
+        {
+            using var old = Process.GetProcessById(pid);
+            old.WaitForExit(15000);
+        }
+        catch (ArgumentException) { } // already gone
+        catch (InvalidOperationException) { }
+        catch (Win32Exception) { }
+    }
+
+    static bool CreateTask()
+    {
+        string? user;
+        using (var identity = WindowsIdentity.GetCurrent()) user = identity.User?.Value;
+        if (user == null) return false;
+
+        string xml = $"""
+            <?xml version="1.0" encoding="UTF-16"?>
+            <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+              <RegistrationInfo>
+                <Description>Starts Aura Mouse as administrator, so the mouse keeps working over games run as administrator. Turn it off in Aura Mouse's settings.</Description>
+              </RegistrationInfo>
+              <Principals>
+                <Principal id="Author">
+                  <UserId>{user}</UserId>
+                  <LogonType>InteractiveToken</LogonType>
+                  <RunLevel>HighestAvailable</RunLevel>
+                </Principal>
+              </Principals>
+              <Settings>
+                <MultipleInstancesPolicy>Parallel</MultipleInstancesPolicy>
+                <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+                <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+                <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+                <Priority>4</Priority>
+                <IdleSettings>
+                  <StopOnIdleEnd>false</StopOnIdleEnd>
+                  <RestartOnIdle>false</RestartOnIdle>
+                </IdleSettings>
+              </Settings>
+              <Actions Context="Author">
+                <Exec>
+                  <Command>{SecurityElement.Escape(Environment.ProcessPath!)}</Command>
+                  <Arguments>{FromTaskArgument}</Arguments>
+                </Exec>
+              </Actions>
+            </Task>
+            """;
+        var file = Path.Combine(Path.GetTempPath(), $"aura-mouse-task-{Environment.ProcessId}.xml");
+        try
+        {
+            File.WriteAllText(file, xml, Encoding.Unicode);
+            return Run("schtasks", $"/Create /TN \"{TaskName}\" /XML \"{file}\" /F").Code == 0;
+        }
+        catch (IOException) { return false; }
+        catch (UnauthorizedAccessException) { return false; }
+        finally { try { File.Delete(file); } catch (IOException) { } catch (UnauthorizedAccessException) { } }
+    }
+
+    static bool RemoveTask() => Run("schtasks", $"/Delete /TN \"{TaskName}\" /F").Code == 0;
+
+    /// Also removes it when Aura Mouse is removed from this computer (Windows may ask).
+    public static void RemoveIfThere()
+    {
+        if (!Always) return;
+        Switch(false, out _);
+    }
+
+    static (int Code, string Output) Run(string file, string arguments)
+    {
+        try
+        {
+            using var p = Process.Start(new ProcessStartInfo(file, arguments)
+            {
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+            })!;
+            var output = p.StandardOutput.ReadToEndAsync();
+            p.StandardError.ReadToEnd();
+            if (!p.WaitForExit(15000)) { try { p.Kill(); } catch (InvalidOperationException) { } return (-1, ""); }
+            return (p.ExitCode, output.Result);
+        }
+        catch (Win32Exception) { return (-1, ""); }
     }
 
     const uint PROCESS_QUERY_LIMITED_INFORMATION = 0x1000, TOKEN_QUERY = 0x0008;
@@ -130,6 +235,4 @@ internal static class Elevation
     [DllImport("kernel32.dll")] static extern bool CloseHandle(IntPtr handle);
     [DllImport("advapi32.dll", SetLastError = true)] static extern bool OpenProcessToken(IntPtr process, uint access, out IntPtr token);
     [DllImport("advapi32.dll", SetLastError = true)] static extern bool GetTokenInformation(IntPtr token, int infoClass, out int info, int size, out int returned);
-    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-    static extern bool QueryFullProcessImageName(IntPtr process, int flags, [Out] char[] name, ref int size);
 }

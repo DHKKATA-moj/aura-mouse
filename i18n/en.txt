@@ -219,3 +219,5 @@ Add buttons to Control Center to use these without opening the app:
 Add "Turn on PC" button
 Add "Turn off PC" button
 Add it from Control Center, then Edit
+Games run as administrator
+The mouse keeps working over them. Windows asks once, then Aura Mouse always starts as administrator

@@ -219,3 +219,5 @@ Adiciona botões ao Centro de Controlo para os usares sem abrir a app:
 Adicionar botão "Ligar PC"
 Adicionar botão "Desligar PC"
 Adiciona-o no Centro de Controlo e depois Editar
+Jogos executados como administrador
+O mouse continua funcionando sobre eles. O Windows pergunta uma vez e o Aura Mouse passa a iniciar sempre como administrador

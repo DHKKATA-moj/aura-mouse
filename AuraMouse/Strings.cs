@@ -214,6 +214,8 @@ internal static class L
         ["shutdown_cancel"] = "Don't turn off",
         ["shutdown_canceled"] = "Shutdown cancelled",
         ["shutdown_warning"] = "Aura Mouse is turning this computer off, asked for from your phone.",
+        ["admin_games"] = "Games run as administrator",
+        ["admin_games_sub"] = "The mouse keeps working over them. Windows asks once, then Aura Mouse always starts as administrator",
     };
 
     public static string T(string key)

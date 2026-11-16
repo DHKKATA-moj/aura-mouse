@@ -219,3 +219,5 @@ Tambahkan tombol ke Pusat Kontrol untuk memakainya tanpa membuka aplikasi:
 Tambah tombol "Nyalakan PC"
 Tambah tombol "Matikan PC"
 Tambahkan dari Pusat Kontrol, lalu Edit
+Game yang berjalan sebagai administrator
+Mouse tetap berfungsi di atasnya. Windows bertanya sekali, lalu Aura Mouse selalu berjalan sebagai administrator

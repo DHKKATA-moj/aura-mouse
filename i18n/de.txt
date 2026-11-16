@@ -219,3 +219,5 @@ Füge Schnelleinstellungen hinzu, um sie ohne die App zu nutzen:
 Schaltfläche „PC einschalten" hinzufügen
 Schaltfläche „PC ausschalten" hinzufügen
 Über das Kontrollzentrum hinzufügen, dann Bearbeiten
+Spiele, die als Administrator laufen
+Die Maus funktioniert auch über ihnen. Windows fragt einmal, danach startet Aura Mouse immer als Administrator

@@ -219,3 +219,5 @@ Uygulamayı açmadan kullanmak için Kontrol Merkezi'ne düğme ekle:
 "Bilgisayarı aç" düğmesi ekle
 "Bilgisayarı kapat" düğmesi ekle
 Kontrol Merkezi'nden, sonra Düzenle'den ekle
+Yönetici olarak çalışan oyunlar
+Fare bunların üzerinde de çalışır. Windows bir kez sorar, sonra Aura Mouse hep yönetici olarak başlar

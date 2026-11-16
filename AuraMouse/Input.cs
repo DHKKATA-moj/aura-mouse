@@ -14,7 +14,6 @@ internal sealed class InputCapture : IDisposable
     readonly ChordDetector _lockChord = new(), _escapeChord = new();
     IntPtr _mouseHook, _keyHook;
     System.Threading.Timer? _watch;
-    IntPtr _walledWindow;
     int _watching;
     Thread? _thread;
     uint _threadId;
@@ -84,15 +83,7 @@ internal sealed class InputCapture : IDisposable
         if (Interlocked.Exchange(ref _watching, 1) == 1) return; // the last check is still going
         try
         {
-            if (!Elevation.FrontIsWalledOff(out var window, out var name))
-            {
-                _walledWindow = IntPtr.Zero;
-                return;
-            }
-            FrontWalledOff?.Invoke();
-            if (window == _walledWindow) return;
-            _walledWindow = window;
-            Elevation.RaiseAdminInFront(name);
+            if (Elevation.FrontIsWalledOff(out _)) FrontWalledOff?.Invoke();
         }
         finally { Volatile.Write(ref _watching, 0); }
     }

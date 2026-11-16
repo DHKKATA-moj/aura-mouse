@@ -8,9 +8,27 @@ internal static class Program
         bool startedWithWindows = args.Contains(AutoStart.Argument);
         App.MoveOldData();
 
+        // Run as administrator, so the mouse works over games that are: switched on or off in settings,
+        // and once on, an ordinary start hands over to the task that starts it that way without asking.
+        if (args.Contains(Elevation.SetupArgument) || args.Contains(Elevation.UndoArgument))
+        {
+            if (!Elevation.FinishSwitch(args)) return;
+        }
+        else if (args.Contains(Elevation.FromTaskArgument)) startedWithWindows = Elevation.TakeHiddenFlag();
+        else if (Elevation.HandOverToTask(startedWithWindows)) return;
+
         // It lives in the tray, so opening it again just brings up the one already running.
-        using var instance = new Mutex(true, @"Local\Aura Mouse", out bool first);
-        using var showRequest = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\Aura Mouse.Show");
+        Mutex instance;
+        EventWaitHandle showRequest;
+        bool first;
+        try
+        {
+            instance = new Mutex(true, @"Local\Aura Mouse", out first);
+            showRequest = new EventWaitHandle(false, EventResetMode.AutoReset, @"Local\Aura Mouse.Show");
+        }
+        catch (UnauthorizedAccessException) { return; } // a copy run as administrator is open, and this one can't reach it
+        using var _instance = instance;
+        using var _showRequest = showRequest;
         if (!first)
         {
             if (!startedWithWindows) showRequest.Set();

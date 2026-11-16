@@ -606,7 +606,7 @@ internal sealed class MainForm : Form
         for (int i = 0; i < themes.Length; i++)
         {
             var (id, name) = themes[i];
-            var swatch = Add(new ThemeSwatch { Text = name, Palette = Theme.PaletteOf(id), Selected = id == Theme.Current.Id }, Pad + i * (swatchWidth + swatchGap), 142, swatchWidth, 108);
+            var swatch = Add(new ThemeSwatch { Text = name, Palette = Theme.PaletteOf(id), Selected = id == Theme.Current.Id }, Pad + i * (swatchWidth + swatchGap), 142, swatchWidth, 96);
             swatch.Click += (_, _) => ChooseTheme(id);
         }
 
@@ -617,9 +617,19 @@ internal sealed class MainForm : Form
             PairStore.SetAutoStart(!on);
             Navigate();
         };
-        AddSettingRow(262, L.T("auto_start"), L.T("auto_start_tip"), startup);
+        AddSettingRow(248, L.T("auto_start"), L.T("auto_start_tip"), startup);
 
-        var hint = AddCentered(new TextBlock { Text = L.T("shortcut_click"), FontSize = 9.5f, Color = Theme.Muted }, 536, ContentWidth, 40);
+        bool admin = Elevation.Always;
+        var asAdmin = new PillButton { Text = L.T(admin ? "on" : "off"), Glyph = Glyphs.Power, Kind = admin ? ButtonKind.Primary : ButtonKind.Ghost };
+        asAdmin.Click += (_, _) =>
+        {
+            if (!Elevation.Switch(!admin, out bool close)) return; // Windows asked and the answer was no
+            if (close) ExitApp(); // a copy running as administrator takes over from here
+            else Navigate();
+        };
+        AddSettingRow(332, L.T("admin_games"), L.T("admin_games_sub"), asAdmin);
+
+        var hint = AddCentered(new TextBlock { Text = L.T("shortcut_click"), FontSize = 9.5f, Color = Theme.Muted }, 582, ContentWidth, 30);
 
         ShortcutBox Box(int[] keys, Func<int[]> other, Action<int[]> save)
         {
@@ -629,12 +639,12 @@ internal sealed class MainForm : Form
             box.Clashes += () => hint.Text = L.T("shortcut_clash");
             return box;
         }
-        AddSettingRow(356, L.T("lock_title"), L.T("lock_sub"), Box(Shortcuts.Lock, () => Shortcuts.Escape, Shortcuts.SetLock));
-        AddSettingRow(450, L.T("emergency_title"), L.T("emergency_sub"), Box(Shortcuts.Escape, () => Shortcuts.Lock, Shortcuts.SetEscape));
+        AddSettingRow(416, L.T("lock_title"), L.T("lock_sub"), Box(Shortcuts.Lock, () => Shortcuts.Escape, Shortcuts.SetLock));
+        AddSettingRow(500, L.T("emergency_title"), L.T("emergency_sub"), Box(Shortcuts.Escape, () => Shortcuts.Lock, Shortcuts.SetEscape));
 
         var remove = new PillButton { Text = L.T("remove"), Glyph = Glyphs.Delete, Kind = ButtonKind.Danger };
         remove.Click += (_, _) => RemoveFromThisPc();
-        AddSettingRow(588, L.T("uninstall_title"), L.T("uninstall_sub"), remove, subtitleHeight: 74);
+        AddSettingRow(610, L.T("uninstall_title"), L.T("uninstall_sub"), remove, subtitleHeight: 52);
     }
 
     /// Leaves nothing behind but the program file and the files people received.
@@ -645,6 +655,7 @@ internal sealed class MainForm : Form
         StopRemote();
         PairStore.Forget();
         AutoStart.RemoveAll();
+        Elevation.RemoveIfThere();
         await Task.Run(Firewall.Remove); // Windows asks first; a no just leaves that rule
         App.DeleteData();
         MessageBox.Show(this, L.T("uninstall_done"), "Aura Mouse", MessageBoxButtons.OK, MessageBoxIcon.Information);
